@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contes du Faso — Contes et légendes du Burkina Faso</title>
+  <meta name="description" content="Parcourez le Burkina Faso sur une carte interactive et écoutez ses contes, légendes et récits historiques en mooré, dioula, fulfulde et français.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/accueil.css">
+</head>
+<body>
+  <header id="entete"></header>
+
+  <main>
+    <!-- Scène d'ouverture : la veillée sous le baobab -->
+    <section class="hero" aria-labelledby="titre-hero">
+      <div class="ciel" aria-hidden="true">
+        <svg class="calque calque-etoiles" data-profondeur="6" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMin slice">
+          <g id="etoiles"></g>
+          <circle class="lune" cx="1060" cy="120" r="34"/>
+        </svg>
+
+        <svg class="calque" data-profondeur="12" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice"><g transform="translate(0 200)">
+          <path fill="#262c63" d="M0 430 C180 380 320 400 480 420 C640 440 760 370 960 380 C1140 390 1260 420 1440 400 V600 H0Z"/>
+        </g></svg>
+
+        <svg class="calque" data-profondeur="22" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice"><g transform="translate(0 200)">
+          <g fill="#1b2050">
+            <path d="M0 480 C200 455 380 470 560 478 C760 488 960 455 1180 462 C1300 466 1380 474 1440 470 V600 H0Z"/>
+            <!-- Cases rondes du village -->
+            <g transform="translate(700 476)"><rect x="-26" y="-34" width="52" height="34" rx="4"/><path d="M-36 -32 L0 -74 L36 -32Z"/></g>
+            <g transform="translate(770 470)"><rect x="-20" y="-26" width="40" height="26" rx="3"/><path d="M-28 -24 L0 -58 L28 -24Z"/></g>
+            <g transform="translate(838 476)"><rect x="-24" y="-30" width="48" height="30" rx="4"/><path d="M-33 -28 L0 -66 L33 -28Z"/></g>
+          </g>
+        </g></svg>
+
+        <svg class="calque calque-avant" data-profondeur="36" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice"><g transform="translate(0 200)">
+          <defs>
+            <radialGradient id="lueur" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stop-color="#e8a934" stop-opacity="0.55"/>
+              <stop offset="0.45" stop-color="#c2502b" stop-opacity="0.18"/>
+              <stop offset="1" stop-color="#c2502b" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle class="lueur" cx="430" cy="530" r="230" fill="url(#lueur)"/>
+          <path fill="#14173a" d="M0 530 C240 512 420 520 640 528 C900 538 1120 510 1440 520 V600 H0Z"/>
+
+          <!-- Baobab -->
+          <g transform="translate(1110 528)" fill="#14173a" stroke="#14173a" stroke-linecap="round">
+            <path stroke="none" d="M-72 0 C-62 -80 -50 -160 -42 -232 L42 -232 C50 -160 62 -80 72 0Z"/>
+            <g fill="none">
+              <path stroke-width="22" d="M-30 -226 C-60 -270 -110 -290 -150 -330"/>
+              <path stroke-width="18" d="M-10 -230 C-20 -290 -30 -330 -60 -380"/>
+              <path stroke-width="18" d="M15 -230 C25 -290 50 -330 40 -390"/>
+              <path stroke-width="20" d="M30 -226 C70 -260 120 -280 170 -320"/>
+              <path stroke-width="8" d="M-150 -330 C-170 -345 -185 -350 -205 -352"/>
+              <path stroke-width="8" d="M-150 -330 C-150 -360 -140 -375 -135 -392"/>
+              <path stroke-width="7" d="M-60 -380 C-80 -395 -95 -400 -112 -402"/>
+              <path stroke-width="7" d="M40 -390 C30 -410 25 -420 15 -432"/>
+              <path stroke-width="7" d="M40 -390 C60 -405 75 -410 92 -410"/>
+              <path stroke-width="8" d="M170 -320 C195 -330 210 -335 232 -334"/>
+              <path stroke-width="7" d="M170 -320 C180 -345 185 -360 182 -380"/>
+            </g>
+            <g stroke="none" opacity="0.9">
+              <ellipse cx="-208" cy="-356" rx="22" ry="10"/>
+              <ellipse cx="-134" cy="-398" rx="16" ry="9"/>
+              <ellipse cx="-116" cy="-406" rx="18" ry="8"/>
+              <ellipse cx="12" cy="-438" rx="16" ry="9"/>
+              <ellipse cx="96" cy="-414" rx="18" ry="8"/>
+              <ellipse cx="238" cy="-338" rx="22" ry="10"/>
+              <ellipse cx="182" cy="-386" rx="14" ry="8"/>
+            </g>
+          </g>
+
+          <!-- Le feu et les auditeurs -->
+          <g transform="translate(430 528)">
+            <g class="feu">
+              <path class="flamme f1" fill="#c2502b" d="M-22 0 C-26 -26 -8 -40 -4 -64 C6 -44 24 -32 20 0Z"/>
+              <path class="flamme f2" fill="#e8a934" d="M-13 0 C-16 -18 -3 -28 0 -46 C7 -30 16 -20 13 0Z"/>
+              <path class="flamme f3" fill="#f3e7cf" d="M-6 0 C-7 -9 -1 -15 1 -24 C4 -15 8 -9 6 0Z"/>
+            </g>
+            <rect x="-30" y="-4" width="60" height="7" rx="3" fill="#3a2a2a" transform="rotate(-6)"/>
+            <rect x="-30" y="-4" width="60" height="7" rx="3" fill="#2f2324" transform="rotate(8)"/>
+            <g class="etincelles" fill="#e8a934">
+              <circle cx="-4" cy="-50" r="2"/>
+              <circle cx="6" cy="-56" r="1.6"/>
+              <circle cx="0" cy="-48" r="1.4"/>
+              <circle cx="-8" cy="-54" r="1.2"/>
+            </g>
+            <!-- Le conteur et deux enfants -->
+            <g fill="#14173a">
+              <circle cx="-92" cy="-58" r="12"/>
+              <path d="M-118 0 C-120 -30 -108 -46 -92 -46 C-76 -46 -66 -30 -68 0Z"/>
+              <path d="M-80 -36 L-56 -60" stroke="#14173a" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="84" cy="-36" r="9"/>
+              <path d="M66 0 C64 -20 72 -28 84 -28 C96 -28 104 -20 102 0Z"/>
+              <circle cx="122" cy="-30" r="8"/>
+              <path d="M106 0 C105 -16 112 -23 122 -23 C132 -23 139 -16 138 0Z"/>
+            </g>
+          </g>
+        </g></svg>
+      </div>
+
+      <div class="conteneur hero-texte">
+        <h1 id="titre-hero">Il était une fois, au Faso</h1>
+        <p>Approchez du feu. Dix récits du Burkina Faso vous attendent, de Tenkodogo à Sindou, racontés en français et dans nos langues nationales.</p>
+        <div class="hero-actions">
+          <a class="bouton" href="carte.html">Explorer la carte</a>
+          <a class="bouton secondaire" href="bibliotheque.html">Voir tous les récits</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="conteneur bloc" aria-labelledby="titre-veillees">
+      <h2 id="titre-veillees">Trois veillées pour commencer</h2>
+      <p class="intro">Ces récits se lisent scène par scène, avec illustrations et voix.</p>
+      <ol class="veillees" id="veillees"></ol>
+    </section>
+
+    <section class="conteneur bloc langues" aria-labelledby="titre-langues">
+      <div>
+        <h2 id="titre-langues">Écouter dans sa langue</h2>
+        <p>Chaque récit peut être écouté en français et dans la langue du peuple qui le raconte. Choisissez la langue dans le lecteur, en bas de la page du récit.</p>
+      </div>
+      <ul class="liste-langues">
+        <li><strong>Mooré</strong> le plateau central</li>
+        <li><strong>Dioula</strong> l'ouest et Bobo-Dioulasso</li>
+        <li><strong>Fulfulde</strong> le Sahel</li>
+        <li><strong>Français</strong> pour tous</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer id="pied"></footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/accueil.js"></script>
+</body>
+</html>

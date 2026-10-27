@@ -1,0 +1,272 @@
+{
+  "_lisezmoi": "Un bloc par récit. type = conte | legende | historique. Pour ajouter un audio : déposer le MP3 dans assets/audio/ et indiquer son chemin dans 'fichier'. 'a_verifier' passe à false une fois les faits vérifiés sur deux sources.",
+  "contes": [
+    {
+      "id": "yennenga",
+      "titre": "Yennenga, la princesse cavalière",
+      "type": "legende",
+      "peuple": "Mossi",
+      "langue": "Mooré",
+      "ville": "Tenkodogo",
+      "lat": 11.78,
+      "lng": -0.37,
+      "resume": "Fille d'un roi de Gambaga, Yennenga est la meilleure cavalière du royaume. Privée de mariage par son père, elle s'enfuit sur son étalon et rencontre le chasseur Rialé. De leur union naît Ouédraogo, ancêtre du peuple moaga.",
+      "morale": "Le courage de suivre sa propre route peut donner naissance à tout un peuple.",
+      "source": "Tradition orale mossi ; à compléter avec une référence écrite.",
+      "a_verifier": true,
+      "immersif": true,
+      "image": null,
+      "audio": [
+        {
+          "langue": "Français",
+          "fichier": null
+        },
+        {
+          "langue": "Mooré",
+          "fichier": null
+        }
+      ],
+      "scenes": [
+        {
+          "titre": "La princesse de Gambaga",
+          "texte": "Il y a bien longtemps, au royaume de Gambaga, vivait une princesse nommée Yennenga. Aucun guerrier ne maniait la lance aussi bien qu'elle, et aucun cavalier ne la rattrapait quand elle lançait son cheval à travers la savane."
+        },
+        {
+          "titre": "Le refus du roi",
+          "texte": "Son père, le roi, tenait tant à sa fille guerrière qu'il refusait de la marier. Les saisons passaient. Pour lui faire comprendre son désir, Yennenga sema un champ de gombo qu'elle laissa pourrir sur pied, comme sa jeunesse qu'on laissait se perdre."
+        },
+        {
+          "titre": "La fuite dans la nuit",
+          "texte": "Le roi ne céda pas. Une nuit, Yennenga sella son étalon et quitta le palais. Elle chevaucha longtemps vers le nord, traversa des rivières, jusqu'à ce que son cheval, épuisé, s'arrête au cœur d'une forêt inconnue."
+        },
+        {
+          "titre": "Le chasseur Rialé",
+          "texte": "Dans cette forêt vivait Rialé, un chasseur d'éléphants solitaire. Il recueillit la jeune femme, la soigna et lui offrit l'abri de sa case. Peu à peu, l'étrangère et le chasseur apprirent à s'aimer."
+        },
+        {
+          "titre": "Ouédraogo, l'étalon",
+          "texte": "De leur union naquit un fils. En souvenir du cheval qui avait conduit sa mère jusque-là, on l'appela Ouédraogo, « l'étalon ». Devenu grand, il fonda le premier royaume moaga à Tenkodogo, et c'est de lui que descendent les Mossi."
+        }
+      ]
+    },
+    {
+      "id": "lievre-hyene",
+      "titre": "Le lièvre et l'hyène",
+      "type": "conte",
+      "peuple": "Mossi",
+      "langue": "Mooré",
+      "ville": "Ouagadougou",
+      "lat": 12.37,
+      "lng": -1.52,
+      "resume": "Pendant une saison de famine, l'hyène gourmande veut garder pour elle toute la récolte qu'elle a promise de partager. Le lièvre, petit mais rusé, retourne sa gloutonnerie contre elle.",
+      "morale": "La ruse et la patience l'emportent sur la force et l'avidité.",
+      "source": "Conte de veillée ; version à rédiger.",
+      "a_verifier": true,
+      "immersif": true,
+      "image": null,
+      "audio": [
+        {
+          "langue": "Français",
+          "fichier": null
+        },
+        {
+          "langue": "Mooré",
+          "fichier": null
+        }
+      ],
+      "scenes": []
+    },
+    {
+      "id": "dafra",
+      "titre": "Les poissons sacrés du Dafra",
+      "type": "legende",
+      "peuple": "Bobo",
+      "langue": "Dioula",
+      "ville": "Bobo-Dioulasso",
+      "lat": 11.12,
+      "lng": -4.24,
+      "resume": "Au pied des falaises, près de Bobo-Dioulasso, une mare du Dafra abrite des silures que personne n'ose pêcher. On y vient apporter des offrandes et demander la protection des ancêtres.",
+      "morale": "Respecter la nature, c'est respecter ceux qui nous ont précédés.",
+      "source": "À compléter.",
+      "a_verifier": true,
+      "immersif": true,
+      "image": null,
+      "audio": [
+        {
+          "langue": "Français",
+          "fichier": null
+        },
+        {
+          "langue": "Dioula",
+          "fichier": null
+        }
+      ],
+      "scenes": []
+    },
+    {
+      "id": "diaba-lompo",
+      "titre": "Diaba Lompo, le roi venu du ciel",
+      "type": "legende",
+      "peuple": "Gourmantché",
+      "langue": "Gulmancema",
+      "ville": "Fada N'Gourma",
+      "lat": 12.06,
+      "lng": 0.36,
+      "resume": "La tradition du Gulmu raconte que Diaba Lompo, fondateur du royaume gourmantché, serait descendu du ciel pour apporter l'ordre et la royauté aux hommes de l'Est.",
+      "morale": "Un peuple se construit autour d'une histoire commune.",
+      "source": "À compléter.",
+      "a_verifier": true,
+      "immersif": false,
+      "image": null,
+      "audio": [
+        {
+          "langue": "Français",
+          "fichier": null
+        }
+      ],
+      "scenes": []
+    },
+    {
+      "id": "crocodiles-sabou",
+      "titre": "Les crocodiles sacrés de Sabou",
+      "type": "legende",
+      "peuple": "Mossi",
+      "langue": "Mooré",
+      "ville": "Sabou",
+      "lat": 12.07,
+      "lng": -2.24,
+      "resume": "À Sabou, les crocodiles de la mare vivent en paix avec les habitants. La légende dit qu'un crocodile aurait autrefois sauvé un ancêtre égaré, scellant un pacte entre le village et ces animaux.",
+      "morale": "La reconnaissance crée des liens qui traversent les générations.",
+      "source": "À compléter.",
+      "a_verifier": true,
+      "immersif": false,
+      "image": null,
+      "audio": [
+        {
+          "langue": "Français",
+          "fichier": null
+        }
+      ],
+      "scenes": []
+    },
+    {
+      "id": "guimbi-ouattara",
+      "titre": "Guimbi Ouattara, la reine de Bobo",
+      "type": "historique",
+      "peuple": "Dioula",
+      "langue": "Dioula",
+      "ville": "Bobo-Dioulasso",
+      "lat": 11.17,
+      "lng": -4.29,
+      "resume": "Figure de Bobo-Dioulasso au XIXe siècle, Guimbi Ouattara est restée dans les mémoires pour son courage et son rôle de protectrice de la ville en des temps troublés.",
+      "morale": "Le courage n'a pas de genre.",
+      "source": "À compléter.",
+      "a_verifier": true,
+      "immersif": false,
+      "image": null,
+      "audio": [
+        {
+          "langue": "Français",
+          "fichier": null
+        }
+      ],
+      "scenes": []
+    },
+    {
+      "id": "naaba-wobgo",
+      "titre": "Naaba Wobgo face aux colons",
+      "type": "historique",
+      "peuple": "Mossi",
+      "langue": "Mooré",
+      "ville": "Ouagadougou",
+      "lat": 12.4,
+      "lng": -1.49,
+      "resume": "En 1896, le Mogho Naaba Wobgo refuse de se soumettre aux troupes coloniales françaises qui marchent sur Ouagadougou. Contraint de quitter sa capitale, il reste un symbole de résistance.",
+      "morale": "La dignité d'un peuple ne se négocie pas.",
+      "source": "À compléter.",
+      "a_verifier": true,
+      "immersif": false,
+      "image": null,
+      "audio": [
+        {
+          "langue": "Français",
+          "fichier": null
+        }
+      ],
+      "scenes": []
+    },
+    {
+      "id": "conte-peul",
+      "titre": "Le berger et le génie de la mare",
+      "type": "conte",
+      "peuple": "Peul",
+      "langue": "Fulfulde",
+      "ville": "Dori",
+      "lat": 14.03,
+      "lng": -0.03,
+      "resume": "Conte peul du Sahel à recueillir auprès d'un locuteur fulfulde.",
+      "morale": "À compléter.",
+      "source": "À recueillir.",
+      "a_verifier": true,
+      "immersif": false,
+      "image": null,
+      "audio": [
+        {
+          "langue": "Français",
+          "fichier": null
+        },
+        {
+          "langue": "Fulfulde",
+          "fichier": null
+        }
+      ],
+      "scenes": []
+    },
+    {
+      "id": "pics-sindou",
+      "titre": "Les pics de Sindou",
+      "type": "legende",
+      "peuple": "Sénoufo",
+      "langue": "Dioula",
+      "ville": "Sindou",
+      "lat": 10.67,
+      "lng": -5.17,
+      "resume": "Sculptés par le vent et la pluie, les pics de grès de Sindou sont un lieu sacré. Les anciens y voient bien plus que des rochers : la trace d'histoires que l'on raconte à voix basse.",
+      "morale": "Certains lieux gardent la mémoire de ceux qui les ont habités.",
+      "source": "À compléter.",
+      "a_verifier": true,
+      "immersif": false,
+      "image": null,
+      "audio": [
+        {
+          "langue": "Français",
+          "fichier": null
+        }
+      ],
+      "scenes": []
+    },
+    {
+      "id": "loropeni",
+      "titre": "Les mystères des ruines de Loropéni",
+      "type": "historique",
+      "peuple": "Lobi",
+      "langue": "Lobiri",
+      "ville": "Loropéni",
+      "lat": 10.3,
+      "lng": -3.57,
+      "resume": "Hautes murailles de pierre en pays lobi, les ruines de Loropéni sont inscrites au patrimoine mondial de l'UNESCO. Leurs bâtisseurs et leur rôle exact, peut-être lié au commerce de l'or, restent discutés.",
+      "morale": "Les pierres se taisent, mais elles invitent à chercher.",
+      "source": "À compléter (fiche UNESCO).",
+      "a_verifier": true,
+      "immersif": false,
+      "image": null,
+      "audio": [
+        {
+          "langue": "Français",
+          "fichier": null
+        }
+      ],
+      "scenes": []
+    }
+  ]
+}

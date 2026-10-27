@@ -1,0 +1,62 @@
+/* ---------- À propos ---------- */
+.tete-page h1 { max-width: 16ch; }
+
+.demarche {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  padding: 24px 0 8px;
+  border-top: 1px solid var(--nuit-3);
+}
+.demarche h3 { color: var(--mil); font-size: var(--t-xl); margin: 16px 0 8px; }
+.demarche p { color: var(--ecru-doux); }
+
+.equipe, .credits { padding-top: 80px; }
+.equipe .intro { color: var(--ecru-doux); }
+
+.membres {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px 32px;
+}
+.membres li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--nuit-3);
+}
+.initiales {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--f-titre);
+  font-size: 1.15rem;
+  background: var(--nuit-2);
+  border: 2px solid var(--mil);
+  color: var(--ecru);
+}
+.membres strong { display: block; font-weight: 600; }
+.membres span { color: var(--ecru-doux); font-size: var(--t-s); }
+
+.credits dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 12px 32px;
+  margin: 24px 0 0;
+  max-width: 760px;
+}
+.credits dt { font-family: var(--f-titre); font-size: var(--t-l); }
+.credits dd { margin: 0; color: var(--ecru-doux); padding-top: 4px; }
+
+@media (max-width: 760px) {
+  .demarche { grid-template-columns: 1fr; gap: 8px; }
+  .credits dl { grid-template-columns: 1fr; gap: 4px; }
+  .credits dd { margin-bottom: 12px; }
+}

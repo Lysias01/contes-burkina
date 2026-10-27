@@ -1,0 +1,125 @@
+/* ---------- Lecture immersive ---------- */
+.recit { padding-bottom: 24px; }
+
+.recit-tete { padding-top: 40px; padding-bottom: 24px; }
+.recit-tete .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: var(--t-xs);
+  color: var(--ecru-doux);
+  margin-bottom: 12px;
+}
+.recit-tete h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); max-width: 18ch; }
+.retour { font-size: var(--t-s); }
+
+/* La scène : illustration + texte */
+.scene {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  min-height: 56svh;
+}
+.scene-visuel {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--nuit-2);
+}
+.scene-visuel > svg,
+.scene-visuel > img {
+  position: absolute;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
+  max-width: none;
+  object-fit: cover;
+  transition: transform 6s ease-out;
+}
+.scene.entree .scene-visuel > svg,
+.scene.entree .scene-visuel > img { transform: scale(1.06) translateX(-1.5%); }
+
+.scene-texte { max-width: 34rem; }
+.scene-etape { color: var(--mil); font-size: var(--t-s); margin-bottom: 6px; }
+.scene-texte h2 { font-size: var(--t-xl); }
+.scene-texte p { font-size: var(--t-l); line-height: 1.6; }
+
+.scene-texte, .scene-visuel { transition: opacity 0.45s ease, transform 0.45s ease; }
+.scene.sortie .scene-texte,
+.scene.sortie .scene-visuel { opacity: 0; transform: translateY(8px); }
+
+/* Navigation entre scènes */
+.navigation-scenes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 32px;
+}
+.points { display: flex; gap: 8px; }
+.points button {
+  width: 34px;
+  height: 6px;
+  border-radius: 3px;
+  border: 0;
+  padding: 0;
+  background: var(--nuit-3);
+  cursor: pointer;
+}
+.points button[aria-current="step"] { background: var(--mil); }
+.points button.lu { background: var(--ecru-doux); }
+.navigation-scenes .boutons { display: flex; gap: 10px; }
+
+/* Morale de fin */
+.morale {
+  margin: 48px 0 0;
+  padding: 32px clamp(20px, 4vw, 48px);
+  border-radius: 20px;
+  background: var(--nuit-2);
+  border-left: 6px solid var(--mil);
+}
+.morale h2 { font-size: var(--t-l); color: var(--mil); margin-bottom: 8px; }
+.morale p { font-family: var(--f-titre); font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.25; margin-bottom: 24px; }
+.morale .boutons { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Fiche simple (récits sans scènes) */
+.fiche {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+.fiche .scene-visuel { aspect-ratio: 4 / 3; }
+.fiche-texte p { font-size: var(--t-l); line-height: 1.6; }
+.fiche .bientot { font-size: var(--t-s); color: var(--ecru-doux); }
+.source { font-size: var(--t-s); color: var(--ecru-doux); margin-top: 24px; }
+
+/* Lecteur audio */
+.lecteur {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  margin-top: 40px;
+  background: rgba(38, 44, 99, 0.96);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--nuit-3);
+}
+.lecteur .conteneur {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.lecteur label { font-size: var(--t-xs); color: var(--ecru-doux); display: flex; align-items: center; gap: 8px; }
+.lecteur audio { flex: 1 1 260px; height: 40px; }
+.lecteur .absent { font-size: var(--t-s); color: var(--ecru-doux); margin: 0; }
+
+@media (max-width: 860px) {
+  .scene, .fiche { grid-template-columns: 1fr; min-height: 0; }
+  .scene-texte p, .fiche-texte p { font-size: var(--t-m); }
+  .navigation-scenes { flex-wrap: wrap; }
+}

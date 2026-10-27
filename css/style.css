@@ -1,0 +1,267 @@
+/* =========================================================
+   Contes et Légendes du Burkina Faso — Groupe 6
+   Charte graphique : la veillée (nuit indigo, feu, mil)
+   ========================================================= */
+
+:root {
+  /* Couleurs */
+  --nuit: #1d2251;        /* indigo des pagnes, ciel de la veillée */
+  --nuit-2: #262c63;      /* surfaces */
+  --nuit-3: #323a7a;      /* bordures, survols */
+  --ecru: #f3e7cf;        /* coton écru : texte principal */
+  --ecru-doux: #c9bfae;   /* texte secondaire */
+  --mil: #e8a934;         /* or du mil, flamme : accent */
+  --laterite: #c2502b;    /* terre rouge : légendes */
+  --karite: #5b9461;      /* vert karité : récits historiques */
+
+  /* Couleur par type de récit */
+  --type-conte: var(--mil);
+  --type-legende: var(--laterite);
+  --type-historique: var(--karite);
+
+  /* Typographie */
+  --f-titre: "Gloock", Georgia, serif;
+  --f-texte: "Literata", Georgia, serif;
+
+  --t-xs: 0.8125rem;
+  --t-s: 0.9375rem;
+  --t-m: 1.0625rem;
+  --t-l: 1.375rem;
+  --t-xl: 2rem;
+  --t-xxl: clamp(2.6rem, 6vw, 4.75rem);
+
+  --gouttiere: clamp(16px, 4vw, 48px);
+  --largeur: 1180px;
+  --entete: 64px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--nuit);
+  color: var(--ecru);
+  font-family: var(--f-texte);
+  font-size: var(--t-m);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+a { color: var(--mil); text-underline-offset: 3px; }
+a:hover { color: var(--ecru); }
+
+h1, h2, h3 {
+  font-family: var(--f-titre);
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0 0 0.5em;
+  letter-spacing: 0.005em;
+}
+h1 { font-size: var(--t-xxl); }
+h2 { font-size: var(--t-xl); }
+h3 { font-size: var(--t-l); }
+
+p { margin: 0 0 1em; }
+
+:focus-visible {
+  outline: 2px solid var(--mil);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.visuellement-cache {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.conteneur {
+  width: 100%;
+  max-width: var(--largeur);
+  margin: 0 auto;
+  padding: 0 var(--gouttiere);
+}
+
+/* ---------- En-tête ---------- */
+.entete {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--entete);
+  background: rgba(29, 34, 81, 0.92);
+  backdrop-filter: blur(8px);
+}
+/* Bande tissée façon Faso Dan Fani, signature du site */
+.entete::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--mil) 0 22px,
+    var(--nuit) 22px 26px,
+    var(--laterite) 26px 40px,
+    var(--nuit) 40px 44px,
+    var(--karite) 44px 56px,
+    var(--nuit) 56px 60px,
+    var(--ecru) 60px 64px,
+    var(--nuit) 64px 68px
+  );
+}
+.entete .conteneur {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.logo {
+  font-family: var(--f-titre);
+  font-size: 1.25rem;
+  color: var(--ecru);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.logo span { color: var(--mil); }
+
+.nav { display: flex; gap: 4px; }
+.nav a {
+  color: var(--ecru-doux);
+  text-decoration: none;
+  font-size: var(--t-s);
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+.nav a:hover { color: var(--ecru); background: var(--nuit-2); }
+.nav a[aria-current="page"] { color: var(--nuit); background: var(--mil); }
+
+.bouton-menu {
+  display: none;
+  background: none;
+  border: 1px solid var(--nuit-3);
+  color: var(--ecru);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: var(--t-s);
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .bouton-menu { display: block; }
+  .nav {
+    position: absolute;
+    top: var(--entete);
+    left: 0; right: 0;
+    flex-direction: column;
+    background: var(--nuit);
+    padding: 8px var(--gouttiere) 16px;
+    border-bottom: 1px solid var(--nuit-3);
+    display: none;
+  }
+  .nav.ouvert { display: flex; }
+  .nav a { padding: 12px; }
+}
+
+/* ---------- Boutons ---------- */
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: inherit;
+  font-size: var(--t-s);
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--mil);
+  color: var(--nuit);
+  text-decoration: none;
+  cursor: pointer;
+}
+.bouton:hover { background: var(--ecru); color: var(--nuit); }
+.bouton.secondaire {
+  background: transparent;
+  color: var(--ecru);
+  border-color: var(--ecru-doux);
+}
+.bouton.secondaire:hover { border-color: var(--ecru); background: var(--nuit-2); }
+.bouton:disabled { opacity: 0.4; cursor: default; }
+
+/* ---------- Pastille de type ---------- */
+.type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--t-xs);
+  color: var(--ecru-doux);
+}
+.type::before {
+  content: "";
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--c, var(--mil));
+}
+.type[data-type="conte"] { --c: var(--type-conte); }
+.type[data-type="legende"] { --c: var(--type-legende); }
+.type[data-type="historique"] { --c: var(--type-historique); }
+
+/* ---------- Pied de page ---------- */
+.pied {
+  margin-top: 96px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--nuit-3);
+  color: var(--ecru-doux);
+  font-size: var(--t-s);
+}
+.pied .conteneur {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+}
+.pied p { margin: 0; }
+
+/* ---------- Pages intérieures ---------- */
+.tete-page {
+  padding: 64px 0 32px;
+  max-width: 720px;
+}
+.tete-page p { color: var(--ecru-doux); font-size: var(--t-l); line-height: 1.5; }
+
+/* ---------- Champs ---------- */
+.champ, select.champ {
+  font: inherit;
+  font-size: var(--t-s);
+  color: var(--ecru);
+  background: var(--nuit-2);
+  border: 1px solid var(--nuit-3);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+.champ::placeholder { color: var(--ecru-doux); }
+
+/* ---------- Message d'erreur / vide ---------- */
+.message {
+  padding: 24px;
+  border: 1px dashed var(--nuit-3);
+  border-radius: 12px;
+  color: var(--ecru-doux);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

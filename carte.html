@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carte des récits — Contes du Faso</title>
+  <meta name="description" content="Carte interactive 2D/3D des contes, légendes et récits historiques du Burkina Faso.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/carte.css">
+</head>
+<body class="page-carte">
+  <header id="entete"></header>
+
+  <main class="disposition-carte">
+    <aside class="panneau" aria-label="Récits et filtres">
+      <h1>La carte des récits</h1>
+      <p class="aide">Touchez un point pour découvrir le récit qui y est né.</p>
+
+      <fieldset class="filtres">
+        <legend>Type de récit</legend>
+        <label><input type="checkbox" name="type" value="conte" checked> <span class="type" data-type="conte">Contes</span></label>
+        <label><input type="checkbox" name="type" value="legende" checked> <span class="type" data-type="legende">Légendes</span></label>
+        <label><input type="checkbox" name="type" value="historique" checked> <span class="type" data-type="historique">Récits historiques</span></label>
+      </fieldset>
+
+      <label class="filtre-langue">
+        <span>Langue</span>
+        <select class="champ" id="filtre-langue">
+          <option value="">Toutes les langues</option>
+        </select>
+      </label>
+
+      <ul class="liste-recits" id="liste-recits" aria-live="polite"></ul>
+    </aside>
+
+    <section class="zone-carte" aria-label="Carte du Burkina Faso">
+      <div id="carte"></div>
+      <button class="bouton bascule-3d" id="bascule-3d" aria-pressed="false">Passer en vue 3D</button>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/carte.js"></script>
+</body>
+</html>
