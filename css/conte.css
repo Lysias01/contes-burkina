@@ -41,6 +41,67 @@
 .scene.entree .scene-visuel > svg,
 .scene.entree .scene-visuel > img { transform: scale(1.06) translateX(-1.5%); }
 
+/* Parallaxe des calques (--px et --py vont de -0.5 à 0.5, réglés par conte.js) */
+.scene-visuel { --px: 0; --py: 0; }
+.scene-visuel .calque-fond,
+.scene-visuel .calque-decor,
+.scene-visuel .calque-personnages { transition: transform 0.5s ease-out; }
+.scene-visuel .calque-fond { transform: translate(calc(var(--px) * -6px), calc(var(--py) * -4px)); }
+.scene-visuel .calque-decor { transform: translate(calc(var(--px) * -14px), calc(var(--py) * -8px)); }
+.scene-visuel .calque-personnages { transform: translate(calc(var(--px) * -26px), calc(var(--py) * -12px)); }
+
+/* Animations en boucle des illustrations (classes anime-* des SVG) */
+.scene-visuel [class*="anime-"] { transform-box: fill-box; transform-origin: center; }
+.scene-visuel .anime-flamme { transform-origin: 50% 100%; animation: vaciller 0.9s ease-in-out infinite alternate; }
+.scene-visuel .anime-lueur { animation: pulser 4s ease-in-out infinite alternate; }
+.scene-visuel .anime-scintille circle { animation: scintiller 3s ease-in-out infinite; }
+.scene-visuel .anime-scintille circle:nth-child(3n) { animation-delay: -1s; }
+.scene-visuel .anime-scintille circle:nth-child(3n + 1) { animation-delay: -2s; }
+.scene-visuel .anime-vol { animation: voler 24s linear infinite; }
+.scene-visuel .anime-vol path { transform-box: fill-box; transform-origin: center; animation: battre 0.5s ease-in-out infinite alternate; }
+.scene-visuel .anime-plane { animation: planer 14s ease-in-out infinite; }
+.scene-visuel .anime-vent,
+.scene-visuel .anime-queue { transform-origin: 50% 100%; animation: balancer 3s ease-in-out infinite alternate; }
+.scene-visuel .anime-queue { animation-duration: 0.7s; }
+.scene-visuel .anime-poussiere { animation: poussiere 3s ease-out infinite; }
+.scene-visuel .anime-onde { animation: onde 4s ease-out infinite; }
+.scene-visuel .anime-reflet { animation: reflet 3s ease-in-out infinite alternate; }
+.scene-visuel .anime-nage { animation: nager 7s ease-in-out infinite alternate; }
+.scene-visuel .anime-bulle { animation: bulle 4s ease-in infinite; }
+.scene-visuel .anime-galop { animation: galoper 0.45s ease-in-out infinite alternate; }
+.scene-visuel .anime-flotte { transform-origin: 100% 50%; animation: flotter 0.5s ease-in-out infinite alternate; }
+.scene-visuel .anime-ronfle { animation: ronfler 3s ease-out infinite; }
+.scene-visuel .anime-tombe { animation: tomber 1.4s ease-in infinite; }
+.scene-visuel .anime-guette { animation: guetter 5s ease-in-out infinite; }
+.scene-visuel .anime-sautille { animation: sautiller 0.6s ease-in-out infinite alternate; }
+
+@keyframes vaciller { from { transform: scale(1, 1); } to { transform: scale(0.92, 1.12); } }
+@keyframes pulser { from { opacity: 0.7; } to { opacity: 1; } }
+@keyframes scintiller { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+@keyframes voler { from { transform: translateX(-560px); } to { transform: translateX(560px); } }
+@keyframes battre { from { transform: scaleY(1); } to { transform: scaleY(0.4); } }
+@keyframes planer { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(60px, 16px); } 50% { transform: translate(120px, 0); } 75% { transform: translate(60px, -16px); } }
+@keyframes balancer { from { transform: rotate(-4deg); } to { transform: rotate(5deg); } }
+@keyframes poussiere { 0% { transform: translate(0, 0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translate(-36px, -22px); opacity: 0; } }
+@keyframes onde { 0% { transform: scale(0.4); opacity: 0; } 30% { opacity: 1; } 100% { transform: scale(1.35); opacity: 0; } }
+@keyframes reflet { from { transform: translateX(-6px); } to { transform: translateX(6px); } }
+@keyframes nager { from { transform: translate(-20px, 2px); } to { transform: translate(20px, -2px); } }
+@keyframes bulle { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 0.8; } 100% { transform: translateY(-160px); opacity: 0; } }
+@keyframes galoper { from { transform: translateY(0); } to { transform: translateY(-7px); } }
+@keyframes flotter { from { transform: rotate(-5deg); } to { transform: rotate(4deg); } }
+@keyframes ronfler { 0% { transform: translate(0, 0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translate(12px, -30px); opacity: 0; } }
+@keyframes tomber { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(70px); opacity: 0; } }
+@keyframes guetter { 0%, 35%, 100% { transform: translateY(0); } 50%, 80% { transform: translateY(18px); } }
+@keyframes sautiller { from { transform: translateY(0); } to { transform: translateY(-8px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-visuel [class*="anime-"],
+  .scene-visuel [class*="anime-"] * { animation: none !important; }
+  .scene-visuel .calque-fond,
+  .scene-visuel .calque-decor,
+  .scene-visuel .calque-personnages { transform: none !important; }
+}
+
 .scene-texte { max-width: 34rem; }
 .scene-etape { color: var(--mil); font-size: var(--t-s); margin-bottom: 6px; }
 .scene-texte h2 { font-size: var(--t-xl); }
@@ -84,6 +145,42 @@
 .morale p { font-family: var(--f-titre); font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.25; margin-bottom: 24px; }
 .morale .boutons { display: flex; flex-wrap: wrap; gap: 10px; }
 
+/* Choix au milieu du récit */
+.choix {
+  margin-top: 20px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: var(--nuit-2);
+  border: 1px solid var(--nuit-3);
+}
+.scene-texte .choix-question { font-family: var(--f-titre); font-size: var(--t-l); line-height: 1.3; margin-bottom: 14px; }
+.choix-options,
+.quiz-options { display: flex; flex-wrap: wrap; gap: 10px; }
+.choix-options .bouton[aria-pressed="true"] { border-color: var(--mil); color: var(--mil); }
+.scene-texte .choix-reponse { font-size: var(--t-m); line-height: 1.55; margin: 14px 0 0; }
+.scene-texte .choix-reponse.consigne { font-size: var(--t-s); color: var(--ecru-doux); }
+
+/* Quiz de fin */
+.quiz {
+  margin-top: 24px;
+  padding: 32px clamp(20px, 4vw, 48px);
+  border-radius: 20px;
+  background: var(--nuit-2);
+}
+.quiz h2 { font-size: var(--t-l); color: var(--mil); margin-bottom: 8px; }
+.quiz-etape { font-size: var(--t-s); color: var(--ecru-doux); margin-bottom: 4px; }
+.quiz-question { font-family: var(--f-titre); font-size: clamp(1.3rem, 2.6vw, 1.75rem); line-height: 1.3; }
+.quiz-options .bouton { text-align: left; }
+.quiz-options .bouton:disabled { opacity: 0.5; }
+.quiz-options .bouton:disabled:hover { background: transparent; border-color: var(--ecru-doux); }
+.quiz-options .bouton.juste,
+.quiz-options .bouton.juste:hover { opacity: 1; background: var(--karite); border-color: var(--karite); color: var(--ecru); }
+.quiz-options .bouton.faux,
+.quiz-options .bouton.faux:hover { opacity: 1; background: transparent; border-color: var(--laterite); color: var(--ecru); }
+.quiz-options .marque { font-weight: 400; font-size: var(--t-xs); }
+.quiz-retour p { margin: 18px 0 12px; line-height: 1.55; }
+.quiz-score strong { font-family: var(--f-titre); font-size: var(--t-xl); font-weight: 400; color: var(--mil); }
+
 /* Fiche simple (récits sans scènes) */
 .fiche {
   display: grid;
@@ -94,6 +191,10 @@
 .fiche .scene-visuel { aspect-ratio: 4 / 3; }
 .fiche-texte p { font-size: var(--t-l); line-height: 1.6; }
 .fiche .bientot { font-size: var(--t-s); color: var(--ecru-doux); }
+
+/* Texte complet sous la fiche : même typographie que les scènes */
+.texte-complet { max-width: 40rem; margin-top: 48px; }
+.texte-complet p { font-size: var(--t-l); line-height: 1.6; }
 .source { font-size: var(--t-s); color: var(--ecru-doux); margin-top: 24px; }
 
 /* Lecteur audio */
@@ -120,6 +221,7 @@
 
 @media (max-width: 860px) {
   .scene, .fiche { grid-template-columns: 1fr; min-height: 0; }
-  .scene-texte p, .fiche-texte p { font-size: var(--t-m); }
+  .scene-texte p, .fiche-texte p, .texte-complet p { font-size: var(--t-m); }
+  .texte-complet { margin-top: 32px; }
   .navigation-scenes { flex-wrap: wrap; }
 }

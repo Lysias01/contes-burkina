@@ -47,6 +47,15 @@ function construireEntete() {
     entete.innerHTML = `
       <div class="conteneur">
         <a class="logo" href="index.html">Contes <span>du Faso</span></a>
+        <button class="bouton-musique" type="button" aria-pressed="false" title="Activer la musique" hidden>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+            <path d="M9 17.5V5.5l10-2v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="6.5" cy="17.5" r="2.5" fill="currentColor"/>
+            <circle cx="16.5" cy="15.5" r="2.5" fill="currentColor"/>
+            <path class="barre" d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="visuellement-cache">Activer la musique</span>
+        </button>
         <button class="bouton-menu" aria-expanded="false" aria-controls="nav">Menu</button>
         <nav class="nav" id="nav" aria-label="Navigation principale">${liens}</nav>
       </div>`;
@@ -56,6 +65,7 @@ function construireEntete() {
       const ouvert = nav.classList.toggle("ouvert");
       bouton.setAttribute("aria-expanded", ouvert);
     });
+    brancherMusique(entete.querySelector(".bouton-musique"));
   }
 
   const pied = document.getElementById("pied");
@@ -67,6 +77,118 @@ function construireEntete() {
         <p>Préserver, numériser et transmettre le patrimoine oral burkinabè.</p>
       </div>`;
   }
+}
+
+/* ---------- Musique d'ambiance ----------
+   Jamais de lecture automatique : la musique ne part qu'après un geste
+   de l'utilisateur. Le choix est mémorisé d'une page à l'autre. */
+const MUSIQUE = {
+  fichier: "assets/musique/ambiance.mp3",
+  cle: "contes-musique",
+  volume: 0.35,
+  volumeBas: 0.1, // pendant qu'un enregistrement de récit joue
+  fondu: 1000,    // durée des montées et descentes du son, en ms
+};
+
+function lirePreference() {
+  try { return localStorage.getItem(MUSIQUE.cle) === "oui"; } catch (e) { return false; }
+}
+
+function ecrirePreference(active) {
+  try { localStorage.setItem(MUSIQUE.cle, active ? "oui" : "non"); } catch (e) { /* stockage indisponible */ }
+}
+
+function brancherMusique(bouton) {
+  if (!bouton) return;
+  const musique = new Audio();
+  musique.loop = true;
+  musique.preload = "metadata";
+  musique.volume = 0;
+  let enLecture = false;
+  let animation = 0;
+
+  // Un autre son de la page (le lecteur du récit) est-il en train de jouer ?
+  const autreSonEnCours = () =>
+    [...document.querySelectorAll("audio, video")].some((m) => !m.paused && !m.ended);
+  const volumeCible = () => (autreSonEnCours() ? MUSIQUE.volumeBas : MUSIQUE.volume);
+
+  // Fait glisser le volume jusqu'à la cible, puis appelle « ensuite »
+  function glisserVers(cible, ensuite) {
+    cancelAnimationFrame(animation);
+    const depart = musique.volume;
+    const debut = performance.now();
+    const etape = (maintenant) => {
+      const t = Math.min(1, (maintenant - debut) / MUSIQUE.fondu);
+      musique.volume = Math.min(1, Math.max(0, depart + (cible - depart) * t));
+      if (t < 1) animation = requestAnimationFrame(etape);
+      else if (ensuite) ensuite();
+    };
+    animation = requestAnimationFrame(etape);
+  }
+
+  function majBouton() {
+    const libelle = enLecture ? "Couper la musique" : "Activer la musique";
+    bouton.setAttribute("aria-pressed", enLecture);
+    bouton.title = libelle;
+    bouton.querySelector(".visuellement-cache").textContent = libelle;
+  }
+
+  async function jouer() {
+    try {
+      await musique.play();
+    } catch (e) {
+      return false; // navigateur pas encore autorisé, ou fichier illisible
+    }
+    enLecture = true;
+    majBouton();
+    glisserVers(volumeCible());
+    return true;
+  }
+
+  function couper() {
+    enLecture = false;
+    majBouton();
+    glisserVers(0, () => { if (!enLecture) musique.pause(); });
+  }
+
+  bouton.addEventListener("click", () => {
+    if (enLecture) {
+      couper();
+      ecrirePreference(false);
+    } else {
+      ecrirePreference(true);
+      jouer();
+    }
+  });
+
+  // Musique activée sur une page précédente : elle reprend au premier geste ici
+  function reprendre(e) {
+    if (bouton.contains(e.target)) return; // le bouton gère lui-même son clic
+    if (e.type === "keydown" && e.key === "Escape") return; // n'ouvre pas le droit de jouer
+    if (!enLecture && lirePreference()) jouer().then((ok) => { if (ok) arreterReprise(); });
+    else arreterReprise();
+  }
+  function arreterReprise() {
+    document.removeEventListener("click", reprendre);
+    document.removeEventListener("keydown", reprendre);
+  }
+  if (lirePreference()) {
+    document.addEventListener("click", reprendre);
+    document.addEventListener("keydown", reprendre);
+  }
+
+  // Le récit parle : la musique se fait discrète, puis revient
+  const ajuster = () => { if (enLecture) glisserVers(volumeCible()); };
+  ["play", "pause", "ended"].forEach((type) => document.addEventListener(type, ajuster, true));
+
+  // Le bouton n'apparaît que si le fichier se charge
+  musique.addEventListener("loadedmetadata", () => { bouton.hidden = false; }, { once: true });
+  musique.addEventListener("error", () => {
+    cancelAnimationFrame(animation);
+    arreterReprise();
+    bouton.remove();
+  });
+  musique.src = MUSIQUE.fichier;
 }
 
 /* Illustration de secours tant qu'une vraie image n'est pas fournie :

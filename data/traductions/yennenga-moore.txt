@@ -1,0 +1,15 @@
+# Traduction automatique NON RELUE — Yennenga, la princesse cavalière — mooré (mos_Latn)
+# Modèle : facebook/nllb-200-distilled-600M. Source : résumé et morale de data/contes.json.
+# Pour corriger : modifier les blocs [mooré], puis relancer la génération audio.
+
+[résumé — français]
+Fille d'un roi de Gambaga, Yennenga est la meilleure cavalière du royaume. Privée de mariage par son père, elle s'enfuit sur son étalon et rencontre le chasseur Rialé. De leur union naît Ouédraogo, ancêtre du peuple moaga.
+
+[résumé — mooré]
+A Yennenga yaa Gambaga rĩmã bi-pugli. A ba wã sẽn yeel-a t'a pa na n kẽ kãadem ne-a wã, a zoe n kẽe a bõangẽ wã n tɩ yãagd a Rialé wã. A Ouédraogo sẽn yaa Moagã buudã yaab rogame.
+
+[morale — français]
+Le courage de suivre sa propre route peut donner naissance à tout un peuple.
+
+[morale — mooré]
+Ned sã n tall raood n tũ a meng sorã, a tõe n kɩtame tɩ neb buud fãa rog ye.

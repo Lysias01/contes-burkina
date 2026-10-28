@@ -15,37 +15,89 @@
       "source": "Tradition orale mossi ; à compléter avec une référence écrite.",
       "a_verifier": true,
       "immersif": true,
-      "image": null,
+      "image": "assets/images/yennenga.svg",
       "audio": [
         {
           "langue": "Français",
-          "fichier": null
+          "fichier": "assets/audio/yennenga-francais.mp3",
+          "synthese": true
         },
         {
           "langue": "Mooré",
-          "fichier": null
+          "fichier": "assets/audio/yennenga-moore.mp3",
+          "synthese": true
         }
       ],
       "scenes": [
         {
           "titre": "La princesse de Gambaga",
-          "texte": "Il y a bien longtemps, au royaume de Gambaga, vivait une princesse nommée Yennenga. Aucun guerrier ne maniait la lance aussi bien qu'elle, et aucun cavalier ne la rattrapait quand elle lançait son cheval à travers la savane."
+          "texte": "Il y a bien longtemps, au royaume de Gambaga, vivait une princesse nommée Yennenga. Aucun guerrier ne maniait la lance aussi bien qu'elle, et aucun cavalier ne la rattrapait quand elle lançait son cheval à travers la savane.",
+          "image": "assets/images/yennenga-1.svg"
         },
         {
           "titre": "Le refus du roi",
-          "texte": "Son père, le roi, tenait tant à sa fille guerrière qu'il refusait de la marier. Les saisons passaient. Pour lui faire comprendre son désir, Yennenga sema un champ de gombo qu'elle laissa pourrir sur pied, comme sa jeunesse qu'on laissait se perdre."
+          "texte": "Son père, le roi, tenait tant à sa fille guerrière qu'il refusait de la marier. Les saisons passaient. Pour lui faire comprendre son désir, Yennenga sema un champ de gombo qu'elle laissa pourrir sur pied, comme sa jeunesse qu'on laissait se perdre.",
+          "image": "assets/images/yennenga-2.svg",
+          "choix": {
+            "question": "Le roi ne veut toujours rien entendre. À la place de Yennenga, que ferais-tu ?",
+            "options": [
+              {
+                "texte": "Attendre sagement au palais",
+                "reponse": "Yennenga a déjà attendu très longtemps… Dans le conte, elle finit par choisir une autre voie : partir, en pleine nuit, sur son étalon."
+              },
+              {
+                "texte": "Partir à cheval vers l'inconnu",
+                "reponse": "C'est exactement ce qu'elle fait ! Une nuit, elle selle son étalon et quitte le palais sans se retourner."
+              }
+            ]
+          }
         },
         {
           "titre": "La fuite dans la nuit",
-          "texte": "Le roi ne céda pas. Une nuit, Yennenga sella son étalon et quitta le palais. Elle chevaucha longtemps vers le nord, traversa des rivières, jusqu'à ce que son cheval, épuisé, s'arrête au cœur d'une forêt inconnue."
+          "texte": "Le roi ne céda pas. Une nuit, Yennenga sella son étalon et quitta le palais. Elle chevaucha longtemps vers le nord, traversa des rivières, jusqu'à ce que son cheval, épuisé, s'arrête au cœur d'une forêt inconnue.",
+          "image": "assets/images/yennenga-3.svg"
         },
         {
           "titre": "Le chasseur Rialé",
-          "texte": "Dans cette forêt vivait Rialé, un chasseur d'éléphants solitaire. Il recueillit la jeune femme, la soigna et lui offrit l'abri de sa case. Peu à peu, l'étrangère et le chasseur apprirent à s'aimer."
+          "texte": "Dans cette forêt vivait Rialé, un chasseur d'éléphants solitaire. Il recueillit la jeune femme, la soigna et lui offrit l'abri de sa case. Peu à peu, l'étrangère et le chasseur apprirent à s'aimer.",
+          "image": "assets/images/yennenga-4.svg"
         },
         {
           "titre": "Ouédraogo, l'étalon",
-          "texte": "De leur union naquit un fils. En souvenir du cheval qui avait conduit sa mère jusque-là, on l'appela Ouédraogo, « l'étalon ». Devenu grand, il fonda le premier royaume moaga à Tenkodogo, et c'est de lui que descendent les Mossi."
+          "texte": "De leur union naquit un fils. En souvenir du cheval qui avait conduit sa mère jusque-là, on l'appela Ouédraogo, « l'étalon ». Devenu grand, il fonda le premier royaume moaga à Tenkodogo, et c'est de lui que descendent les Mossi.",
+          "image": "assets/images/yennenga-5.svg"
+        }
+      ],
+      "quiz": [
+        {
+          "question": "Quel était le grand talent de Yennenga ?",
+          "propositions": [
+            "Elle chantait mieux que tous les griots",
+            "Elle était la meilleure cavalière du royaume",
+            "Elle tissait les plus beaux pagnes"
+          ],
+          "bonne": 1,
+          "explication": "Aucun cavalier ne la rattrapait quand elle lançait son cheval à travers la savane."
+        },
+        {
+          "question": "Qu'a semé Yennenga pour montrer sa tristesse au roi ?",
+          "propositions": [
+            "Un champ de gombo",
+            "Un champ de mil",
+            "Des graines de baobab"
+          ],
+          "bonne": 0,
+          "explication": "Elle a laissé le gombo pourrir sur pied, comme sa jeunesse qu'on laissait se perdre."
+        },
+        {
+          "question": "Que veut dire le nom « Ouédraogo » ?",
+          "propositions": [
+            "Le chasseur",
+            "La princesse",
+            "L'étalon"
+          ],
+          "bonne": 2,
+          "explication": "On l'a appelé ainsi en souvenir du cheval qui avait conduit sa mère jusqu'à Rialé."
         }
       ]
     },
@@ -58,23 +110,96 @@
       "ville": "Ouagadougou",
       "lat": 12.37,
       "lng": -1.52,
-      "resume": "Pendant une saison de famine, l'hyène gourmande veut garder pour elle toute la récolte qu'elle a promise de partager. Le lièvre, petit mais rusé, retourne sa gloutonnerie contre elle.",
-      "morale": "La ruse et la patience l'emportent sur la force et l'avidité.",
-      "source": "Conte de veillée ; version à rédiger.",
+      "resume": "Pendant une saison de famine, le lièvre et l'hyène cultivent un champ ensemble. L'hyène, gourmande, vide en cachette le grenier commun. Le lièvre, petit mais rusé, la laisse se prendre au piège de sa propre gloutonnerie.",
+      "morale": "Qui veut tout garder pour lui finit par tout perdre : la patience et la ruse l'emportent sur l'avidité.",
+      "source": "Version rédigée d'après la tradition orale ; à compléter avec une référence écrite.",
       "a_verifier": true,
       "immersif": true,
-      "image": null,
+      "image": "assets/images/lievre-hyene.svg",
       "audio": [
         {
           "langue": "Français",
-          "fichier": null
+          "fichier": "assets/audio/lievre-hyene-francais.mp3",
+          "synthese": true
         },
         {
           "langue": "Mooré",
-          "fichier": null
+          "fichier": "assets/audio/lievre-hyene-moore.mp3",
+          "synthese": true
         }
       ],
-      "scenes": []
+      "scenes": [
+        {
+          "titre": "La saison de la faim",
+          "texte": "Il y a bien longtemps, la pluie oublia de tomber pendant toute une saison. Les greniers sonnaient creux et les ventres gargouillaient plus fort que les tam-tams. Le lièvre, avec ses grandes oreilles et ses petites jambes, cherchait de quoi manger. L'hyène, elle, avait toujours faim, même quand elle venait de manger.",
+          "image": "assets/images/lievre-hyene-1.svg"
+        },
+        {
+          "titre": "Le champ partagé",
+          "texte": "« Cultivons un champ ensemble, proposa le lièvre, et nous partagerons la récolte en deux parts égales. » L'hyène accepta tout de suite. Mais pendant que le lièvre bêchait, semait et arrachait les mauvaises herbes, l'hyène « surveillait le champ » à l'ombre d'un karité… en ronflant. À la récolte, ils remplirent de mil un beau grenier de terre, fermé par une ouverture à peine plus large qu'une calebasse.",
+          "image": "assets/images/lievre-hyene-2.svg"
+        },
+        {
+          "titre": "Les rats géants",
+          "texte": "« Je dormirai près du grenier pour le protéger des voleurs », déclara l'hyène. Chaque nuit, elle se glissait par l'ouverture et mangeait jusqu'à n'en plus pouvoir. Le tas de mil baissait, et le ventre de l'hyène s'arrondissait. « Ce sont les rats, expliquait-elle au lièvre. Des rats énormes, grands comme des ânes ! »",
+          "image": "assets/images/lievre-hyene-3.svg",
+          "choix": {
+            "question": "L'hyène accuse des « rats grands comme des ânes ». Que va faire le lièvre ?",
+            "options": [
+              {
+                "texte": "Se fâcher et crier très fort",
+                "reponse": "Il aurait bien des raisons de se fâcher ! Mais le lièvre est plus malin : il ne dit rien et prépare une ruse."
+              },
+              {
+                "texte": "Faire semblant de la croire",
+                "reponse": "Bien vu ! Le lièvre n'est pas dupe, mais il garde le silence et attend patiemment son heure."
+              }
+            ]
+          }
+        },
+        {
+          "titre": "La patience du lièvre",
+          "texte": "Le lièvre n'était pas dupe, mais il ne dit rien. Un soir, il annonça d'une voix bien forte : « Demain matin, nous partagerons tout ce qui reste. » L'hyène se lécha les babines : il fallait tout manger avant le partage ! Cette nuit-là, elle se glissa dans le grenier et mangea, mangea, et mangea encore. Quand elle voulut ressortir, son ventre était devenu bien trop rond pour passer par l'ouverture.",
+          "image": "assets/images/lievre-hyene-4.svg"
+        },
+        {
+          "titre": "Le matin du partage",
+          "texte": "Au lever du soleil, le lièvre arriva avec tous les animaux de la brousse, qu'il avait invités à assister au partage. Ils trouvèrent la tête de l'hyène qui dépassait du grenier, et son gros ventre coincé à l'intérieur. « Voilà donc le fameux rat géant ! » s'écria le lièvre, et toute la brousse éclata de rire. L'hyène dut attendre plusieurs jours, le ventre vide, avant de pouvoir sortir, pendant que le lièvre partageait le mil restant avec ceux qui avaient faim. Et depuis ce jour, dit-on, l'hyène marche la tête basse.",
+          "image": "assets/images/lievre-hyene-5.svg"
+        }
+      ],
+      "quiz": [
+        {
+          "question": "Que faisait l'hyène pendant que le lièvre travaillait au champ ?",
+          "propositions": [
+            "Elle arrachait les mauvaises herbes",
+            "Elle ronflait à l'ombre d'un karité",
+            "Elle allait chercher de l'eau"
+          ],
+          "bonne": 1,
+          "explication": "Elle disait « surveiller le champ »… en dormant à l'ombre !"
+        },
+        {
+          "question": "Qui l'hyène accusait-elle de manger le mil ?",
+          "propositions": [
+            "Des oiseaux",
+            "Le lièvre",
+            "Des rats géants"
+          ],
+          "bonne": 2,
+          "explication": "Des rats « grands comme des ânes » : une excuse bien pratique !"
+        },
+        {
+          "question": "Pourquoi l'hyène est-elle restée coincée dans le grenier ?",
+          "propositions": [
+            "Le lièvre avait bouché l'ouverture",
+            "Son ventre était devenu trop rond",
+            "L'échelle était tombée"
+          ],
+          "bonne": 1,
+          "explication": "Elle avait tellement mangé qu'elle ne passait plus par l'ouverture."
+        }
+      ]
     },
     {
       "id": "dafra",
@@ -85,23 +210,96 @@
       "ville": "Bobo-Dioulasso",
       "lat": 11.12,
       "lng": -4.24,
-      "resume": "Au pied des falaises, près de Bobo-Dioulasso, une mare du Dafra abrite des silures que personne n'ose pêcher. On y vient apporter des offrandes et demander la protection des ancêtres.",
+      "resume": "Non loin de Bobo-Dioulasso, au fond d'une gorge du Dafra, une mare abrite de grands silures que personne n'ose pêcher. On raconte qu'ils sont liés aux ancêtres, et l'on vient encore leur apporter des offrandes pour demander leur protection.",
       "morale": "Respecter la nature, c'est respecter ceux qui nous ont précédés.",
-      "source": "À compléter.",
+      "source": "Version rédigée d'après la tradition orale ; à compléter avec une référence écrite.",
       "a_verifier": true,
       "immersif": true,
-      "image": null,
+      "image": "assets/images/dafra.svg",
       "audio": [
         {
           "langue": "Français",
-          "fichier": null
+          "fichier": "assets/audio/dafra-francais.mp3",
+          "synthese": true
         },
         {
           "langue": "Dioula",
-          "fichier": null
+          "fichier": "assets/audio/dafra-dioula.mp3",
+          "synthese": true
         }
       ],
-      "scenes": []
+      "scenes": [
+        {
+          "titre": "Le chemin des falaises",
+          "texte": "Non loin de la ville, un sentier quitte la savane et descend entre de hautes parois de pierre. Tout au fond de la gorge, l'eau s'est rassemblée en une mare calme et sombre. Les anciens disent qu'on n'y descend pas comme on va au marché. On y marche lentement, en silence, avec respect.",
+          "image": "assets/images/dafra-1.svg"
+        },
+        {
+          "titre": "Les gardiens de l'eau",
+          "texte": "Dans cette mare vivent de grands silures, aux longues moustaches, qui glissent sans bruit sous la surface. Personne ne les pêche, personne ne les mange. On raconte que ce ne sont pas des poissons comme les autres. Ils seraient les gardiens de l'eau, et peut-être bien plus encore.",
+          "image": "assets/images/dafra-2.svg",
+          "choix": {
+            "question": "À ton avis, pourquoi personne ne pêche ces silures ?",
+            "options": [
+              {
+                "texte": "Ils sont trop gros pour les filets",
+                "reponse": "Ils sont très grands, c'est vrai ! Mais les anciens racontent une autre raison : une promesse faite il y a très longtemps…"
+              },
+              {
+                "texte": "On les respecte comme des gardiens",
+                "reponse": "Tu as deviné ! On raconte qu'ils sont liés aux ancêtres, et qu'une vieille promesse les protège."
+              }
+            ]
+          }
+        },
+        {
+          "titre": "La promesse des origines",
+          "texte": "On raconte qu'autrefois, en un temps de grande sécheresse, des hommes épuisés cherchaient de l'eau à travers le pays. Ce sont les poissons, dit-on, qui les guidèrent jusqu'à cette mare cachée. Pour les remercier, les hommes promirent de ne jamais leur faire de mal. Depuis, ce pacte se transmet de génération en génération.",
+          "image": "assets/images/dafra-3.svg"
+        },
+        {
+          "titre": "Les offrandes",
+          "texte": "Ceux qui portent une demande dans leur cœur, une guérison, une naissance ou une bonne récolte, descendent jusqu'à la mare avec des offrandes. On raconte que si les silures s'approchent pour les recevoir, la demande est entendue. S'ils restent au fond, il faudra revenir plus tard, avec un cœur plus sincère.",
+          "image": "assets/images/dafra-4.svg"
+        },
+        {
+          "titre": "Ce que disent les anciens",
+          "texte": "On raconte aussi que celui qui ferait du mal aux poissons attirerait le malheur sur lui et sur les siens. Alors les enfants apprennent très tôt à respecter la mare et ceux qui l'habitent. Aujourd'hui encore, des visiteurs descendent le sentier des falaises. Et la mare leur rappelle que protéger l'eau, c'est aussi honorer ceux qui sont venus avant nous.",
+          "image": "assets/images/dafra-5.svg"
+        }
+      ],
+      "quiz": [
+        {
+          "question": "Quels poissons vivent dans la mare sacrée du Dafra ?",
+          "propositions": [
+            "Des silures",
+            "Des carpes",
+            "Des requins"
+          ],
+          "bonne": 0,
+          "explication": "De grands silures aux longues moustaches, que personne ne pêche."
+        },
+        {
+          "question": "Selon la légende, comment les hommes ont-ils trouvé la mare ?",
+          "propositions": [
+            "Grâce à une carte",
+            "Les poissons les ont guidés",
+            "Un oiseau leur a montré le chemin"
+          ],
+          "bonne": 1,
+          "explication": "On raconte que les poissons ont guidé des hommes assoiffés jusqu'à l'eau cachée."
+        },
+        {
+          "question": "Que se passe-t-il, dit-on, quand les silures s'approchent des offrandes ?",
+          "propositions": [
+            "La pluie tombe aussitôt",
+            "La demande est entendue",
+            "Il faut partir en courant"
+          ],
+          "bonne": 1,
+          "explication": "Et s'ils restent au fond, il faudra revenir plus tard, avec un cœur plus sincère."
+        }
+      ]
     },
     {
       "id": "diaba-lompo",
@@ -113,6 +311,7 @@
       "lat": 12.06,
       "lng": 0.36,
       "resume": "La tradition du Gulmu raconte que Diaba Lompo, fondateur du royaume gourmantché, serait descendu du ciel pour apporter l'ordre et la royauté aux hommes de l'Est.",
+      "texte": "Écoutez, enfants du Gulmu, l'histoire que les anciens racontent à l'est du pays, du côté de Fada N'Gourma. Elle commence en un temps où les hommes vivaient sans roi : chaque famille suivait sa propre loi, et les disputes ne finissaient jamais.\n\nOn raconte qu'un jour, le ciel s'ouvrit au-dessus de la savane. Un homme en descendit, avec ses compagnons et ses biens. Il s'appelait Diaba Lompo. Les conteurs ne s'accordent pas sur la manière dont il descendit : chacun a sa version, et c'est ainsi que vivent les légendes.\n\nLes gens du pays eurent d'abord peur de cet étranger venu d'en haut. Mais Diaba Lompo ne venait pas faire la guerre. On raconte qu'il savait écouter, juger avec sagesse et réconcilier ceux qui se querellaient. Peu à peu, les familles vinrent lui soumettre leurs différends, et sa parole devint loi.\n\nOn dit qu'il organisa le pays : il plaça des chefs dans les villages, fixa les règles et les coutumes, et confia à ses fils le soin de gouverner les différentes provinces. Ainsi serait né le royaume du Gulmu, le pays des Gourmantché.\n\nSelon la tradition, les rois du Gulmu descendent de Diaba Lompo, et leur siège se trouve à Fada N'Gourma. Quand on raconte son histoire, on ne parle pas seulement d'un homme tombé du ciel : on parle de ce qui unit un peuple, une origine commune et un ordre accepté par tous.\n\nEt si vous demandez aux anciens si tout cela est bien vrai, ils sourient : « Le ciel est haut, mais l'histoire, elle, est bien vivante parmi nous. »",
       "morale": "Un peuple se construit autour d'une histoire commune.",
       "source": "À compléter.",
       "a_verifier": true,
@@ -136,6 +335,7 @@
       "lat": 12.07,
       "lng": -2.24,
       "resume": "À Sabou, les crocodiles de la mare vivent en paix avec les habitants. La légende dit qu'un crocodile aurait autrefois sauvé un ancêtre égaré, scellant un pacte entre le village et ces animaux.",
+      "texte": "Il y a bien longtemps, bien avant que les routes goudronnées ne traversent le pays, un chasseur partit seul en brousse, à l'ouest de Ouagadougou. Il marcha des jours entiers à la poursuite du gibier, si loin qu'il finit par perdre son chemin.\n\nLa saison sèche brûlait la terre. Sa gourde était vide depuis longtemps, et ses jambes ne le portaient plus. On raconte qu'il se coucha sous un arbre, persuadé qu'il ne reverrait jamais son village.\n\nC'est alors qu'un crocodile sortit des hautes herbes. Le chasseur, trop faible pour fuir, ferma les yeux. Mais l'animal ne l'attaqua pas. Il fit quelques pas, s'arrêta, se retourna, comme pour l'inviter à le suivre. Le chasseur se releva et marcha derrière lui jusqu'à une mare à l'eau fraîche, cachée derrière les arbres. Il but, se rafraîchit et retrouva ses forces.\n\nDe retour parmi les siens, il raconta ce qu'il avait vécu. On dit que, ce jour-là, un pacte fut scellé : les habitants de Sabou ne feraient jamais de mal aux crocodiles, et les crocodiles ne feraient jamais de mal aux habitants de Sabou.\n\nAujourd'hui encore, les crocodiles de la mare de Sabou sont considérés comme sacrés. Les gens du village vivent à côté d'eux sans crainte, et l'on raconte que lorsqu'un crocodile meurt, on lui rend hommage presque comme à une personne. Des visiteurs viennent les voir de près, accompagnés par des guides du village qui connaissent leurs habitudes.\n\nQuand les anciens racontent cette histoire aux enfants, ils terminent toujours de la même façon : un bienfait ne s'oublie pas, et la reconnaissance peut durer bien plus longtemps qu'une vie d'homme.",
       "morale": "La reconnaissance crée des liens qui traversent les générations.",
       "source": "À compléter.",
       "a_verifier": true,
@@ -159,6 +359,7 @@
       "lat": 11.17,
       "lng": -4.29,
       "resume": "Figure de Bobo-Dioulasso au XIXe siècle, Guimbi Ouattara est restée dans les mémoires pour son courage et son rôle de protectrice de la ville en des temps troublés.",
+      "texte": "Il est des femmes dont le nom traverse le temps. À Bobo-Dioulasso, celui de Guimbi Ouattara se transmet encore de génération en génération. Pour comprendre son histoire, il faut remonter au XIXe siècle, à une époque où la ville portait un autre nom : Sya.\n\nGuimbi appartenait à la famille des Ouattara, des Dioula dont les ancêtres seraient venus de la région de Kong, dans l'actuelle Côte d'Ivoire. Cette famille occupait une place importante dans la vie politique et commerçante de la région. Selon la tradition, Guimbi se distinguait par son intelligence, son autorité et sa générosité.\n\nC'était un temps de troubles. Des guerres opposaient les royaumes voisins, des chefs conquérants cherchaient à étendre leur pouvoir, et les villes devaient se défendre ou négocier pour survivre. On raconte que Guimbi Ouattara joua un rôle de premier plan dans la protection de la ville : elle aurait accueilli des réfugiés, conseillé les chefs et tenu tête à ceux qui menaçaient Sya.\n\nDes voyageurs européens passés par la région à la fin du XIXe siècle évoquent eux aussi une femme influente, qui recevait les étrangers et pesait sur les décisions de la cité. Les historiens débattent encore de l'étendue exacte de son pouvoir : était-elle une reine au sens propre, ou une femme d'influence respectée de tous ? Les sources ne permettent pas toujours de trancher.\n\nCe qui est sûr, c'est que sa mémoire reste vive. À Bobo-Dioulasso, son nom évoque le courage, l'hospitalité et la sagesse, et elle est souvent citée parmi les grandes figures féminines de l'histoire du Burkina Faso.\n\nSon histoire rappelle une chose simple : au cœur des temps les plus durs, une femme a su tenir sa place parmi les puissants, et protéger les siens.",
       "morale": "Le courage n'a pas de genre.",
       "source": "À compléter.",
       "a_verifier": true,
@@ -182,6 +383,7 @@
       "lat": 12.4,
       "lng": -1.49,
       "resume": "En 1896, le Mogho Naaba Wobgo refuse de se soumettre aux troupes coloniales françaises qui marchent sur Ouagadougou. Contraint de quitter sa capitale, il reste un symbole de résistance.",
+      "texte": "À la fin du XIXe siècle, le royaume de Ouagadougou était l'un des plus puissants royaumes mossi. À sa tête régnait le Mogho Naaba, le roi du Moogo, le pays mossi. En ce temps-là, ce titre était porté par Naaba Wobgo, connu avant son règne sous le nom de Boukary Koutou.\n\nC'était l'époque où les puissances européennes se disputaient l'Afrique de l'Ouest. Des colonnes militaires françaises progressaient vers l'intérieur des terres et cherchaient à imposer leur autorité aux royaumes qu'elles rencontraient. Le Mogho Naaba refusa de placer son royaume sous leur protection : il entendait rester maître chez lui.\n\nEn 1896, une colonne française marcha sur Ouagadougou et s'empara de la ville. Naaba Wobgo dut quitter sa capitale. Selon les récits, il tenta pendant un temps d'organiser la résistance avec ses fidèles, sans parvenir à reprendre son trône.\n\nLes Français installèrent un autre souverain à sa place. Quant à Naaba Wobgo, il partit vers le sud, en direction des territoires alors contrôlés par les Britanniques, et finit sa vie en exil, loin de Ouagadougou.\n\nPour beaucoup de Burkinabè, Naaba Wobgo est devenu un symbole : celui d'un roi qui a préféré perdre son palais plutôt que d'accepter sans combattre la domination étrangère. Son souvenir est entretenu à Ouagadougou, et son histoire est racontée aux jeunes générations comme une leçon de dignité.\n\nLes historiens continuent d'étudier cette période, à travers les archives coloniales et la tradition orale de la cour royale. Ces deux sources ne racontent pas toujours la même histoire, mais elles s'accordent sur l'essentiel : Ouagadougou n'a pas cédé de bon gré.",
       "morale": "La dignité d'un peuple ne se négocie pas.",
       "source": "À compléter.",
       "a_verifier": true,
@@ -204,9 +406,10 @@
       "ville": "Dori",
       "lat": 14.03,
       "lng": -0.03,
-      "resume": "Conte peul du Sahel à recueillir auprès d'un locuteur fulfulde.",
-      "morale": "À compléter.",
-      "source": "À recueillir.",
+      "resume": "Pendant une terrible saison sèche, le jeune berger Samba découvre une mare gardée par un génie. Il fait boire son troupeau en respectant les règles du gardien, tandis qu'un berger orgueilleux les méprise et voit l'eau disparaître.",
+      "texte": "Il y a bien longtemps, dans le Sahel, vivait un jeune berger peul nommé Samba. Son grand-père lui avait confié le troupeau de la famille, de belles vaches aux longues cornes en forme de lyre. Avant de le laisser partir, le vieil homme lui avait dit : « Partout où tu mèneras tes bêtes, souviens-toi : l'eau n'appartient jamais tout à fait à celui qui la boit. »\n\nCette année-là, la saison sèche fut terrible. Les mares se vidaient les unes après les autres, et l'herbe devenait poussière. Samba marchait chaque jour plus loin, et ses vaches, assoiffées, meuglaient de fatigue.\n\nUn soir, entre deux dunes, il découvrit une mare encore pleine. L'eau était claire, presque brillante sous la lune. Au moment où ses bêtes allaient s'y précipiter, une voix grave s'éleva de l'eau : « Qui ose approcher de ma mare ? » Un génie apparut, grand comme un baobab, la barbe pleine de nénuphars.\n\nSamba eut très peur, mais il se souvint des paroles de son grand-père. Il salua le génie avec respect et demanda la permission de faire boire son troupeau. « Bois, répondit le génie, mais à trois conditions : que tes bêtes ne piétinent pas mes rives, que tu ne salisses pas mon eau, et que tu en laisses pour ceux qui viendront après toi. »\n\nSamba fit boire ses vaches une à une, en les retenant au bord. Il ne remplit que sa petite calebasse. Le lendemain, un autre berger arriva avec un grand troupeau. Il se moqua des conditions du génie et poussa toutes ses bêtes dans la mare. Les sabots soulevèrent la boue, l'eau devint trouble, et d'un coup la mare disparut sous le sable. Le berger orgueilleux dut repartir, la gorge sèche.\n\nLe génie, lui, se tourna vers Samba : « Toi qui as respecté l'eau, tu la retrouveras. » Et chaque saison sèche, dit-on, Samba retrouva la mare pleine au même endroit. Devenu vieux, il répétait à ses petits-enfants les mots de son grand-père, en ajoutant les siens : « L'eau est une invitée. Si tu la maltraites, elle s'en va. »",
+      "morale": "L'eau est un bien précieux : qui la respecte la retrouve, qui la gaspille la perd.",
+      "source": "Conte rédigé dans l'esprit des contes peuls ; à remplacer par une version recueillie auprès d'un locuteur fulfulde",
       "a_verifier": true,
       "immersif": false,
       "image": null,
@@ -232,6 +435,7 @@
       "lat": 10.67,
       "lng": -5.17,
       "resume": "Sculptés par le vent et la pluie, les pics de grès de Sindou sont un lieu sacré. Les anciens y voient bien plus que des rochers : la trace d'histoires que l'on raconte à voix basse.",
+      "texte": "Dans le sud-ouest du Burkina Faso, non loin de Banfora, la terre se soulève soudain en une longue crête de grès. Ce sont les pics de Sindou : des aiguilles, des tours et des champignons de pierre, sculptés au fil du temps par la pluie et le vent.\n\nLes géologues expliquent que ces formes étranges sont le résultat de l'érosion. Mais quand la nuit tombe sur Sindou, les anciens racontent une autre histoire.\n\nOn raconte qu'autrefois, ces rochers n'étaient pas de simples rochers. Des génies y avaient leur demeure, et chaque pic gardait un secret. Les hommes qui s'installèrent au pied de la falaise auraient conclu une alliance avec ces gardiens invisibles : ils pourraient cultiver la plaine et vivre en paix, à condition de respecter les lieux qui leur étaient réservés.\n\nC'est pourquoi, dit-on, certains endroits des pics ne sont pas ouverts à tous. On n'y monte pas n'importe quand, on n'y crie pas, on n'y emporte rien. Ceux qui en ont la charge y accomplissent des rites, pour remercier les esprits et demander de bonnes pluies.\n\nPour les conteurs, chaque silhouette de pierre rappelle quelque chose : un guerrier figé, une femme qui attend, un animal endormi. À chacun de les reconnaître, en écoutant les anciens. Les enfants qui grandissent au pied des pics apprennent ainsi à les regarder autrement que comme de simples pierres.\n\nAujourd'hui, des voyageurs viennent de loin pour admirer ce paysage. Les guides leur rappellent qu'ils marchent dans un lieu vivant, où la nature et la mémoire des hommes ne font qu'un.",
       "morale": "Certains lieux gardent la mémoire de ceux qui les ont habités.",
       "source": "À compléter.",
       "a_verifier": true,
@@ -255,6 +459,7 @@
       "lat": 10.3,
       "lng": -3.57,
       "resume": "Hautes murailles de pierre en pays lobi, les ruines de Loropéni sont inscrites au patrimoine mondial de l'UNESCO. Leurs bâtisseurs et leur rôle exact, peut-être lié au commerce de l'or, restent discutés.",
+      "texte": "Dans le sud-ouest du Burkina Faso, en pays lobi, de hauts murs de pierre se dressent au milieu de la végétation, près de la ville de Loropéni. Épais et construits en pierre de latérite, ils entourent un vaste espace aujourd'hui vide. Ce sont les ruines de Loropéni.\n\nCes ruines sont célèbres : elles ont été le premier site du Burkina Faso inscrit sur la liste du patrimoine mondial de l'UNESCO. Elles font partie d'un ensemble de fortifications de pierre dispersées dans la région, dont elles sont les mieux conservées.\n\nMais qui les a construites, et pourquoi ? C'est là que commence le mystère. Selon certains récits, les Lobi, qui vivent aujourd'hui dans la région, trouvèrent ces murs déjà debout à l'arrivée de leurs ancêtres. Les historiens et les archéologues avancent plusieurs hypothèses, sans avoir encore tout tranché.\n\nUne piste revient souvent : la région était riche en or, et ces enceintes auraient pu être liées au commerce de l'or qui reliait autrefois l'intérieur de l'Afrique de l'Ouest aux grandes routes marchandes. Les murs auraient pu protéger des marchandises, des personnes, ou affirmer le pouvoir d'un royaume. Les chercheurs débattent encore de l'âge exact du site et de l'identité de ses bâtisseurs.\n\nAutour des ruines, comme autour de beaucoup de lieux anciens, circulent aussi des récits que l'on se transmet à voix basse, sur ceux qui vivaient derrière ces murs et sur ce qu'ils y gardaient.\n\nLes pierres de Loropéni se taisent. Mais elles posent des questions à chaque visiteur, et rappellent que l'histoire de l'Afrique de l'Ouest est bien plus ancienne et plus riche qu'on ne le croit parfois.",
       "morale": "Les pierres se taisent, mais elles invitent à chercher.",
       "source": "À compléter (fiche UNESCO).",
       "a_verifier": true,

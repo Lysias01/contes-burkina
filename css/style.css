@@ -131,6 +131,27 @@ p { margin: 0 0 1em; }
   white-space: nowrap;
 }
 .logo span { color: var(--mil); }
+.entete .logo { margin-right: auto; }
+
+/* Musique d'ambiance : petit bouton rond, discret */
+.bouton-musique {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--nuit-3);
+  border-radius: 50%;
+  color: var(--ecru-doux);
+  cursor: pointer;
+}
+.bouton-musique[hidden] { display: none; }
+.bouton-musique:hover { color: var(--ecru); background: var(--nuit-2); }
+.bouton-musique[aria-pressed="true"] { color: var(--mil); border-color: var(--mil); }
+.bouton-musique[aria-pressed="true"] .barre { display: none; }
 
 .nav { display: flex; gap: 4px; }
 .nav a {
