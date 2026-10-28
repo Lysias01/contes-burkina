@@ -11,7 +11,26 @@
 .demarche h3 { color: var(--mil); font-size: var(--t-xl); margin: 16px 0 8px; }
 .demarche p { color: var(--ecru-doux); }
 
-.equipe, .credits { padding-top: 80px; }
+.equipe, .technologies, .credits { padding-top: 80px; }
+
+.liste-technologies {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  max-width: 760px;
+}
+.liste-technologies li {
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+  gap: 4px 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--nuit-3);
+  color: var(--ecru-doux);
+}
+.liste-technologies strong { color: var(--ecru); font-weight: 600; }
+@media (max-width: 560px) {
+  .liste-technologies li { grid-template-columns: 1fr; }
+}
 .equipe .intro { color: var(--ecru-doux); }
 
 .membres {
@@ -54,6 +73,8 @@
 }
 .credits dt { font-family: var(--f-titre); font-size: var(--t-l); }
 .credits dd { margin: 0; color: var(--ecru-doux); padding-top: 4px; }
+.credits .liste-langues { margin: 10px 0; padding-left: 1.2em; }
+.credits .liste-langues strong { color: var(--ecru); font-weight: 600; }
 
 @media (max-width: 760px) {
   .demarche { grid-template-columns: 1fr; gap: 8px; }

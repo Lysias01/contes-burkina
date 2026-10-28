@@ -1,0 +1,309 @@
+{
+  "yennenga-1-fr.mp3": {
+    "empreinte": "3ecaaf4d5fd9548ce358ec9a8c2dbeb0bdb44446",
+    "lettres_non_lues": []
+  },
+  "yennenga-1-mos.mp3": {
+    "empreinte": "daf0e79ea8d7bf6927fe958e7c819e3ab54df745",
+    "lettres_non_lues": []
+  },
+  "yennenga-1-dyu.mp3": {
+    "empreinte": "211ad4cc99fd665fa6045e9283ef8ce82c6c9028",
+    "lettres_non_lues": []
+  },
+  "yennenga-1-ful.mp3": {
+    "empreinte": "69938362cc9a140da3e6c506d716df205e82f44e",
+    "lettres_non_lues": []
+  },
+  "yennenga-2-fr.mp3": {
+    "empreinte": "364355aade7674ca023f060dc3766a76043a6568",
+    "lettres_non_lues": []
+  },
+  "yennenga-2-mos.mp3": {
+    "empreinte": "159c89049d9f9473baeaf4091c45baad38617503",
+    "lettres_non_lues": [
+      "h"
+    ]
+  },
+  "yennenga-2-dyu.mp3": {
+    "empreinte": "bc2a84f69446f63044333f40eccc99c2f6ec454f",
+    "lettres_non_lues": []
+  },
+  "yennenga-2-ful.mp3": {
+    "empreinte": "b774cc971ee401e4892e29efca68d9f4efdc45aa",
+    "lettres_non_lues": []
+  },
+  "yennenga-3-fr.mp3": {
+    "empreinte": "f84d447a79111e7ee1581b3baa5e7e86e035bc14",
+    "lettres_non_lues": []
+  },
+  "yennenga-3-mos.mp3": {
+    "empreinte": "571ef479410011fc06ba02c4d30e6d7d11c11fd1",
+    "lettres_non_lues": []
+  },
+  "yennenga-3-dyu.mp3": {
+    "empreinte": "e5901ddc1a0ad1115e4d27458d710326a857c500",
+    "lettres_non_lues": []
+  },
+  "yennenga-3-ful.mp3": {
+    "empreinte": "91734b84a1704eb7ac55788eff37daf5996fcb68",
+    "lettres_non_lues": []
+  },
+  "yennenga-4-fr.mp3": {
+    "empreinte": "149fc9faa2b09164a19f07c52e52b2667ac3d406",
+    "lettres_non_lues": []
+  },
+  "yennenga-4-mos.mp3": {
+    "empreinte": "f43ed708c0f7bebcdac8c30aa2ec6605a4db2571",
+    "lettres_non_lues": []
+  },
+  "yennenga-4-dyu.mp3": {
+    "empreinte": "153e117c3056c198b59a771e0877ef974ea91a35",
+    "lettres_non_lues": []
+  },
+  "yennenga-4-ful.mp3": {
+    "empreinte": "0e3f41025c5efea4ddc6e89dea77a583ee60dbf0",
+    "lettres_non_lues": []
+  },
+  "yennenga-5-fr.mp3": {
+    "empreinte": "0491b6fd1d21af7b0564d889813f7fd802bfd34c",
+    "lettres_non_lues": []
+  },
+  "yennenga-5-mos.mp3": {
+    "empreinte": "28abd1be0cc39f469e9a842f3bc08e4911aee504",
+    "lettres_non_lues": []
+  },
+  "yennenga-5-dyu.mp3": {
+    "empreinte": "575ce4223e0e3306db360bdbc4bf1beac1d69ac5",
+    "lettres_non_lues": []
+  },
+  "yennenga-5-ful.mp3": {
+    "empreinte": "54c69d3e49c20bc86d5242e5e876f47068704e4d",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-1-fr.mp3": {
+    "empreinte": "85ee1ddb076476233583885e9103500a87864c6e",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-1-mos.mp3": {
+    "empreinte": "670d0240765d3627fee4be0d989044ddaa654e9d",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-1-dyu.mp3": {
+    "empreinte": "dba3ee789fcc9a65a5dd7234416cdef84ba782df",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-1-ful.mp3": {
+    "empreinte": "0a9c48f37f4c2a4a58c34f9f83bad345a3969d3c",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-2-fr.mp3": {
+    "empreinte": "638fd6896afdc849d31c8f7357f1f26aa18ac97d",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-2-mos.mp3": {
+    "empreinte": "a3209ee8e20697c4acca3e6b046b6e5bfccb2514",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-2-dyu.mp3": {
+    "empreinte": "22d1b934bf498089089bd407297ad86e6714b659",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-2-ful.mp3": {
+    "empreinte": "c2ba6eb627c7c31447244dece78ffbe44eb1507f",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-3-fr.mp3": {
+    "empreinte": "7bccddd9771924f908eb57cc7b1acc742dcc3437",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-3-mos.mp3": {
+    "empreinte": "f0e81af15c15deccee3d018bf86075fdb27dc72c",
+    "lettres_non_lues": [
+      "h"
+    ]
+  },
+  "lievre-hyene-3-dyu.mp3": {
+    "empreinte": "d5e29c6f3033dd1e328be23ec6063afef0108582",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-3-ful.mp3": {
+    "empreinte": "2161d41c87619f9c7f27e35d8af19c9eebdc0a8f",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-4-fr.mp3": {
+    "empreinte": "f3addeba0278d442dda0c9b8088a663e7743fdf4",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-4-mos.mp3": {
+    "empreinte": "e30c6c7cc4d7ac862cb343598deefe6fcb5d6c91",
+    "lettres_non_lues": [
+      "h"
+    ]
+  },
+  "lievre-hyene-4-dyu.mp3": {
+    "empreinte": "1fc8af67714d45b0dedc6c6d0feeb2dbe97c9372",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-4-ful.mp3": {
+    "empreinte": "70ecc4c48b880013a7fbf5ac53d5c7f5dd501bd1",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-5-fr.mp3": {
+    "empreinte": "765a3912d1b17990ac58ded65925dfe9a5e8c040",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-5-mos.mp3": {
+    "empreinte": "09ace35a2cb87cf95254087fe4466b986a92d3d5",
+    "lettres_non_lues": [
+      "h"
+    ]
+  },
+  "lievre-hyene-5-dyu.mp3": {
+    "empreinte": "80da4df34973c7bed69f10917dfa4a6c56cc444e",
+    "lettres_non_lues": []
+  },
+  "lievre-hyene-5-ful.mp3": {
+    "empreinte": "2b255b03338ccc74386f2997687793d8e4726bbc",
+    "lettres_non_lues": []
+  },
+  "dafra-1-fr.mp3": {
+    "empreinte": "4c71fb7a6c68cd10bade52e0679b7c49769b39c7",
+    "lettres_non_lues": []
+  },
+  "dafra-1-mos.mp3": {
+    "empreinte": "1af0d5668bd41643b14c2cc9f7ffbd0a57178de0",
+    "lettres_non_lues": []
+  },
+  "dafra-1-dyu.mp3": {
+    "empreinte": "8c353e4c2e35bc1ed49346eed4e24f80a840eb64",
+    "lettres_non_lues": []
+  },
+  "dafra-1-ful.mp3": {
+    "empreinte": "f805b79f612f87909ce0221a1831914109521c72",
+    "lettres_non_lues": []
+  },
+  "dafra-2-fr.mp3": {
+    "empreinte": "24fdac97ccad10cb9a3e6b1d624efadf03714c32",
+    "lettres_non_lues": []
+  },
+  "dafra-2-mos.mp3": {
+    "empreinte": "f236621a25fa2e43d81b91a431937592a28a3c6a",
+    "lettres_non_lues": []
+  },
+  "dafra-2-dyu.mp3": {
+    "empreinte": "599ad40c7223fa77cff31ec3d641ac9b85b4f2cf",
+    "lettres_non_lues": []
+  },
+  "dafra-2-ful.mp3": {
+    "empreinte": "629958d71b06df2b5923e20345dd15efc7a87858",
+    "lettres_non_lues": []
+  },
+  "dafra-3-fr.mp3": {
+    "empreinte": "c0ff949492f2d3e6328ae147d0a7cf42de6af13a",
+    "lettres_non_lues": []
+  },
+  "dafra-3-mos.mp3": {
+    "empreinte": "43b610cb868f1f90a88caadb0cede3d5ef900fe5",
+    "lettres_non_lues": []
+  },
+  "dafra-3-dyu.mp3": {
+    "empreinte": "f8644184b5a697af84ea3cbc899e8262c6a47742",
+    "lettres_non_lues": []
+  },
+  "dafra-3-ful.mp3": {
+    "empreinte": "b81f415c4ddc97b492aa282f1555c5dd8591a962",
+    "lettres_non_lues": []
+  },
+  "dafra-4-fr.mp3": {
+    "empreinte": "eed904e30de4ac19c9ae12d0eeaa499f0d673b1f",
+    "lettres_non_lues": []
+  },
+  "dafra-4-mos.mp3": {
+    "empreinte": "54787510664c8a23180e0d1a1f86c23d07ca53ec",
+    "lettres_non_lues": []
+  },
+  "dafra-4-dyu.mp3": {
+    "empreinte": "11daaf49d43986ba753fdc3753f9fcbe005844e5",
+    "lettres_non_lues": []
+  },
+  "dafra-4-ful.mp3": {
+    "empreinte": "412d2a5c264f00c5b572204623ead0487a1c00df",
+    "lettres_non_lues": []
+  },
+  "dafra-5-fr.mp3": {
+    "empreinte": "48c46efb015cd9f757da0697ff9240f65c1cc4f4",
+    "lettres_non_lues": []
+  },
+  "dafra-5-mos.mp3": {
+    "empreinte": "603bc6b63a9dcc309454cb9b6a6f8d0d27fbf5fa",
+    "lettres_non_lues": []
+  },
+  "dafra-5-dyu.mp3": {
+    "empreinte": "8456c8b960120dbb1b49c104b80b135b3818d684",
+    "lettres_non_lues": []
+  },
+  "dafra-5-ful.mp3": {
+    "empreinte": "56627e39f23691d5bc39d419320fcd54f1ed5fd1",
+    "lettres_non_lues": []
+  },
+  "diaba-lompo-fr.mp3": {
+    "empreinte": "33c1e218955d91b4dcc2a7acc9793a34210c0957",
+    "lettres_non_lues": []
+  },
+  "crocodiles-sabou-fr.mp3": {
+    "empreinte": "b6342236940fbc9e4619b36050660c214448036f",
+    "lettres_non_lues": []
+  },
+  "crocodiles-sabou-mos.mp3": {
+    "empreinte": "2fbacee501286b7822f0b90ef134f2da8fd6fb64",
+    "lettres_non_lues": [
+      "h"
+    ]
+  },
+  "guimbi-ouattara-fr.mp3": {
+    "empreinte": "7ddda9d6f04af682cd1aca1ef18977bbe9665dee",
+    "lettres_non_lues": []
+  },
+  "guimbi-ouattara-dyu.mp3": {
+    "empreinte": "e6c65fdecfc47019d4f9dfd23efc5b613dd8c730",
+    "lettres_non_lues": [
+      "0",
+      "1",
+      "8",
+      "9"
+    ]
+  },
+  "naaba-wobgo-fr.mp3": {
+    "empreinte": "9501814315ee634a0e332957069fa372d522acdb",
+    "lettres_non_lues": []
+  },
+  "naaba-wobgo-mos.mp3": {
+    "empreinte": "468d9792f33301a14f6438ebe8294b6c604879a3",
+    "lettres_non_lues": [
+      "1",
+      "8",
+      "9"
+    ]
+  },
+  "conte-peul-fr.mp3": {
+    "empreinte": "b77610a875aa579a8c078216b1b018a90eed5a01",
+    "lettres_non_lues": []
+  },
+  "conte-peul-ful.mp3": {
+    "empreinte": "8d93bb5ab6dace00c87439400e7b591fbf284f9e",
+    "lettres_non_lues": []
+  },
+  "pics-sindou-fr.mp3": {
+    "empreinte": "f7d7d872c97b6e7c2ba4dbbb52ee31f655b3f452",
+    "lettres_non_lues": []
+  },
+  "pics-sindou-dyu.mp3": {
+    "empreinte": "8a617262cd8cb8c64b17424f9e1981ad64e293d2",
+    "lettres_non_lues": []
+  },
+  "loropeni-fr.mp3": {
+    "empreinte": "1e508a736d398884fe85395544b10701b1deb926",
+    "lettres_non_lues": []
+  }
+}

@@ -16,7 +16,8 @@
   background: none;
   border: 1px solid var(--nuit-3);
   border-radius: 999px;
-  padding: 7px 14px;
+  min-height: var(--cible);
+  padding: 0 16px;
   cursor: pointer;
 }
 .onglet:hover { color: var(--ecru); }

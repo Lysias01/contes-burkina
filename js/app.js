@@ -24,13 +24,26 @@ function echapper(texte) {
 
 /* Charge les récits une seule fois */
 let _contes = null;
+let _langues = {};
 async function chargerContes() {
   if (_contes) return _contes;
   const reponse = await fetch("data/contes.json");
   if (!reponse.ok) throw new Error("data/contes.json introuvable (" + reponse.status + ")");
   const donnees = await reponse.json();
   _contes = donnees.contes;
+  _langues = donnees.langues || {};
   return _contes;
+}
+
+/* Nom d'une langue à partir de son code (« mos » -> « Mooré ») */
+function nomLangue(code) {
+  return (_langues[code] || {}).nom || code;
+}
+
+/* Codes des langues dans lesquelles tout le récit peut être lu et écouté */
+function languesDuConte(conte) {
+  const porteurs = conte.scenes && conte.scenes.length ? conte.scenes : [conte];
+  return Object.keys(_langues).filter((code) => porteurs.every((p) => p.textes && p.textes[code]));
 }
 
 /* En-tête et pied de page, identiques sur toutes les pages */
@@ -61,9 +74,24 @@ function construireEntete() {
       </div>`;
     const bouton = entete.querySelector(".bouton-menu");
     const nav = entete.querySelector(".nav");
+    const fermerMenu = () => {
+      nav.classList.remove("ouvert");
+      bouton.setAttribute("aria-expanded", "false");
+    };
     bouton.addEventListener("click", () => {
       const ouvert = nav.classList.toggle("ouvert");
       bouton.setAttribute("aria-expanded", ouvert);
+    });
+    // Le menu mobile se ferme après un choix, avec Échap, ou en touchant ailleurs
+    nav.addEventListener("click", (e) => { if (e.target.closest("a")) fermerMenu(); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && nav.classList.contains("ouvert")) {
+        fermerMenu();
+        bouton.focus();
+      }
+    });
+    document.addEventListener("click", (e) => {
+      if (nav.classList.contains("ouvert") && !entete.contains(e.target)) fermerMenu();
     });
     brancherMusique(entete.querySelector(".bouton-musique"));
   }

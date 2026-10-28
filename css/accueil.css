@@ -69,7 +69,7 @@
 .hero-texte {
   position: relative;
   z-index: 2;
-  padding-top: clamp(56px, 12vh, 140px);
+  padding-top: clamp(56px, 12svh, 140px);
   max-width: var(--largeur);
 }
 .hero-texte h1 {
@@ -131,7 +131,7 @@
   margin-bottom: 4px;
 }
 .veillee h3 { font-size: var(--t-xl); }
-.veillee h3 a { color: var(--ecru); text-decoration: none; }
+.veillee h3 a { display: inline-block; padding: 5px 0; color: var(--ecru); text-decoration: none; }
 .veillee h3 a:hover { color: var(--mil); }
 .veillee p { color: var(--ecru-doux); max-width: 34rem; }
 .veillee .meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; font-size: var(--t-xs); color: var(--ecru-doux); }
@@ -172,8 +172,17 @@
   .langues { grid-template-columns: 1fr; }
 }
 
-/* Sur téléphone, on recadre le paysage sur le feu et le conteur */
-@media (max-width: 760px) {
+/* Téléphone en paysage : la scène tient dans l'écran, le texte reste au-dessus du feu */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { min-height: calc(100svh - var(--entete)); }
+  .hero-texte { padding-top: 16px; }
+  .hero-texte h1 { font-size: 2.1rem; max-width: none; margin-bottom: 8px; }
+  .hero-texte p { font-size: var(--t-s); max-width: 30rem; margin-bottom: 8px; }
+}
+
+/* Sur téléphone et tablette en portrait, on recadre le paysage sur le feu et le conteur */
+@media (max-width: 760px), (orientation: portrait) and (max-width: 1100px) {
+  .hero-texte { padding-top: clamp(32px, 6svh, 56px); }
   .calque:not(.calque-etoiles) {
     left: -250px;
     right: auto;

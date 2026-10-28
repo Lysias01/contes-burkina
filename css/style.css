@@ -33,6 +33,12 @@
   --gouttiere: clamp(16px, 4vw, 48px);
   --largeur: 1180px;
   --entete: 64px;
+  --cible: 44px;          /* taille minimale d'une zone tactile */
+}
+
+/* Téléphone en paysage : l'en-tête prend moins de hauteur */
+@media (max-height: 500px) and (orientation: landscape) {
+  :root { --entete: 52px; }
 }
 
 *,
@@ -86,7 +92,8 @@ p { margin: 0 0 1em; }
   width: 100%;
   max-width: var(--largeur);
   margin: 0 auto;
-  padding: 0 var(--gouttiere);
+  /* env(safe-area-inset-*) : on reste hors des encoches (viewport-fit=cover) */
+  padding: 0 max(var(--gouttiere), env(safe-area-inset-right)) 0 max(var(--gouttiere), env(safe-area-inset-left));
 }
 
 /* ---------- En-tête ---------- */
@@ -124,6 +131,8 @@ p { margin: 0 0 1em; }
   gap: 16px;
 }
 .logo {
+  display: inline-block; /* pas de flex : l'espace avant « du Faso » serait supprimé */
+  line-height: var(--cible);
   font-family: var(--f-titre);
   font-size: 1.25rem;
   color: var(--ecru);
@@ -139,8 +148,8 @@ p { margin: 0 0 1em; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: var(--cible);
+  height: var(--cible);
   padding: 0;
   background: none;
   border: 1px solid var(--nuit-3);
@@ -155,10 +164,13 @@ p { margin: 0 0 1em; }
 
 .nav { display: flex; gap: 4px; }
 .nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--cible);
   color: var(--ecru-doux);
   text-decoration: none;
   font-size: var(--t-s);
-  padding: 8px 12px;
+  padding: 0 12px;
   border-radius: 999px;
 }
 .nav a:hover { color: var(--ecru); background: var(--nuit-2); }
@@ -166,11 +178,13 @@ p { margin: 0 0 1em; }
 
 .bouton-menu {
   display: none;
+  min-width: var(--cible);
+  min-height: var(--cible);
   background: none;
   border: 1px solid var(--nuit-3);
   color: var(--ecru);
   border-radius: 8px;
-  padding: 6px 12px;
+  padding: 0 14px;
   font: inherit;
   font-size: var(--t-s);
   cursor: pointer;
@@ -184,12 +198,14 @@ p { margin: 0 0 1em; }
     left: 0; right: 0;
     flex-direction: column;
     background: var(--nuit);
-    padding: 8px var(--gouttiere) 16px;
+    padding: 8px max(var(--gouttiere), env(safe-area-inset-right)) 16px max(var(--gouttiere), env(safe-area-inset-left));
+    max-height: calc(100svh - var(--entete));
+    overflow-y: auto;
     border-bottom: 1px solid var(--nuit-3);
     display: none;
   }
   .nav.ouvert { display: flex; }
-  .nav a { padding: 12px; }
+  .nav a { padding: 0 12px; min-height: 48px; }
 }
 
 /* ---------- Boutons ---------- */
@@ -238,7 +254,7 @@ p { margin: 0 0 1em; }
 /* ---------- Pied de page ---------- */
 .pied {
   margin-top: 96px;
-  padding: 32px 0 40px;
+  padding: 32px 0 calc(40px + env(safe-area-inset-bottom));
   border-top: 1px solid var(--nuit-3);
   color: var(--ecru-doux);
   font-size: var(--t-s);
@@ -261,7 +277,8 @@ p { margin: 0 0 1em; }
 /* ---------- Champs ---------- */
 .champ, select.champ {
   font: inherit;
-  font-size: var(--t-s);
+  font-size: 1rem; /* 16 px minimum : sinon l'iPhone zoome en touchant le champ */
+  min-height: var(--cible);
   color: var(--ecru);
   background: var(--nuit-2);
   border: 1px solid var(--nuit-3);
@@ -282,6 +299,7 @@ p { margin: 0 0 1em; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0s !important; /* pas d'apparition retardée non plus */
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }

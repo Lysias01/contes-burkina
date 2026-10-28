@@ -74,9 +74,10 @@ async function afficherVeillees() {
   }
 }
 
-/* Sur téléphone, le paysage est cadré depuis la gauche (là où se trouve le feu) */
+/* Sur téléphone et tablette en portrait, le paysage est cadré depuis la gauche (là où se trouve le feu) */
 function cadrerPaysage() {
-  const etroit = window.matchMedia("(max-width: 760px)").matches;
+  // même condition que dans css/accueil.css
+  const etroit = window.matchMedia("(max-width: 760px), (orientation: portrait) and (max-width: 1100px)").matches;
   document.querySelectorAll(".calque:not(.calque-etoiles)").forEach((calque) => {
     calque.setAttribute("preserveAspectRatio", etroit ? "xMinYMax slice" : "xMidYMax slice");
   });

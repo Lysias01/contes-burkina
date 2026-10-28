@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Page introuvable — Contes du Faso</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // GitHub Pages sert cette page pour toute adresse inconnue, à n'importe quelle profondeur
+    // (/contes-burkina/a/b/c) : la base pointe vers la racine du site pour que styles et liens fonctionnent.
+    (function () {
+      var depot = location.pathname.split("/")[1];
+      var base = document.createElement("base");
+      base.href = location.hostname.endsWith("github.io") && depot ? "/" + depot + "/" : "/";
+      document.head.appendChild(base);
+    })();
+  </script>
+  <meta name="theme-color" content="#1d2251">
+  <link rel="icon" href="assets/icones/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icones/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .introuvable { padding-top: 72px; padding-bottom: 24px; }
+    .introuvable > * { max-width: 640px; }
+    .introuvable .feu { width: 96px; height: 96px; margin-bottom: 24px; }
+    .introuvable h1 { font-size: clamp(2.2rem, 7vw, 3.5rem); }
+    .introuvable p { color: var(--ecru-doux); font-size: var(--t-l); line-height: 1.5; }
+    .introuvable .boutons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  </style>
+</head>
+<body>
+  <header id="entete"></header>
+
+  <main class="conteneur introuvable">
+    <img class="feu" src="assets/icones/favicon.svg" alt="">
+    <h1>Ce récit s'est perdu dans la nuit</h1>
+    <p>La page demandée n'existe pas ou a changé d'adresse. Revenez près du feu : les dix récits vous attendent.</p>
+    <div class="boutons">
+      <a class="bouton" href="index.html">Retour à l'accueil</a>
+      <a class="bouton secondaire" href="bibliotheque.html">Voir tous les récits</a>
+    </div>
+  </main>
+
+  <footer id="pied"></footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

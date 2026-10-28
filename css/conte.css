@@ -11,10 +11,11 @@
   margin-bottom: 12px;
 }
 .recit-tete h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); max-width: 18ch; }
-.retour { font-size: var(--t-s); }
+.retour { display: inline-flex; align-items: center; min-height: var(--cible); font-size: var(--t-s); }
 
 /* La scène : illustration + texte */
 .scene {
+  touch-action: pan-y; /* le balayage horizontal change de scène, le défilement vertical reste libre */
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
   gap: clamp(24px, 4vw, 56px);
@@ -114,23 +115,35 @@
 /* Navigation entre scènes */
 .navigation-scenes {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   margin-top: 32px;
 }
-.points { display: flex; gap: 8px; }
+/* Chaque point est une zone tactile de 44 px ; la barre visible est dessinée par ::before */
+.points { display: flex; gap: 0; }
 .points button {
+  width: var(--cible);
+  height: var(--cible);
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.points button::before {
+  content: "";
   width: 34px;
   height: 6px;
   border-radius: 3px;
-  border: 0;
-  padding: 0;
   background: var(--nuit-3);
-  cursor: pointer;
 }
-.points button[aria-current="step"] { background: var(--mil); }
-.points button.lu { background: var(--ecru-doux); }
+.points button[aria-current="step"]::before { background: var(--mil); }
+.points button.lu::before { background: var(--ecru-doux); }
+.aide-balayage { display: none; flex-basis: 100%; margin: 0; font-size: var(--t-xs); color: var(--ecru-doux); }
+@media (pointer: coarse) { .aide-balayage { display: block; } }
 .navigation-scenes .boutons { display: flex; gap: 10px; }
 
 /* Morale de fin */
@@ -173,10 +186,11 @@
 .quiz-options .bouton { text-align: left; }
 .quiz-options .bouton:disabled { opacity: 0.5; }
 .quiz-options .bouton:disabled:hover { background: transparent; border-color: var(--ecru-doux); }
+/* Bonne réponse : bordure verte épaisse (texte écru sur fond sombre, contraste AA) */
 .quiz-options .bouton.juste,
-.quiz-options .bouton.juste:hover { opacity: 1; background: var(--karite); border-color: var(--karite); color: var(--ecru); }
+.quiz-options .bouton.juste:hover { opacity: 1; background: var(--nuit-2); border: 2px solid var(--karite); color: var(--ecru); }
 .quiz-options .bouton.faux,
-.quiz-options .bouton.faux:hover { opacity: 1; background: transparent; border-color: var(--laterite); color: var(--ecru); }
+.quiz-options .bouton.faux:hover { opacity: 1; background: transparent; border: 2px solid var(--laterite); color: var(--ecru); }
 .quiz-options .marque { font-weight: 400; font-size: var(--t-xs); }
 .quiz-retour p { margin: 18px 0 12px; line-height: 1.55; }
 .quiz-score strong { font-family: var(--f-titre); font-size: var(--t-xl); font-weight: 400; color: var(--mil); }
@@ -197,27 +211,34 @@
 .texte-complet p { font-size: var(--t-l); line-height: 1.6; }
 .source { font-size: var(--t-s); color: var(--ecru-doux); margin-top: 24px; }
 
-/* Lecteur audio */
-.lecteur {
-  position: sticky;
-  bottom: 0;
-  z-index: 20;
-  margin-top: 40px;
-  background: rgba(38, 44, 99, 0.96);
-  backdrop-filter: blur(6px);
-  border-top: 1px solid var(--nuit-3);
-}
-.lecteur .conteneur {
+/* Langue du récit (en haut) et écoute */
+.choix-langue {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px 20px;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  gap: 8px 12px;
+  margin-top: 18px;
+  font-size: var(--t-s);
+  color: var(--ecru-doux);
 }
-.lecteur label { font-size: var(--t-xs); color: var(--ecru-doux); display: flex; align-items: center; gap: 8px; }
-.lecteur audio { flex: 1 1 260px; height: 40px; }
-.lecteur .absent { font-size: var(--t-s); color: var(--ecru-doux); margin: 0; }
+.choix-langue .champ { max-width: 100%; }
+.note-langue { flex-basis: 100%; margin: 0; font-size: var(--t-xs); }
+
+/* Traduction française sous le texte en langue nationale */
+.scene-texte .traduction,
+.texte-complet .traduction {
+  font-size: var(--t-s);
+  line-height: 1.55;
+  color: var(--ecru-doux);
+  margin-top: 10px;
+  padding-left: 12px;
+  border-left: 2px solid var(--nuit-3);
+}
+.texte-complet .traduction { margin-bottom: 1.4em; }
+
+.ecoute { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 18px 0; }
+.ecoute-icone { font-size: 0.8em; }
+.ecoute-etat { font-size: var(--t-s); color: var(--ecru-doux); }
 
 @media (max-width: 860px) {
   .scene, .fiche { grid-template-columns: 1fr; min-height: 0; }

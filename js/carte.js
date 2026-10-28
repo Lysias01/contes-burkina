@@ -37,7 +37,8 @@ async function demarrer() {
       center: CENTRE_BURKINA,
       // Le pays entier tient dans l'écran, quelle que soit sa taille
       bounds: [[-5.6, 9.3], [2.45, 15.15]],
-      fitBoundsOptions: { padding: 32 },
+      // marges : aucun point ne démarre sous le bouton 3D (haut gauche) ni sous les contrôles (droite)
+      fitBoundsOptions: { padding: { top: 64, right: 64, bottom: 32, left: 32 } },
       minZoom: 4,
       maxZoom: 12,
       maxPitch: 70,
@@ -51,10 +52,20 @@ async function demarrer() {
   etat.carte.addControl(new maplibregl.FullscreenControl(), "top-right");
 
   etat.carte.on("load", async () => {
+    // Petit écran : l'attribution reste repliée derrière son bouton (i), toujours consultable
+    if (matchMedia("(max-width: 760px)").matches) {
+      const attribution = document.querySelector(".maplibregl-ctrl-attrib.maplibregl-compact-show");
+      if (attribution) {
+        attribution.classList.remove("maplibregl-compact-show");
+        attribution.removeAttribute("open");
+      }
+    }
     await ajouterBurkina();
     ajouterRelief();
     ajouterMarqueurs();
     ouvrirDepuisAdresse();
+    // carte.html#id modifié à la main, ou boutons Précédent / Suivant du navigateur
+    window.addEventListener("hashchange", ouvrirDepuisAdresse);
   });
 
   etat.carte.on("error", (e) => console.warn("Carte :", e.error?.message || e));
@@ -165,6 +176,8 @@ function ajouterMarqueurs() {
     const marqueur = new maplibregl.Marker({ element })
       .setLngLat([conte.lng, conte.lat])
       .addTo(etat.carte);
+    // MapLibre remplace le libellé par « Map marker » : on remet le titre du récit
+    element.setAttribute("aria-label", `${conte.titre}, ${conte.ville}`);
     etat.marqueurs.set(conte.id, { marqueur, element, conte });
   });
 }
@@ -193,18 +206,45 @@ function ouvrirConte(id, voler = true) {
     b.setAttribute("aria-current", String(b.dataset.id === id));
   });
 
-  if (voler) {
-    etat.carte.flyTo({ center: [conte.lng, conte.lat], zoom: Math.max(etat.carte.getZoom(), 7.5), speed: 0.9 });
-  }
-
   if (etat.popup) etat.popup.remove();
-  etat.popup = new maplibregl.Popup({ offset: 18, maxWidth: "290px" })
+  // Toujours au-dessus du point : la carte est ensuite décalée pour que l'aperçu tienne en entier
+  etat.popup = new maplibregl.Popup({ offset: 18, maxWidth: "290px", anchor: "bottom" })
     .setLngLat([conte.lng, conte.lat])
     .setHTML(htmlApercu(conte))
     .addTo(etat.carte);
   etat.popup.on("close", () => element.classList.remove("actif"));
 
+  if (voler) {
+    etat.carte.flyTo({ center: [conte.lng, conte.lat], zoom: Math.max(etat.carte.getZoom(), 7.5), speed: 0.9 });
+    etat.carte.once("moveend", cadrerApercu);
+  } else {
+    cadrerApercu();
+  }
+
   history.replaceState(null, "", `#${id}`);
+}
+
+/* Sur petit écran, l'aperçu peut dépasser de la carte : on la décale juste assez */
+function cadrerApercu() {
+  if (!etat.popup) return;
+  const apercu = etat.popup.getElement().getBoundingClientRect();
+  const cadre = etat.carte.getContainer().getBoundingClientRect();
+  // zone libre : sous le bouton 2D/3D (en haut) et à gauche des contrôles (à droite)
+  const bouton = document.getElementById("bascule-3d").getBoundingClientRect();
+  const controles = document.querySelector(".maplibregl-ctrl-top-right").getBoundingClientRect();
+  const marge = 10;
+  const haut = Math.max(cadre.top + marge, bouton.bottom + 8);
+  const droite = Math.min(cadre.right - marge, controles.left - 8);
+  let dx = 0;
+  let dy = 0;
+  if (apercu.left < cadre.left + marge) dx = apercu.left - cadre.left - marge;
+  else if (apercu.right > droite) dx = apercu.right - droite;
+  if (apercu.top < haut) dy = apercu.top - haut;
+  else if (apercu.bottom > cadre.bottom - marge) dy = apercu.bottom - cadre.bottom + marge;
+  if (dx || dy) {
+    const reduit = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    etat.carte.panBy([dx, dy], { duration: reduit ? 0 : 400 });
+  }
 }
 
 function ouvrirDepuisAdresse() {
@@ -215,7 +255,7 @@ function ouvrirDepuisAdresse() {
 /* ---------- Liste et filtres ---------- */
 function remplirFiltreLangues() {
   const select = document.getElementById("filtre-langue");
-  const langues = [...new Set(etat.contes.flatMap((c) => [c.langue, ...(c.audio || []).map((a) => a.langue)]))].sort();
+  const langues = [...new Set(etat.contes.flatMap((c) => [c.langue, ...languesDuConte(c).map(nomLangue)]))].sort();
   select.insertAdjacentHTML("beforeend", langues.map((l) => `<option>${echapper(l)}</option>`).join(""));
 }
 
@@ -224,7 +264,7 @@ function contesVisibles() {
   const langue = document.getElementById("filtre-langue").value;
   return etat.contes.filter((c) =>
     types.includes(c.type) &&
-    (!langue || c.langue === langue || (c.audio || []).some((a) => a.langue === langue))
+    (!langue || c.langue === langue || languesDuConte(c).map(nomLangue).includes(langue))
   );
 }
 
@@ -243,7 +283,15 @@ function afficherListe() {
         <span class="lieu">${echapper(c.ville)}, ${echapper(c.langue)}</span>
       </button>
     </li>`).join("");
-  liste.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => ouvrirConte(b.dataset.id)));
+  liste.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+    // Sur téléphone, la carte est au-dessus de la liste : on la ramène à l'écran
+    const zone = document.querySelector(".zone-carte");
+    if (zone.getBoundingClientRect().top < document.getElementById("entete").offsetHeight - 1) {
+      const reduit = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      zone.scrollIntoView({ behavior: reduit ? "auto" : "smooth", block: "start" });
+    }
+    ouvrirConte(b.dataset.id);
+  }));
 }
 
 function appliquerFiltres() {

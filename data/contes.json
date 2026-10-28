@@ -1,5 +1,37 @@
 {
-  "_lisezmoi": "Un bloc par récit. type = conte | legende | historique. Pour ajouter un audio : déposer le MP3 dans assets/audio/ et indiquer son chemin dans 'fichier'. 'a_verifier' passe à false une fois les faits vérifiés sur deux sources.",
+  "_lisezmoi": "Un bloc par récit. type = conte | legende | historique. Les textes lus sont dans « textes » (scenes[i].textes pour un récit en scènes, sinon textes du récit), une clé par code de langue de « langues ». Les MP3 de assets/audio/ sont générés à partir de ces textes par tools/generer_audio.py : après toute modification d un texte, relancer ce script. a_verifier passe à false une fois les faits vérifiés sur deux sources.",
+  "langues": {
+    "fr": {
+      "nom": "Français",
+      "nllb": "fra_Latn",
+      "voix": "edge-tts fr-FR-HenriNeural"
+    },
+    "mos": {
+      "nom": "Mooré",
+      "nllb": "mos_Latn",
+      "voix": "facebook/mms-tts-mos"
+    },
+    "dyu": {
+      "nom": "Dioula",
+      "nllb": "dyu_Latn",
+      "voix": "facebook/mms-tts-dyu"
+    },
+    "ful": {
+      "nom": "Fulfulde",
+      "nllb": "fuv_Latn",
+      "voix": "facebook/mms-tts-ful"
+    },
+    "gux": {
+      "nom": "Gulmancema",
+      "nllb": null,
+      "voix": "facebook/mms-tts-gux"
+    },
+    "lob": {
+      "nom": "Lobiri",
+      "nllb": null,
+      "voix": "facebook/mms-tts-lob"
+    }
+  },
   "contes": [
     {
       "id": "yennenga",
@@ -16,27 +48,25 @@
       "a_verifier": true,
       "immersif": true,
       "image": "assets/images/yennenga.svg",
-      "audio": [
-        {
-          "langue": "Français",
-          "fichier": "assets/audio/yennenga-francais.mp3",
-          "synthese": true
-        },
-        {
-          "langue": "Mooré",
-          "fichier": "assets/audio/yennenga-moore.mp3",
-          "synthese": true
-        }
-      ],
       "scenes": [
         {
           "titre": "La princesse de Gambaga",
-          "texte": "Il y a bien longtemps, au royaume de Gambaga, vivait une princesse nommée Yennenga. Aucun guerrier ne maniait la lance aussi bien qu'elle, et aucun cavalier ne la rattrapait quand elle lançait son cheval à travers la savane.",
+          "textes": {
+            "fr": "Il y a bien longtemps, au royaume de Gambaga, vivait une princesse nommée Yennenga. Aucun guerrier ne maniait la lance aussi bien qu'elle, et aucun cavalier ne la rattrapait quand elle lançait son cheval à travers la savane.",
+            "mos": "Yʋʋm wʋsg sẽn looge, Gambaga soolmẽ, pag a ye yʋʋr sẽn boond t'a Yennenga ra beeme. Ned ka be n zãad a sʋʋg wa yẽ ye, la ned ka be t'a sã n lobd a wedã ne a sãnem ye.",
+            "dyu": "Wagatijan tɛmɛnin na, Gambaga mara la, masamuso dɔ tun be yen min tɔgɔ ko Yennenga. Kɛrɛkɛcɛ si tun tɛ se ka a ta taman mina ka ɲa i n'a fɔ ale; sotigi si ma se ka ben a kan, k'a sɔrɔ a tun bɛ a ta sow firi kongo kɔnɔ.",
+            "ful": "Wakkati ɗuɗɗi, nder laamuuji Gambaga, debbo biyeteeɗo Yennenga jooɗii. Walaa maccuɗo mo'o huwti kaɓirɗe maako bana maako, wala ko'e ardiiɓe koyɗeeji boo ɓe mbaawata mo, nde o wurtina koyɗol maako nder le'i."
+          },
           "image": "assets/images/yennenga-1.svg"
         },
         {
           "titre": "Le refus du roi",
-          "texte": "Son père, le roi, tenait tant à sa fille guerrière qu'il refusait de la marier. Les saisons passaient. Pour lui faire comprendre son désir, Yennenga sema un champ de gombo qu'elle laissa pourrir sur pied, comme sa jeunesse qu'on laissait se perdre.",
+          "textes": {
+            "fr": "Son père, le roi, tenait tant à sa fille guerrière qu'il refusait de la marier. Les saisons passaient. Pour lui faire comprendre son désir, Yennenga sema un champ de gombo qu'elle laissa pourrir sur pied, comme sa jeunesse qu'on laissait se perdre.",
+            "mos": "A ba wã sẽn yaa rĩmã ra nonga a bi-pugl-kãsengã hal t'a ra pa rat n dɩk-a n kẽ kãadem ye. La wakat fãa ra loogdame. Sẽn na yɩl n kɩt t'a Yennenga bãng a sẽn dat n maan to-to wã, a bʋga okra pʋʋg a sẽn bas tɩ kʋɩlen wa a bi-bɩɩmã.",
+            "dyu": "A facɛ tun b'a denmuso cɛɲumanba kanu, a tun t'a fɛ k'a furu. Wagatiw tun be tɛmɛna. Walisa k'a yira a la ko a tun b'a fɛ k'o kɛ, Yennenga y'a ka foro dɔ sɛnɛ.",
+            "ful": "Baabiraawo maako, laamiiɗo, yiɗi ɓiɗɗo maako debbo mo'o warɗo, ngam maajum o hokki mo debbo. Saawre'en ɗon ɓuwa. Nde Yennenga hollitii ko o yiɗi, o jippini ngesa okka, o acci ɗum e koyɗe maako, bana suka maako ɓe acci mo."
+          },
           "image": "assets/images/yennenga-2.svg",
           "choix": {
             "question": "Le roi ne veut toujours rien entendre. À la place de Yennenga, que ferais-tu ?",
@@ -54,17 +84,32 @@
         },
         {
           "titre": "La fuite dans la nuit",
-          "texte": "Le roi ne céda pas. Une nuit, Yennenga sella son étalon et quitta le palais. Elle chevaucha longtemps vers le nord, traversa des rivières, jusqu'à ce que son cheval, épuisé, s'arrête au cœur d'une forêt inconnue.",
+          "textes": {
+            "fr": "Le roi ne céda pas. Une nuit, Yennenga sella son étalon et quitta le palais. Elle chevaucha longtemps vers le nord, traversa des rivières, jusqu'à ce que son cheval, épuisé, s'arrête au cœur d'une forêt inconnue.",
+            "mos": "La rĩm-kãng pa sak n bas-a ye. Daar a ye yʋngo, a Yennenga paka a wedã n yi roogã. A kẽnga sa-kãsengã pʋga, la a kẽnga kʋɩlgã pʋga.",
+            "dyu": "Masacɛ ma sɔn. Loon dɔ sufɛ, Yennenga y'a ka soo datugu ka bɔ masaso kɔnɔ. A yɛlɛnna ka taga sahiliyanfan na wagatijan. A ka bajiw tigɛ, fɔ ka taga a ta so baraka ban, ka taga lɔ yiritu dɔ kɔnɔ.",
+            "ful": "Laamiiɗo hokkii mo. Nder jemma go'o, Yennenga suɓii hayre maako, o wurti nder laamorde. O ɗon yaha haa woylaare, o ɗon yaha nder maayoji, haa ɓooyi maako ɓeyda, o ummi nder leɗɗe ɗe o anndaa."
+          },
           "image": "assets/images/yennenga-3.svg"
         },
         {
           "titre": "Le chasseur Rialé",
-          "texte": "Dans cette forêt vivait Rialé, un chasseur d'éléphants solitaire. Il recueillit la jeune femme, la soigna et lui offrit l'abri de sa case. Peu à peu, l'étrangère et le chasseur apprirent à s'aimer.",
+          "textes": {
+            "fr": "Dans cette forêt vivait Rialé, un chasseur d'éléphants solitaire. Il recueillit la jeune femme, la soigna et lui offrit l'abri de sa case. Peu à peu, l'étrangère et le chasseur apprirent à s'aimer.",
+            "mos": "A Rialé dag n bee weoogẽ wã, t'a yãgd bõn-buud a yembre. A Zozɛf wʋka bi-puglã, n kõ-a t'a rɩ-a. La bilf-bilfu, raoã sẽn da pa mi-a wã ne zĩ-gũudã zãmsame tɩ b nong taaba.",
+            "dyu": "Rialé tun be yen. A tun be elefanw gbɛnna a kelen na. A ka sunguru ta k'a janto a ra, ka taga a bla a yɛrɛ ta so kɔnɔ. Dɔɔni dɔɔni, lonancɛ ni jagokɛla y'a daminɛ ka ɲɔgɔn kanu.",
+            "ful": "Nder leɗɗe ɗe'e, Rialé jooɗoto, mo wuurɗo njillu go'o. Sey o hoo'i debbo on, o yamɗiti mo, o hokki mo ɓandu maako. Caggal e caggal, debbo on e mawɗo on ɓe njanngini yiɗde."
+          },
           "image": "assets/images/yennenga-4.svg"
         },
         {
           "titre": "Ouédraogo, l'étalon",
-          "texte": "De leur union naquit un fils. En souvenir du cheval qui avait conduit sa mère jusque-là, on l'appela Ouédraogo, « l'étalon ». Devenu grand, il fonda le premier royaume moaga à Tenkodogo, et c'est de lui que descendent les Mossi.",
+          "textes": {
+            "fr": "De leur union naquit un fils. En souvenir du cheval qui avait conduit sa mère jusque-là, on l'appela Ouédraogo, « l'étalon ». Devenu grand, il fonda le premier royaume moaga à Tenkodogo, et c'est de lui que descendent les Mossi.",
+            "mos": "B kãadmã kɩtame tɩ b dog bi-ribl a ye. B pʋd-a lame t'a Ouédraogo. A sẽn lebg nin-kãsenga, a lugla Mooga soolmã pipi zĩig sẽn boond t'a Tenkodogo.",
+            "dyu": "U ka furu sababu fɛ, u ye dencɛ wolo. A bamuso tun ye so min ta ka taga n'a ye o yɔrɔ la, mɔgɔw tun b'a tɔgɔ la ko Ouédraogo. A nana kɛ mɔgɔba ye tuma min na, a ye Moha mara fɔlɔ sigi Tenkodogo. Musaw buruju bɔra a le ra.",
+            "ful": "Ɓiɗɗo o ummii nder kawtal maɓɓe. E nder siftorgal kawtal ngal watti e inna mum haa ɗon, ɓe noddi ɗum Ouédraogo,  taƴorgal . Nde o mawni, o nastini laamu Mo'aaji arande nder Tenkodogo, nden kam diga maako Mo'a'i'en ngari."
+          },
           "image": "assets/images/yennenga-5.svg"
         }
       ],
@@ -116,32 +161,35 @@
       "a_verifier": true,
       "immersif": true,
       "image": "assets/images/lievre-hyene.svg",
-      "audio": [
-        {
-          "langue": "Français",
-          "fichier": "assets/audio/lievre-hyene-francais.mp3",
-          "synthese": true
-        },
-        {
-          "langue": "Mooré",
-          "fichier": "assets/audio/lievre-hyene-moore.mp3",
-          "synthese": true
-        }
-      ],
       "scenes": [
         {
           "titre": "La saison de la faim",
-          "texte": "Il y a bien longtemps, la pluie oublia de tomber pendant toute une saison. Les greniers sonnaient creux et les ventres gargouillaient plus fort que les tam-tams. Le lièvre, avec ses grandes oreilles et ses petites jambes, cherchait de quoi manger. L'hyène, elle, avait toujours faim, même quand elle venait de manger.",
+          "textes": {
+            "fr": "Il y a bien longtemps, la pluie oublia de tomber pendant toute une saison. Les greniers sonnaient creux et les ventres gargouillaient plus fort que les tam-tams. Le lièvre, avec ses grandes oreilles et ses petites jambes, cherchait de quoi manger. L'hyène, elle, avait toujours faim, même quand elle venait de manger.",
+            "mos": "Sẽn sɩng ne yʋʋm kobs-kãense, sa-kãsengã ra pa saag ye. Zĩis nins b sẽn dag n tigsdẽ wã ra pa tar pãng ye, la b pʋgã ra kelemdd ne pãng n yɩɩd tãmbã. Zĩigã ra baoodame n na n dɩtẽ, a tʋb sẽn yaa kãenkãe la a nao-bõonegã yĩnga. Baa a sẽn wa n dɩtẽ, kom da ket n namsd-a lame.",
+            "dyu": "Sanji tun tɛ benna ka ye wagatijan kɔnɔ. Dugutigiw tun bɛ o ta bonw sɔgɔnanw mankan kɛ, ka o ta kɔnɔbaraw mankan kɛ ka tɛmɛ o ta dankanw kan. Lɔnnikɛbaga tun b'a tuloba ni a sen fitininw bɛɛ kɛ ka dumuni ɲini. Hali n'a ye dumuni kɛ ka ban, kɔngɔ tun b'a la tuma bɛɛ.",
+            "ful": "Wakkati ɗuɗɗi, ndiyam ɗon wara haa wakkati fuu. Ko'e maɓɓe ɓe mbi'i: \"Ko'e mon, ko'e mooɗon mbi'imi\". Laru, bee noppi mawɗe e koyɗe mawɗe, ɗon ɗaɓɓa nyaamdu. Nde o nyaami nyaamdu, haa e oon sahaa o ɗon nyaama."
+          },
           "image": "assets/images/lievre-hyene-1.svg"
         },
         {
           "titre": "Le champ partagé",
-          "texte": "« Cultivons un champ ensemble, proposa le lièvre, et nous partagerons la récolte en deux parts égales. » L'hyène accepta tout de suite. Mais pendant que le lièvre bêchait, semait et arrachait les mauvaises herbes, l'hyène « surveillait le champ » à l'ombre d'un karité… en ronflant. À la récolte, ils remplirent de mil un beau grenier de terre, fermé par une ouverture à peine plus large qu'une calebasse.",
+          "textes": {
+            "fr": "« Cultivons un champ ensemble, proposa le lièvre, et nous partagerons la récolte en deux parts égales. » L'hyène accepta tout de suite. Mais pendant que le lièvre bêchait, semait et arrachait les mauvaises herbes, l'hyène « surveillait le champ » à l'ombre d'un karité… en ronflant. À la récolte, ils remplirent de mil un beau grenier de terre, fermé par une ouverture à peine plus large qu'une calebasse.",
+            "mos": "\"Bɩ d zẽk pʋʋg ne taab n pʋɩ koodã pʋɩ-sʋka\". A ra sakame tao-tao. La sã n wa yaa wa bõn-buud sẽn wilgdẽ, la a sẽn bʋdd la a wʋk gõosã, bõn-bilã ra gũuda pʋʋgã, la b ra yãgd-a lame. B sẽn wa n yãgdẽ wã. La b sẽn wa n tigsd koodã, b pidsa tẽn-kʋdgã sẽn yaa sõma n yɩɩg sãnem tus a yiibu.",
+            "dyu": "A ko: \"An ye taga foro dɔ sɛnɛ ɲɔgɔn fɛ, an ye siman taran ɲɔgɔn fɛ. \" O yɔrɔnin bɛɛ, a sɔnna. K'a ta o wagati ra, lilin tun bɛ kasi, ka binw cɛ ka taga ni o ye; lilin fana tun bɛ to ka to ka foro kɔrɔsi, k'a to yirituba jukɔrɔ. k'a kunbiri gwan. Ayiwa, simantigɛwagati sera minkɛ, o ka bɔgɔdaga dɔ fa, min tun ka ɲi kosɛbɛ, k'a kɛ kilo saba ye.",
+            "ful": "O wi'i: \"Too, en nganndi gese bee maako, en keɓa ceede ɗiɗi\". Ɗon e ɗon hayina on jaɓii. Ammaa nder carel ngel ɓeydaama, e ɓaydaama e warugo leɗɗe, re'aajo boo e cembiɗinaama nder gese nder nyiwre leɗɗe. Nde ɓe njogii. Nde ɓe ngollani, ɓe keewi ko'e maɓɓe, ɓe ngullani ɗum ko ɓuri kilooji ujineere."
+          },
           "image": "assets/images/lievre-hyene-2.svg"
         },
         {
           "titre": "Les rats géants",
-          "texte": "« Je dormirai près du grenier pour le protéger des voleurs », déclara l'hyène. Chaque nuit, elle se glissait par l'ouverture et mangeait jusqu'à n'en plus pouvoir. Le tas de mil baissait, et le ventre de l'hyène s'arrondissait. « Ce sont les rats, expliquait-elle au lièvre. Des rats énormes, grands comme des ânes ! »",
+          "textes": {
+            "fr": "« Je dormirai près du grenier pour le protéger des voleurs », déclara l'hyène. Chaque nuit, elle se glissait par l'ouverture et mangeait jusqu'à n'en plus pouvoir. Le tas de mil baissait, et le ventre de l'hyène s'arrondissait. « Ce sont les rats, expliquait-elle au lièvre. Des rats énormes, grands comme des ânes ! »",
+            "mos": "\"Mam na n gõeame, m gãagẽ wã sɛɛgẽ, n kogl-a ne fãadbã\". Daar fãa yʋngo, a ra kẽeda gãagẽ wã n dɩtẽ hal t'a ra pa le tõe n dɩ ye. Zĩ-kãnga ra yikdame, la a pʋgã ra wẽnemdame. A yeelame tɩ yaa bõn-naandse. Yãk-y n tool-y neda, y sã n dat n bãng bũmb ning y sẽn maandã, bɩ y bãng-y bũmb ning sẽn tõe n sõng-y tɩ y tall sũ-noogo.",
+            "dyu": "\"Ne bɛna la dingɛda gɛrɛfɛ, k'a tanga benkannikɛbagaw ma\". Loon o loon su, a tun b'a yɛrɛ ɲɔti k'a ɲimi fɔɔ a tun tɛ se ka dumuni kɛ tugun. O tun bɛ to ka na ni o ye fɔ waga kelen ni kelen. O tun b'a ra, o tun bɛ na ni a kɔnɔbara ye. A y'a fɔ subaga ye ko: \"O ye sosow lo ye. O tun ye ɲɔgɔndan belebelebaw ye, u tun ka bon i ko faliw!",
+            "ful": "Mi ɗon ɗaarugo to suudu ngam hisnugo ndu daga ɓooyɓe , wi'i ɓeynguɗo. Koo ndeye jemma, o nyaami haa o waawi nyaamugo. Ɗuum ɗon ɓadito, ɓernde maako ɗon ɓilla. O wi'i hayre: \"Ɗu'um woni ɓerɗe\". Raatuuji mawɗi, mawɗi bana le'i!"
+          },
           "image": "assets/images/lievre-hyene-3.svg",
           "choix": {
             "question": "L'hyène accuse des « rats grands comme des ânes ». Que va faire le lièvre ?",
@@ -159,12 +207,22 @@
         },
         {
           "titre": "La patience du lièvre",
-          "texte": "Le lièvre n'était pas dupe, mais il ne dit rien. Un soir, il annonça d'une voix bien forte : « Demain matin, nous partagerons tout ce qui reste. » L'hyène se lécha les babines : il fallait tout manger avant le partage ! Cette nuit-là, elle se glissa dans le grenier et mangea, mangea, et mangea encore. Quand elle voulut ressortir, son ventre était devenu bien trop rond pour passer par l'ouverture.",
+          "textes": {
+            "fr": "Le lièvre n'était pas dupe, mais il ne dit rien. Un soir, il annonça d'une voix bien forte : « Demain matin, nous partagerons tout ce qui reste. » L'hyène se lécha les babines : il fallait tout manger avant le partage ! Cette nuit-là, elle se glissa dans le grenier et mangea, mangea, et mangea encore. Quand elle voulut ressortir, son ventre était devenu bien trop rond pour passer par l'ouverture.",
+            "mos": "A ra pa belg-a ye, la a pa yeel bũmb ye. Daar a ye wĩndgẽ, a zẽka a koɛɛg n yeele: \"Sẽnkembeoogo, tõnd na n dɩka bũmb nins fãa sẽn ketã\". B ra segd n dɩta bũmb fãa n yaool n pʋɩ. A Rahaab kẽe roogẽ wã yʋng kãng bala, n dɩ, n yaool n le dɩ. A sẽn wa n dat n yiẽ wã, a pʋgã ra yaa gãnd tɩ b ra tõe n kẽ-a ye.",
+            "dyu": "Nka, a ma foyi fɔ. Lon dɔ wulada fɛ, a pɛrɛnna ni kanba ye ko: \" Sini sɔgɔma, an bɛna domuni tɔ bɛɛ taran. \" O kɔ, a tun ka kan ka fɛɛn bɛɛ dumu ka sɔrɔ k'a taran. Ayiwa, o lon su fɛ, Rahabu tagara don bon dɔ kɔnɔ, ka domuni kɛ. A tun b'a fɛ ka bɔ kɛnɛ ma tuma min na, a kɔnɔbara nana kɛ kolon ye ka tɛmɛ.",
+            "ful": "Wuro ɗon wi'aay kooɗume. Nde nyalnde waɗi, o wi'i, \"To subaka, en njannginan ɗum fuu\". Hyenniyankeejo ɗon nyaama ɓikkoy maako: o haani nyaamugo koo ɗume haa o nyaama! Nder jemma maajum o yahi nder suudu nyaamdu, o nyaami. O nyaami haa o nyaama. Nde o yiɗi wurta, ɓernde maako ɓeydi ɓeydaaki."
+          },
           "image": "assets/images/lievre-hyene-4.svg"
         },
         {
           "titre": "Le matin du partage",
-          "texte": "Au lever du soleil, le lièvre arriva avec tous les animaux de la brousse, qu'il avait invités à assister au partage. Ils trouvèrent la tête de l'hyène qui dépassait du grenier, et son gros ventre coincé à l'intérieur. « Voilà donc le fameux rat géant ! » s'écria le lièvre, et toute la brousse éclata de rire. L'hyène dut attendre plusieurs jours, le ventre vide, avant de pouvoir sortir, pendant que le lièvre partageait le mil restant avec ceux qui avaient faim. Et depuis ce jour, dit-on, l'hyène marche la tête basse.",
+          "textes": {
+            "fr": "Au lever du soleil, le lièvre arriva avec tous les animaux de la brousse, qu'il avait invités à assister au partage. Ils trouvèrent la tête de l'hyène qui dépassait du grenier, et son gros ventre coincé à l'intérieur. « Voilà donc le fameux rat géant ! » s'écria le lièvre, et toute la brousse éclata de rire. L'hyène dut attendre plusieurs jours, le ventre vide, avant de pouvoir sortir, pendant que le lièvre partageait le mil restant avec ceux qui avaient faim. Et depuis ce jour, dit-on, l'hyène marche la tête basse.",
+            "mos": "La wĩntoog sẽn vẽege, gɩdg n waa ne rũms nins a sẽn bool tɩ b wa rɩ wã fãa. La b yãame t'a zugã la a pʋgã gãname. Rẽ n so t'a sẽn yaa gãandã yaa nin-kãsenga. B sẽn wa n na n kʋɩɩb-a wã, b na n yɩɩga ne sũ-noogo. A ra gũuda rasem wʋsgo, a maag sẽn ka tarẽ, n yaool n pa tõe n yi ye, t'a na n dɩka rɩɩb nins sẽn ketã ne neb nins komã sẽn yã wã. La b yetame tɩ hal b daarã tɛka, ra-kãnga kẽnda ne a meng n pa mi b sẽn tõe n maan bũmb ninsã ye.",
+            "dyu": "Ayiwa, tere bɔra tuma min na, kongowara nana ni kongosogo minw bɛɛ ye kongo kɔnɔ, a tun ka olugu bɛɛ wele ka na domuni kɛ. O y'a sɔrɔ o cɛ kunkolo tun tɛmɛna bonkɔnɔyɔrɔ dɔ kan, ani a kɔnɔbara belebeleba tun lanin bɛ a kɔnɔ. O tuma na, o ye ɲamaɲaman tɔgɔba ye! O kɔ, kongowara pɛrɛnna, yiritu bɛɛ murutira. A ka kan ka tere caman kɔnɔni kɛ ni a kɔnɔbara lakolon ye, sani a ye se ka bɔ. O wagati ra, sagaw tun bɛ domuni kɛ ni kɔngɔtɔw ye. Mɔgɔw b'a fɔ ko kabi o wagati, u b'u yɛrɛ majigi.",
+            "ful": "Nde naange wurti, lo'ol wari e dabbaaji le'i fuu, ɓe o noddi ngam ɓe njooɗi nyaamdu. Ɓe ngi'i hoore higoojo ɗon yaha nder suudu, ɓernde maako boo ɗon ɗaɓɓa nder suudu. So ɗum woni rat giant famous! Sey ɓeynguure maɓɓiti, leɗɗe fuu njogii. Hyenniyanko'en ɗon duroo balɗe ɗuuɗɗe, ɓandu maako ɗon maaya, ngam to' o waawi wurtaago, nden ko'e maɓɓe ɗon nyaama nyaamdu. Diga nyalnde nden, yimɓe ɗon mbi'a hyenna ɗon yaha bee hoore mum."
+          },
           "image": "assets/images/lievre-hyene-5.svg"
         }
       ],
@@ -216,27 +274,25 @@
       "a_verifier": true,
       "immersif": true,
       "image": "assets/images/dafra.svg",
-      "audio": [
-        {
-          "langue": "Français",
-          "fichier": "assets/audio/dafra-francais.mp3",
-          "synthese": true
-        },
-        {
-          "langue": "Dioula",
-          "fichier": "assets/audio/dafra-dioula.mp3",
-          "synthese": true
-        }
-      ],
       "scenes": [
         {
           "titre": "Le chemin des falaises",
-          "texte": "Non loin de la ville, un sentier quitte la savane et descend entre de hautes parois de pierre. Tout au fond de la gorge, l'eau s'est rassemblée en une mare calme et sombre. Les anciens disent qu'on n'y descend pas comme on va au marché. On y marche lentement, en silence, avec respect.",
+          "textes": {
+            "fr": "Non loin de la ville, un sentier quitte la savane et descend entre de hautes parois de pierre. Tout au fond de la gorge, l'eau s'est rassemblée en une mare calme et sombre. Les anciens disent qu'on n'y descend pas comme on va au marché. On y marche lentement, en silence, avec respect.",
+            "mos": "Tẽngã sẽn da pa zãr ne-a wã, sor n yi weoogẽ wã n sigd kug-kãsems sʋka. Koɛɛgã pʋgẽ, koɛɛgã koglame n lebg koɛɛg sẽn yaa sik-m-menga. Kãsem-dãmbã yetame tɩ d pa tõe n wa n kẽng zĩig ning d sẽn dat n tɩ yi wã ye. D sã n maand woto ne sũ-bʋgsem, ne gũusgu, la ne waoogre, d na n paama sũ-noog wʋsgo.",
+            "dyu": "K'a to o yɔrɔ ra, sira dɔ tun bɛ bɔ kongo kɔnɔ ka taga dugu laminikogojanw cɛ ra. K'a to dingakɔnɔyɔrɔ la, a kɛra yɔrɔ dɔ ye min sumana ka suma. Cɛkɔrɔbaw b'a fɔ ko i man kan ka taga yen i ko i be taga lɔgɔfiyɛ la cogo min na. An b'o kɛ dɔɔni dɔɔni ani ni bonya ye.",
+            "ful": "Nder gariiri ndin, laawol ɗon ƴiwo nder ladde, ɗon hoola dow ladde ladde. Ɗuum waɗi ndiyam ɓerɗe nder ɓolde, o waɗi ndiyam duumiiɗam. Yimɓe mawɓe mbi'aay en njahaay ton bana ndeen njahaama to kasu. On ɗon yaha nder nokkuure nde'e bee hakkiilo."
+          },
           "image": "assets/images/dafra-1.svg"
         },
         {
           "titre": "Les gardiens de l'eau",
-          "texte": "Dans cette mare vivent de grands silures, aux longues moustaches, qui glissent sans bruit sous la surface. Personne ne les pêche, personne ne les mange. On raconte que ce ne sont pas des poissons comme les autres. Ils seraient les gardiens de l'eau, et peut-être bien plus encore.",
+          "textes": {
+            "fr": "Dans cette mare vivent de grands silures, aux longues moustaches, qui glissent sans bruit sous la surface. Personne ne les pêche, personne ne les mange. On raconte que ce ne sont pas des poissons comme les autres. Ils seraient les gardiens de l'eau, et peut-être bien plus encore.",
+            "mos": "Kẽer sẽn be koom-koglgã pʋgẽ wã yaa gãn-kãsems sẽn tar bĩis sẽn zãad n lebgd tẽngã zugu. Ned ka yõkd-b ye, ned ka wãbd-ba ye. B yetame tɩ b pa zĩm a taabã ye. B yeelame tɩ b na n yɩɩ koom gũudba, la tõe tɩ yaa bũmb wʋsg n yɩɩd rẽ.",
+            "dyu": "O kɔ, a y'a fɔ u ye ko: \"Aw ye to ka taga ni ne ye. Aw ye taga n'a ye, k'a lɔn ko ne le ye aw ta Ala ye\". Mɔgɔ si t'u minɛ, mɔgɔ si tɛ u domu. Mɔgɔw b'a fɔ k'o tɛ jɛgɛ tɔw bɔɲɔgɔnko ye. U tun b'a fɔra ko u ye jii kɔrɔsibagaw ye ani ko u be se ka tɛmɛ o kan.",
+            "ful": "Ɗo'o ɗon haaje mawɗe, ɗe njokki dow duniyaaru. Walaa gooduɗo nyaamugo ɗe. Ɓe mbi'i ɗum'en naa' kalluɗi bana kalluɗe goɗɗe. Ɓe laatoto laamiiɓe ndiyam, e ko ɓuri ɗum boo."
+          },
           "image": "assets/images/dafra-2.svg",
           "choix": {
             "question": "À ton avis, pourquoi personne ne pêche ces silures ?",
@@ -254,17 +310,32 @@
         },
         {
           "titre": "La promesse des origines",
-          "texte": "On raconte qu'autrefois, en un temps de grande sécheresse, des hommes épuisés cherchaient de l'eau à travers le pays. Ce sont les poissons, dit-on, qui les guidèrent jusqu'à cette mare cachée. Pour les remercier, les hommes promirent de ne jamais leur faire de mal. Depuis, ce pacte se transmet de génération en génération.",
+          "textes": {
+            "fr": "On raconte qu'autrefois, en un temps de grande sécheresse, des hommes épuisés cherchaient de l'eau à travers le pays. Ce sont les poissons, dit-on, qui les guidèrent jusqu'à cette mare cachée. Pour les remercier, les hommes promirent de ne jamais leur faire de mal. Depuis, ce pacte se transmet de génération en génération.",
+            "mos": "B yeelame tɩ pĩnd wẽndẽ, sa-kãseng wakate, rao-rãmb sẽn da zoe n yaa komã ra kẽnda tẽn-zẽmsã n baood koom. B yeelame tɩ yaa zĩm-dãmb la b tall-b n wa zĩ-kãnga. Sẽn na yɩl n wilg b mi-beoogo, rao-rãmbã pʋlmame tɩ b pa na n maan-b wẽng ye. Rẽ n so t'a Zeova zoodã kell n kell n paasdame.",
+            "dyu": "A fɔra ko sanjiba dɔ nana tuma min na, mɔgɔ minw tun sɛgɛnna, olu tun be yaala ka jii ɲini jamana yɔrɔ bɛɛ. U y'a fɔ ko jɛgɛw le y'u minɛ ka taga n'u ye jii la. O cɛɛw y'a daa di ko u tɛna foyi kɛ u la walisa k'u waleɲuman lɔn. Kabi o tuma, o layidu be to ka kɛ sariya ye.",
+            "ful": "O wi'i: \"Naa' saa'i ɗum, yimɓe ɓillaaɓe ɗon ɗaɓɓita ndiyam nder lesdi. Ɓe mbi'i, \"Ɗu'um woni liƴƴi ɗi'i\". Ngam faamugo ɓe, worɓe ɓeen mbi'i ɓe mbaawataa waɗugo ɓe kooɗume halleende. Diga saa'i maajum, alkawal ngal ɗum hokki yimɓe fuu."
+          },
           "image": "assets/images/dafra-3.svg"
         },
         {
           "titre": "Les offrandes",
-          "texte": "Ceux qui portent une demande dans leur cœur, une guérison, une naissance ou une bonne récolte, descendent jusqu'à la mare avec des offrandes. On raconte que si les silures s'approchent pour les recevoir, la demande est entendue. S'ils restent au fond, il faudra revenir plus tard, avec un cœur plus sincère.",
+          "textes": {
+            "fr": "Ceux qui portent une demande dans leur cœur, une guérison, une naissance ou une bonne récolte, descendent jusqu'à la mare avec des offrandes. On raconte que si les silures s'approchent pour les recevoir, la demande est entendue. S'ils restent au fond, il faudra revenir plus tard, avec un cœur plus sincère.",
+            "mos": "Neb nins sẽn dat tɩ b maag b yĩng, tɩ b rog b kamba, la tɩ b wom b biis sõma wã, b kẽnda ne kũun n wa zĩ-gãongẽ wã. B yetame tɩ b sã n wa n deeg-b-la, b kelgd-b lame. B sã n pa mi b sẽn tõe n maan bũmb ningã, b na n wa maana rẽ ne pʋ-peelem.",
+            "dyu": "Minw b'a fɛ ka banabagatɔw kɛnɛya, ani ka den sɔrɔ, walama ka siman sɔrɔ, olugu le bɛ jigi ka na ni o ta sarakaw ye. U b'a fɔ ko n'u y'u kunbɛn, u be mɛnni kɛ u fɛ. N'u y'o kɛ, u ka ɲi ka kɔsegi ni kɔnɔgwɛ ye.",
+            "ful": "Yimɓe nder ɓerɗe maɓɓe ɗon ngi'a yamɗitugo, ɓe ɗon ɗaɓɓa ɓikkoy maɓɓe, ɓe ngaɗata ko wooɗi. Yimɓe ɗon njaha haa le'i bee dokke. Ɓe mbi'i to ɓe ɓadake ngam jaɓugo ɓe, ɓe nanii ko ɓe mbi'ata. To ɓe njooɗoto nder ɓerɗe maɓɓe, ɓe warataa ɓaawo maajum, ɓe ɓeyda ɓernde go'o."
+          },
           "image": "assets/images/dafra-4.svg"
         },
         {
           "titre": "Ce que disent les anciens",
-          "texte": "On raconte aussi que celui qui ferait du mal aux poissons attirerait le malheur sur lui et sur les siens. Alors les enfants apprennent très tôt à respecter la mare et ceux qui l'habitent. Aujourd'hui encore, des visiteurs descendent le sentier des falaises. Et la mare leur rappelle que protéger l'eau, c'est aussi honorer ceux qui sont venus avant nous.",
+          "textes": {
+            "fr": "On raconte aussi que celui qui ferait du mal aux poissons attirerait le malheur sur lui et sur les siens. Alors les enfants apprennent très tôt à respecter la mare et ceux qui l'habitent. Aujourd'hui encore, des visiteurs descendent le sentier des falaises. Et la mare leur rappelle que protéger l'eau, c'est aussi honorer ceux qui sont venus avant nous.",
+            "mos": "B ra yetame me tɩ ned sã n maan zĩmã wẽnga, a na n sãama a meng ne a zakã rãmba. Woto kɩtame tɩ kom-bɩɩsã zãmsd b kambã tɩ b waoog b ma wã la b zakã neb. Rũndã-rũndã me, sãambã kẽeda tãns-kãense. La koom-koglgã tẽegda b karen-biisã tɩ b sã n kogend koomã, b waoogda neb nins sẽn deng tõndã.",
+            "dyu": "Mɔgɔw tun b'a fɔra fana ko ni mɔgɔ min ye jigɛw tɔɔrɔ, o tigi n'a ka denbayamɔgɔw bɛɛ bena halaki. O b'a to denmisɛnw be bonya la u bamuso n'u somɔgɔw kan kabi u denmisɛn tuma. Hali bi, mɔgɔ dɔw be yɛlɛla kuluw kan ka taga yen. A b'u hakili jigi ko k'u tanga jii ma, o kɔrɔ ko ka bonya la an kan minw kɔnna an ɲa.",
+            "ful": "Ɓe mbi'i boo, to goɗɗo waɗii kalluɗum e liƴƴi ɗi'i, ɗum waɗata mo e saare maako. Bana non, suka'en ɗon njanngina ngam ɓe mawnina ɓikkoy maɓɓe e yimɓe ɓe njooɗoto bee maɓɓe. Haa jooni boo, yahuɓe ɗon njaha dow laawol go'o. Ɗuum ɓeydaani ɓe, ngam to ɓe njogii ndiyam, ɓe teddinan yimɓe ɓe ardiiɓe en."
+          },
           "image": "assets/images/dafra-5.svg"
         }
       ],
@@ -311,18 +382,14 @@
       "lat": 12.06,
       "lng": 0.36,
       "resume": "La tradition du Gulmu raconte que Diaba Lompo, fondateur du royaume gourmantché, serait descendu du ciel pour apporter l'ordre et la royauté aux hommes de l'Est.",
-      "texte": "Écoutez, enfants du Gulmu, l'histoire que les anciens racontent à l'est du pays, du côté de Fada N'Gourma. Elle commence en un temps où les hommes vivaient sans roi : chaque famille suivait sa propre loi, et les disputes ne finissaient jamais.\n\nOn raconte qu'un jour, le ciel s'ouvrit au-dessus de la savane. Un homme en descendit, avec ses compagnons et ses biens. Il s'appelait Diaba Lompo. Les conteurs ne s'accordent pas sur la manière dont il descendit : chacun a sa version, et c'est ainsi que vivent les légendes.\n\nLes gens du pays eurent d'abord peur de cet étranger venu d'en haut. Mais Diaba Lompo ne venait pas faire la guerre. On raconte qu'il savait écouter, juger avec sagesse et réconcilier ceux qui se querellaient. Peu à peu, les familles vinrent lui soumettre leurs différends, et sa parole devint loi.\n\nOn dit qu'il organisa le pays : il plaça des chefs dans les villages, fixa les règles et les coutumes, et confia à ses fils le soin de gouverner les différentes provinces. Ainsi serait né le royaume du Gulmu, le pays des Gourmantché.\n\nSelon la tradition, les rois du Gulmu descendent de Diaba Lompo, et leur siège se trouve à Fada N'Gourma. Quand on raconte son histoire, on ne parle pas seulement d'un homme tombé du ciel : on parle de ce qui unit un peuple, une origine commune et un ordre accepté par tous.\n\nEt si vous demandez aux anciens si tout cela est bien vrai, ils sourient : « Le ciel est haut, mais l'histoire, elle, est bien vivante parmi nous. »",
+      "textes": {
+        "fr": "Écoutez, enfants du Gulmu, l'histoire que les anciens racontent à l'est du pays, du côté de Fada N'Gourma. Elle commence en un temps où les hommes vivaient sans roi : chaque famille suivait sa propre loi, et les disputes ne finissaient jamais.\n\nOn raconte qu'un jour, le ciel s'ouvrit au-dessus de la savane. Un homme en descendit, avec ses compagnons et ses biens. Il s'appelait Diaba Lompo. Les conteurs ne s'accordent pas sur la manière dont il descendit : chacun a sa version, et c'est ainsi que vivent les légendes.\n\nLes gens du pays eurent d'abord peur de cet étranger venu d'en haut. Mais Diaba Lompo ne venait pas faire la guerre. On raconte qu'il savait écouter, juger avec sagesse et réconcilier ceux qui se querellaient. Peu à peu, les familles vinrent lui soumettre leurs différends, et sa parole devint loi.\n\nOn dit qu'il organisa le pays : il plaça des chefs dans les villages, fixa les règles et les coutumes, et confia à ses fils le soin de gouverner les différentes provinces. Ainsi serait né le royaume du Gulmu, le pays des Gourmantché.\n\nSelon la tradition, les rois du Gulmu descendent de Diaba Lompo, et leur siège se trouve à Fada N'Gourma. Quand on raconte son histoire, on ne parle pas seulement d'un homme tombé du ciel : on parle de ce qui unit un peuple, une origine commune et un ordre accepté par tous.\n\nEt si vous demandez aux anciens si tout cela est bien vrai, ils sourient : « Le ciel est haut, mais l'histoire, elle, est bien vivante parmi nous. »"
+      },
       "morale": "Un peuple se construit autour d'une histoire commune.",
       "source": "À compléter.",
       "a_verifier": true,
       "immersif": false,
       "image": null,
-      "audio": [
-        {
-          "langue": "Français",
-          "fichier": null
-        }
-      ],
       "scenes": []
     },
     {
@@ -335,18 +402,15 @@
       "lat": 12.07,
       "lng": -2.24,
       "resume": "À Sabou, les crocodiles de la mare vivent en paix avec les habitants. La légende dit qu'un crocodile aurait autrefois sauvé un ancêtre égaré, scellant un pacte entre le village et ces animaux.",
-      "texte": "Il y a bien longtemps, bien avant que les routes goudronnées ne traversent le pays, un chasseur partit seul en brousse, à l'ouest de Ouagadougou. Il marcha des jours entiers à la poursuite du gibier, si loin qu'il finit par perdre son chemin.\n\nLa saison sèche brûlait la terre. Sa gourde était vide depuis longtemps, et ses jambes ne le portaient plus. On raconte qu'il se coucha sous un arbre, persuadé qu'il ne reverrait jamais son village.\n\nC'est alors qu'un crocodile sortit des hautes herbes. Le chasseur, trop faible pour fuir, ferma les yeux. Mais l'animal ne l'attaqua pas. Il fit quelques pas, s'arrêta, se retourna, comme pour l'inviter à le suivre. Le chasseur se releva et marcha derrière lui jusqu'à une mare à l'eau fraîche, cachée derrière les arbres. Il but, se rafraîchit et retrouva ses forces.\n\nDe retour parmi les siens, il raconta ce qu'il avait vécu. On dit que, ce jour-là, un pacte fut scellé : les habitants de Sabou ne feraient jamais de mal aux crocodiles, et les crocodiles ne feraient jamais de mal aux habitants de Sabou.\n\nAujourd'hui encore, les crocodiles de la mare de Sabou sont considérés comme sacrés. Les gens du village vivent à côté d'eux sans crainte, et l'on raconte que lorsqu'un crocodile meurt, on lui rend hommage presque comme à une personne. Des visiteurs viennent les voir de près, accompagnés par des guides du village qui connaissent leurs habitudes.\n\nQuand les anciens racontent cette histoire aux enfants, ils terminent toujours de la même façon : un bienfait ne s'oublie pas, et la reconnaissance peut durer bien plus longtemps qu'une vie d'homme.",
+      "textes": {
+        "fr": "Il y a bien longtemps, bien avant que les routes goudronnées ne traversent le pays, un chasseur partit seul en brousse, à l'ouest de Ouagadougou. Il marcha des jours entiers à la poursuite du gibier, si loin qu'il finit par perdre son chemin.\n\nLa saison sèche brûlait la terre. Sa gourde était vide depuis longtemps, et ses jambes ne le portaient plus. On raconte qu'il se coucha sous un arbre, persuadé qu'il ne reverrait jamais son village.\n\nC'est alors qu'un crocodile sortit des hautes herbes. Le chasseur, trop faible pour fuir, ferma les yeux. Mais l'animal ne l'attaqua pas. Il fit quelques pas, s'arrêta, se retourna, comme pour l'inviter à le suivre. Le chasseur se releva et marcha derrière lui jusqu'à une mare à l'eau fraîche, cachée derrière les arbres. Il but, se rafraîchit et retrouva ses forces.\n\nDe retour parmi les siens, il raconta ce qu'il avait vécu. On dit que, ce jour-là, un pacte fut scellé : les habitants de Sabou ne feraient jamais de mal aux crocodiles, et les crocodiles ne feraient jamais de mal aux habitants de Sabou.\n\nAujourd'hui encore, les crocodiles de la mare de Sabou sont considérés comme sacrés. Les gens du village vivent à côté d'eux sans crainte, et l'on raconte que lorsqu'un crocodile meurt, on lui rend hommage presque comme à une personne. Des visiteurs viennent les voir de près, accompagnés par des guides du village qui connaissent leurs habitudes.\n\nQuand les anciens racontent cette histoire aux enfants, ils terminent toujours de la même façon : un bienfait ne s'oublie pas, et la reconnaissance peut durer bien plus longtemps qu'une vie d'homme.",
+        "mos": "Yʋʋm wʋsg sẽn looge, sẽn deng t'a Zeova nin-buiidã kẽed tẽn-kãnga, zĩ-yũudd a ye n kẽng Waagadougou rɩtgẽ wã. A ra baood-a lame daar fãa, t'a yaool n bas-a.\n\nZĩ-kãnga ra yõogda tẽngã. A sẽn da gãneg a gãagã ra pa tarẽ ye, la a nao wã ra pa le tõe n gãneg-a ye. B yeelame t'a gãe tɩɩgã tẽngre, a sẽn da tẽed tɩ a pa na n leb n yã a tẽn-gãongã ye.\n\nRẽ n so t'a bõn-buudã yii we-kãense. Kẽerã sẽn da pa tar pãng n na n zoe wã kɩtame t'a sul a ninã. La rũngã pa kʋ-a ye. A Zezi kẽnga taoor bilfu, n yals n wẽnemd b poorẽ n yeel-a t'a tũ bãmba. Kẽerã yikame n tũ-a n ta ko-kãseng sẽn be koom-koɛɛgẽ, tɩ b solg-a-la tɩɩsã poorẽ. A rɩka bõn-yũudlã, n paam sũ-noogo, la a lebg n tara pãnga.\n\nLa raoã leb n waa a zak rãmb nengẽ n togs-b bũmb nins fãa a sẽn maanã. B yeelame tɩ daarã, b maana kaool n yeel tɩ Sebõ nebã ra na n maan bõn-naands ye.\n\nHal tɩ ta rũndã-rũndã, b ket n getame t'a Zeova waoogda a bu-zẽmsã. Tẽngã neb pa yɛɛsd-b ye, la b yetame tɩ b sã n wa ki, b waoogd-a-la wa b sẽn waoogd ned to-to. Neb n wat n na n ges-b-la neere, tɩ tẽn-kãng neb n wilgd-b b sẽn maand to-to wã.\n\nKãsem-dãmbã sã n togsd kom-bɩɩsã yel-bũndã, b baasda ne manesem a ye. B pa yĩmda bark ning b sẽn maan-bã ye."
+      },
       "morale": "La reconnaissance crée des liens qui traversent les générations.",
       "source": "À compléter.",
       "a_verifier": true,
       "immersif": false,
       "image": null,
-      "audio": [
-        {
-          "langue": "Français",
-          "fichier": null
-        }
-      ],
       "scenes": []
     },
     {
@@ -359,18 +423,15 @@
       "lat": 11.17,
       "lng": -4.29,
       "resume": "Figure de Bobo-Dioulasso au XIXe siècle, Guimbi Ouattara est restée dans les mémoires pour son courage et son rôle de protectrice de la ville en des temps troublés.",
-      "texte": "Il est des femmes dont le nom traverse le temps. À Bobo-Dioulasso, celui de Guimbi Ouattara se transmet encore de génération en génération. Pour comprendre son histoire, il faut remonter au XIXe siècle, à une époque où la ville portait un autre nom : Sya.\n\nGuimbi appartenait à la famille des Ouattara, des Dioula dont les ancêtres seraient venus de la région de Kong, dans l'actuelle Côte d'Ivoire. Cette famille occupait une place importante dans la vie politique et commerçante de la région. Selon la tradition, Guimbi se distinguait par son intelligence, son autorité et sa générosité.\n\nC'était un temps de troubles. Des guerres opposaient les royaumes voisins, des chefs conquérants cherchaient à étendre leur pouvoir, et les villes devaient se défendre ou négocier pour survivre. On raconte que Guimbi Ouattara joua un rôle de premier plan dans la protection de la ville : elle aurait accueilli des réfugiés, conseillé les chefs et tenu tête à ceux qui menaçaient Sya.\n\nDes voyageurs européens passés par la région à la fin du XIXe siècle évoquent eux aussi une femme influente, qui recevait les étrangers et pesait sur les décisions de la cité. Les historiens débattent encore de l'étendue exacte de son pouvoir : était-elle une reine au sens propre, ou une femme d'influence respectée de tous ? Les sources ne permettent pas toujours de trancher.\n\nCe qui est sûr, c'est que sa mémoire reste vive. À Bobo-Dioulasso, son nom évoque le courage, l'hospitalité et la sagesse, et elle est souvent citée parmi les grandes figures féminines de l'histoire du Burkina Faso.\n\nSon histoire rappelle une chose simple : au cœur des temps les plus durs, une femme a su tenir sa place parmi les puissants, et protéger les siens.",
+      "textes": {
+        "fr": "Il est des femmes dont le nom traverse le temps. À Bobo-Dioulasso, celui de Guimbi Ouattara se transmet encore de génération en génération. Pour comprendre son histoire, il faut remonter au XIXe siècle, à une époque où la ville portait un autre nom : Sya.\n\nGuimbi appartenait à la famille des Ouattara, des Dioula dont les ancêtres seraient venus de la région de Kong, dans l'actuelle Côte d'Ivoire. Cette famille occupait une place importante dans la vie politique et commerçante de la région. Selon la tradition, Guimbi se distinguait par son intelligence, son autorité et sa générosité.\n\nC'était un temps de troubles. Des guerres opposaient les royaumes voisins, des chefs conquérants cherchaient à étendre leur pouvoir, et les villes devaient se défendre ou négocier pour survivre. On raconte que Guimbi Ouattara joua un rôle de premier plan dans la protection de la ville : elle aurait accueilli des réfugiés, conseillé les chefs et tenu tête à ceux qui menaçaient Sya.\n\nDes voyageurs européens passés par la région à la fin du XIXe siècle évoquent eux aussi une femme influente, qui recevait les étrangers et pesait sur les décisions de la cité. Les historiens débattent encore de l'étendue exacte de son pouvoir : était-elle une reine au sens propre, ou une femme d'influence respectée de tous ? Les sources ne permettent pas toujours de trancher.\n\nCe qui est sûr, c'est que sa mémoire reste vive. À Bobo-Dioulasso, son nom évoque le courage, l'hospitalité et la sagesse, et elle est souvent citée parmi les grandes figures féminines de l'histoire du Burkina Faso.\n\nSon histoire rappelle une chose simple : au cœur des temps les plus durs, une femme a su tenir sa place parmi les puissants, et protéger les siens.",
+        "dyu": "Muso dɔw tɔgɔw be tɛmɛ wagati bɛɛ kan. Bobo Dioulasso dugu la, Guimbi Ouattara ka koo bele be to ka kɛ ten. Walisa k'a ka maana faamu, an ka kan ka kɔsegi saan kɛmɛkulu 19nan na. O wagati la, dugu tɔgɔ wɛrɛ tun be yen: Sya.\n\nGuimbi bɔra Ouattara, Dioula mara la. A fɔra yen ko u faaw bɔra Kong mara la, Côte d'Ivoire jamana na. O yɔrɔ la, u tun be lɔyɔrɔba sɔrɔ politikiko ni jagokow la. Mɔgɔw tun b'a fɔ ko Guimbi tun ye hakilitigi ye, ko a ye mɔgɔbaba ye ani ko a tun be sɔn ka mɔgɔw sɔn.\n\nO wagati tun ka gwɛlɛ. O kama, u tun ka ɲi k'u yɛrɛ tanga kɛlɛw ma ani ka jagokow kɛ walisa ka see sɔrɔ u juguw kan. A fɔra ko Guimbi Ouattara y'a jɔyɔrɔba sɔrɔ ka dugu latanga: a tun be se ka mɔgɔ dɔw ladon, ka ladili di kuntigiw ma ani k'a yɛrɛ tanga mɔgɔ wɛrɛw ma minw tun be Sya bagabaga.\n\nSaan 1800 wagati laban na, Erɔpu minw tagara bɔ dugu dɔw la, olu fana y'a lakali ko muso tɔgɔba dɔ tun be yen. A tun be lonanw ladon ka ɲɛ ani a tun b'a seko bɛɛ kɛ k'o dugu ka koow latigɛ. Lɔnnikɛlaw bele be sɔsɔli kɛra a ka setigiya koo la: yala a tun ye masamuso ye tiɲɛn na wa, wala a tun be bonya la mɔgɔ bɛɛ kan wa? Tuma dɔw la, mɔgɔ tɛ se k'a latigɛ min ka ɲi ka kɛ.\n\nNka, an lanin b'a la ko a hakili be to a la. Bobo-Dioulasso dugu la, a tɔgɔ b'a yira ko a jaa ka gwɛlɛ, a ye lonanw ladon ani a tun ye hakilitigi ye.\n\nA ka maana b'an hakili jigi koo nɔgɔman dɔ la: wagati gwɛlɛw na, muso dɔ sera k'a ka lɔyɔrɔ sigi mɔgɔbabaw cɛma ani ka a ka denbaya tanga."
+      },
       "morale": "Le courage n'a pas de genre.",
       "source": "À compléter.",
       "a_verifier": true,
       "immersif": false,
       "image": null,
-      "audio": [
-        {
-          "langue": "Français",
-          "fichier": null
-        }
-      ],
       "scenes": []
     },
     {
@@ -383,18 +444,15 @@
       "lat": 12.4,
       "lng": -1.49,
       "resume": "En 1896, le Mogho Naaba Wobgo refuse de se soumettre aux troupes coloniales françaises qui marchent sur Ouagadougou. Contraint de quitter sa capitale, il reste un symbole de résistance.",
-      "texte": "À la fin du XIXe siècle, le royaume de Ouagadougou était l'un des plus puissants royaumes mossi. À sa tête régnait le Mogho Naaba, le roi du Moogo, le pays mossi. En ce temps-là, ce titre était porté par Naaba Wobgo, connu avant son règne sous le nom de Boukary Koutou.\n\nC'était l'époque où les puissances européennes se disputaient l'Afrique de l'Ouest. Des colonnes militaires françaises progressaient vers l'intérieur des terres et cherchaient à imposer leur autorité aux royaumes qu'elles rencontraient. Le Mogho Naaba refusa de placer son royaume sous leur protection : il entendait rester maître chez lui.\n\nEn 1896, une colonne française marcha sur Ouagadougou et s'empara de la ville. Naaba Wobgo dut quitter sa capitale. Selon les récits, il tenta pendant un temps d'organiser la résistance avec ses fidèles, sans parvenir à reprendre son trône.\n\nLes Français installèrent un autre souverain à sa place. Quant à Naaba Wobgo, il partit vers le sud, en direction des territoires alors contrôlés par les Britanniques, et finit sa vie en exil, loin de Ouagadougou.\n\nPour beaucoup de Burkinabè, Naaba Wobgo est devenu un symbole : celui d'un roi qui a préféré perdre son palais plutôt que d'accepter sans combattre la domination étrangère. Son souvenir est entretenu à Ouagadougou, et son histoire est racontée aux jeunes générations comme une leçon de dignité.\n\nLes historiens continuent d'étudier cette période, à travers les archives coloniales et la tradition orale de la cour royale. Ces deux sources ne racontent pas toujours la même histoire, mais elles s'accordent sur l'essentiel : Ouagadougou n'a pas cédé de bon gré.",
+      "textes": {
+        "fr": "À la fin du XIXe siècle, le royaume de Ouagadougou était l'un des plus puissants royaumes mossi. À sa tête régnait le Mogho Naaba, le roi du Moogo, le pays mossi. En ce temps-là, ce titre était porté par Naaba Wobgo, connu avant son règne sous le nom de Boukary Koutou.\n\nC'était l'époque où les puissances européennes se disputaient l'Afrique de l'Ouest. Des colonnes militaires françaises progressaient vers l'intérieur des terres et cherchaient à imposer leur autorité aux royaumes qu'elles rencontraient. Le Mogho Naaba refusa de placer son royaume sous leur protection : il entendait rester maître chez lui.\n\nEn 1896, une colonne française marcha sur Ouagadougou et s'empara de la ville. Naaba Wobgo dut quitter sa capitale. Selon les récits, il tenta pendant un temps d'organiser la résistance avec ses fidèles, sans parvenir à reprendre son trône.\n\nLes Français installèrent un autre souverain à sa place. Quant à Naaba Wobgo, il partit vers le sud, en direction des territoires alors contrôlés par les Britanniques, et finit sa vie en exil, loin de Ouagadougou.\n\nPour beaucoup de Burkinabè, Naaba Wobgo est devenu un symbole : celui d'un roi qui a préféré perdre son palais plutôt que d'accepter sans combattre la domination étrangère. Son souvenir est entretenu à Ouagadougou, et son histoire est racontée aux jeunes générations comme une leçon de dignité.\n\nLes historiens continuent d'étudier cette période, à travers les archives coloniales et la tradition orale de la cour royale. Ces deux sources ne racontent pas toujours la même histoire, mais elles s'accordent sur l'essentiel : Ouagadougou n'a pas cédé de bon gré.",
+        "mos": "Yʋʋm kob-gĩnd 19 wã saabẽ wã, Waagadougou soolmã ra yaa Mozi soolmã sẽn da tar pãng n yɩɩda. A Moog Naaba, Moog rĩmã, sẽn yaa Mozi tẽngã, n da soog a Naamã. Wakat kãnga, Naaba Wobgo n da boond-a t'a Boukary Koutou.\n\nWakat kãng la Erop pãn-soaadbã ra zabd ne Afirik Wɛtgã. A Frans sodaasã ra kẽnda tẽns a taab pʋsẽ n baood n na n kɩt tɩ soolem nins b sẽn da yã wã tõog n dɩ b naamã. A Moogã Naaba zãgsame n na n kɩt t'a rĩungã zĩnd a nin-buiidã nugẽ.\n\nYʋʋmd 1896 wã, Frans tãb-biis kẽer kẽnga Ouagadougou n deeg tẽngã. A Naaba Wobgo basa a roogã. B wilgame t'a ra pa tõog n le soog a naamã ye.\n\nFrans nebã yãka rĩm a to t'a wa soog a naamã. A Naaba Wobgo me kẽnga zĩ-gõonegẽ, n kẽng Britãnsã soolmẽ wã, la a wa n kell n yɩɩ yembdo, n zãag ne Ouagadougou.\n\nBurkĩna neb wʋsg nifẽ, Naaba Wobgo lebga rĩmã mak-sõngo: rĩmã sẽn yãk yam n na n menes a roogã n yɩɩd t'a sak sãnda naam n pa zab ne-a ye. B tẽegda yẽ yell Ouagadougou, la b togsd-a-la kom-bɩɩsã tɩ b zãms-b tɩ b tall waoogre.\n\nKibis-mitbã ket n vaeesda wakat kãngã, b sẽn tũnugd ne kolone rãmbã sɛb la b sẽn da yet tɩ rĩm-dãmbã tara noorã. Sẽn paase, b sẽn da wa n gomd bũmb ning b sẽn maan to-to wã pa yembr ye, la yaa vẽeneg tɩ a Ouagadougou pa sak n sak n bas ye."
+      },
       "morale": "La dignité d'un peuple ne se négocie pas.",
       "source": "À compléter.",
       "a_verifier": true,
       "immersif": false,
       "image": null,
-      "audio": [
-        {
-          "langue": "Français",
-          "fichier": null
-        }
-      ],
       "scenes": []
     },
     {
@@ -407,22 +465,15 @@
       "lat": 14.03,
       "lng": -0.03,
       "resume": "Pendant une terrible saison sèche, le jeune berger Samba découvre une mare gardée par un génie. Il fait boire son troupeau en respectant les règles du gardien, tandis qu'un berger orgueilleux les méprise et voit l'eau disparaître.",
-      "texte": "Il y a bien longtemps, dans le Sahel, vivait un jeune berger peul nommé Samba. Son grand-père lui avait confié le troupeau de la famille, de belles vaches aux longues cornes en forme de lyre. Avant de le laisser partir, le vieil homme lui avait dit : « Partout où tu mèneras tes bêtes, souviens-toi : l'eau n'appartient jamais tout à fait à celui qui la boit. »\n\nCette année-là, la saison sèche fut terrible. Les mares se vidaient les unes après les autres, et l'herbe devenait poussière. Samba marchait chaque jour plus loin, et ses vaches, assoiffées, meuglaient de fatigue.\n\nUn soir, entre deux dunes, il découvrit une mare encore pleine. L'eau était claire, presque brillante sous la lune. Au moment où ses bêtes allaient s'y précipiter, une voix grave s'éleva de l'eau : « Qui ose approcher de ma mare ? » Un génie apparut, grand comme un baobab, la barbe pleine de nénuphars.\n\nSamba eut très peur, mais il se souvint des paroles de son grand-père. Il salua le génie avec respect et demanda la permission de faire boire son troupeau. « Bois, répondit le génie, mais à trois conditions : que tes bêtes ne piétinent pas mes rives, que tu ne salisses pas mon eau, et que tu en laisses pour ceux qui viendront après toi. »\n\nSamba fit boire ses vaches une à une, en les retenant au bord. Il ne remplit que sa petite calebasse. Le lendemain, un autre berger arriva avec un grand troupeau. Il se moqua des conditions du génie et poussa toutes ses bêtes dans la mare. Les sabots soulevèrent la boue, l'eau devint trouble, et d'un coup la mare disparut sous le sable. Le berger orgueilleux dut repartir, la gorge sèche.\n\nLe génie, lui, se tourna vers Samba : « Toi qui as respecté l'eau, tu la retrouveras. » Et chaque saison sèche, dit-on, Samba retrouva la mare pleine au même endroit. Devenu vieux, il répétait à ses petits-enfants les mots de son grand-père, en ajoutant les siens : « L'eau est une invitée. Si tu la maltraites, elle s'en va. »",
+      "textes": {
+        "fr": "Il y a bien longtemps, dans le Sahel, vivait un jeune berger peul nommé Samba. Son grand-père lui avait confié le troupeau de la famille, de belles vaches aux longues cornes en forme de lyre. Avant de le laisser partir, le vieil homme lui avait dit : « Partout où tu mèneras tes bêtes, souviens-toi : l'eau n'appartient jamais tout à fait à celui qui la boit. »\n\nCette année-là, la saison sèche fut terrible. Les mares se vidaient les unes après les autres, et l'herbe devenait poussière. Samba marchait chaque jour plus loin, et ses vaches, assoiffées, meuglaient de fatigue.\n\nUn soir, entre deux dunes, il découvrit une mare encore pleine. L'eau était claire, presque brillante sous la lune. Au moment où ses bêtes allaient s'y précipiter, une voix grave s'éleva de l'eau : « Qui ose approcher de ma mare ? » Un génie apparut, grand comme un baobab, la barbe pleine de nénuphars.\n\nSamba eut très peur, mais il se souvint des paroles de son grand-père. Il salua le génie avec respect et demanda la permission de faire boire son troupeau. « Bois, répondit le génie, mais à trois conditions : que tes bêtes ne piétinent pas mes rives, que tu ne salisses pas mon eau, et que tu en laisses pour ceux qui viendront après toi. »\n\nSamba fit boire ses vaches une à une, en les retenant au bord. Il ne remplit que sa petite calebasse. Le lendemain, un autre berger arriva avec un grand troupeau. Il se moqua des conditions du génie et poussa toutes ses bêtes dans la mare. Les sabots soulevèrent la boue, l'eau devint trouble, et d'un coup la mare disparut sous le sable. Le berger orgueilleux dut repartir, la gorge sèche.\n\nLe génie, lui, se tourna vers Samba : « Toi qui as respecté l'eau, tu la retrouveras. » Et chaque saison sèche, dit-on, Samba retrouva la mare pleine au même endroit. Devenu vieux, il répétait à ses petits-enfants les mots de son grand-père, en ajoutant les siens : « L'eau est une invitée. Si tu la maltraites, elle s'en va. »",
+        "ful": "Wakkati ɗuɗɗi, nder Sahel, go'o debbo biyeteeɗo Samba jooɗii. Baabiraawo maako hokki mo kuuje maako, ngam ɗe ɗe'e ko'e mum. Kaŋko o acci mo, sey o wi'i mo: \"To a wurtini dabbaaji maaɗa fuu, a yejjita, ndiyam ɗam naa' ɗum nyaamduɗo\".\n\nHaa saa'i maajum sa'aare ɓillaare mawnini. Ɗuum waɗi ndiyam ɓaawo ndiyam ɓadake, leɗɗe boo laati cembiɗam. Ngam maajum Samba ɓeydi ɓeydaago nder nyalawma fuu, ngam baali maako ɗon nyaama, ɓe ɗon nyaami.\n\nNder jemma go'oto, o yi'i diga nder dunes ɗiɗo, haa o heɓii daande ɗon heewi. Ɗuum ndiyam ɗon laaɓta, ɓadake ɓadugo nder lewru. Nde dabbaaji mum'en ɗon njahi nder ndiyam, wolde mawnde ƴetti diga ndiyam, wi'i: \"Moye ɓadataa ɓaduki debbo am?\" Sey o yi'i gooduɗo baawɗe, o mawnini bana baobab, o heewi ɓerɗe njamndi.\n\nSamba huli masin, ammaa o siftori bolle mawɗo maako. O hokki yamiroore maako booɗɗum, o toroo ngam o hokkamo kuuje maako ndiyam. Ammaa o wi'i, \"Ndan, ammaa ko waɗi ko tati: to dabbaaji mon poyi maayo am, to a halki ndiyam am, ammaa a acca ɗum ngam ɓaawo maaɗa\".\n\nSamba hokki baali maako ndiyam go'oto go'to, o hokkiɓe ndiyam dow maayo. O ɗon heewa tan ko'e maako. Nde subaka, seyjo go'oto wari e baali mawɗi. O ɗon moƴƴina haala kaalankooɓe ɓe'e, o wurtina dabbaaji maako fuu nder le'i. Ɗon e ɗon ɓooyaaki, ndiyam ɓeydi ɓeydaaki. Sey mawɗo mawɗo ɓe'e wari, ɓerɗe maako ɗon maaya.\n\nO wi'i Samba: \"An, a ɗon mawnina ndiyam, a heɓayɗum\". Ɓe mbi'i: \"To sahaa fuɗnaare fuu, Samba heɓii saŋgeere heewi nder nokkuure go'o\". Nde o mawni, o wi'i ɓikkoy maako bolle mawɗo maako, o ɓeydi bolle maako: \"Ndam woni nyamndu\". To a torra mo, o dilli."
+      },
       "morale": "L'eau est un bien précieux : qui la respecte la retrouve, qui la gaspille la perd.",
       "source": "Conte rédigé dans l'esprit des contes peuls ; à remplacer par une version recueillie auprès d'un locuteur fulfulde",
       "a_verifier": true,
       "immersif": false,
       "image": null,
-      "audio": [
-        {
-          "langue": "Français",
-          "fichier": null
-        },
-        {
-          "langue": "Fulfulde",
-          "fichier": null
-        }
-      ],
       "scenes": []
     },
     {
@@ -435,18 +486,15 @@
       "lat": 10.67,
       "lng": -5.17,
       "resume": "Sculptés par le vent et la pluie, les pics de grès de Sindou sont un lieu sacré. Les anciens y voient bien plus que des rochers : la trace d'histoires que l'on raconte à voix basse.",
-      "texte": "Dans le sud-ouest du Burkina Faso, non loin de Banfora, la terre se soulève soudain en une longue crête de grès. Ce sont les pics de Sindou : des aiguilles, des tours et des champignons de pierre, sculptés au fil du temps par la pluie et le vent.\n\nLes géologues expliquent que ces formes étranges sont le résultat de l'érosion. Mais quand la nuit tombe sur Sindou, les anciens racontent une autre histoire.\n\nOn raconte qu'autrefois, ces rochers n'étaient pas de simples rochers. Des génies y avaient leur demeure, et chaque pic gardait un secret. Les hommes qui s'installèrent au pied de la falaise auraient conclu une alliance avec ces gardiens invisibles : ils pourraient cultiver la plaine et vivre en paix, à condition de respecter les lieux qui leur étaient réservés.\n\nC'est pourquoi, dit-on, certains endroits des pics ne sont pas ouverts à tous. On n'y monte pas n'importe quand, on n'y crie pas, on n'y emporte rien. Ceux qui en ont la charge y accomplissent des rites, pour remercier les esprits et demander de bonnes pluies.\n\nPour les conteurs, chaque silhouette de pierre rappelle quelque chose : un guerrier figé, une femme qui attend, un animal endormi. À chacun de les reconnaître, en écoutant les anciens. Les enfants qui grandissent au pied des pics apprennent ainsi à les regarder autrement que comme de simples pierres.\n\nAujourd'hui, des voyageurs viennent de loin pour admirer ce paysage. Les guides leur rappellent qu'ils marchent dans un lieu vivant, où la nature et la mémoire des hommes ne font qu'un.",
+      "textes": {
+        "fr": "Dans le sud-ouest du Burkina Faso, non loin de Banfora, la terre se soulève soudain en une longue crête de grès. Ce sont les pics de Sindou : des aiguilles, des tours et des champignons de pierre, sculptés au fil du temps par la pluie et le vent.\n\nLes géologues expliquent que ces formes étranges sont le résultat de l'érosion. Mais quand la nuit tombe sur Sindou, les anciens racontent une autre histoire.\n\nOn raconte qu'autrefois, ces rochers n'étaient pas de simples rochers. Des génies y avaient leur demeure, et chaque pic gardait un secret. Les hommes qui s'installèrent au pied de la falaise auraient conclu une alliance avec ces gardiens invisibles : ils pourraient cultiver la plaine et vivre en paix, à condition de respecter les lieux qui leur étaient réservés.\n\nC'est pourquoi, dit-on, certains endroits des pics ne sont pas ouverts à tous. On n'y monte pas n'importe quand, on n'y crie pas, on n'y emporte rien. Ceux qui en ont la charge y accomplissent des rites, pour remercier les esprits et demander de bonnes pluies.\n\nPour les conteurs, chaque silhouette de pierre rappelle quelque chose : un guerrier figé, une femme qui attend, un animal endormi. À chacun de les reconnaître, en écoutant les anciens. Les enfants qui grandissent au pied des pics apprennent ainsi à les regarder autrement que comme de simples pierres.\n\nAujourd'hui, des voyageurs viennent de loin pour admirer ce paysage. Les guides leur rappellent qu'ils marchent dans un lieu vivant, où la nature et la mémoire des hommes ne font qu'un.",
+        "dyu": "Burkina Faso worodugu ni tileben fan fɛ, Banfora gɛrɛfɛ, dugukolo be yɛlɛla ka kɛ cɛncɛn kulujan ye. O yɔrɔ nunu ye Sindou kuluw ye: kɔɔw, sankasow ani kongosogow. Sanji ni fɔɲɔ y'u dan tuma o tuma.\n\nDugukolo lɔnnikɛlaw y'a fɔ k'o cogo kabakomanw sababu ye kongosogow ɲagaminin ye. Nka, su donna Sindou dugu kan tuma min na, cɛkɔrɔbaw ye koo wɛrɛ lakali.\n\nMɔgɔw b'a fɔ ko fɔlɔfɔlɔ, o faraw tun tɛ farakuru dama ye. Lɔnnikɛbaga dɔw tun siginin bɛ o yɔrɔ ra, o bɛɛ tun bɛ dogo. Mɔgɔ minw tun siginin be faraw jukɔrɔ, olu tun ka kan ka bɛn ni o kɔrɔsibagaw ye. O tun b'a yira ko u tun be se ka kɛnɛgbɛ sɛnɛ ani ka to hɛɛrɛ la.\n\nO kama, u b'a fɔ ko yɔrɔ dɔw la, mɔgɔ si tɛ se ka yɛlɛ yen. An t'a fɛ ka yɛlɛ yen tuma o tuma, an t'an kaan kɔrɔta, an tɛ taga n'an ka fɛɛn si ye. Mɔgɔ minw b'a baara kɛ, olu b'o kɛ ka barika la Ala ye, k'a ɲini a fɛ ko sanji ka ben.\n\nLɔnnikɛla dɔw b'a miiri ko kabakuru kelen kelen bɛɛ be mɔgɔ hakili jigi koo dɔ la. O ye kɛlɛkɛcɛ dɔ ye, muso dɔ be kɔnɔni kɛra, kongosogo dɔ be sinɔgɔra. U bɛɛ k'o lɔn, k'u seko bɛɛ kɛ ka mɛnni kɛ diinan mɔgɔkɔrɔw fɛ. N'i ye deen ye kuluw kan, i be se k'a faamu k'o kabakuruw tɛ i n'a fɔ kabakuru dama ye.\n\nSisan, mɔgɔ caaman be bɔ yɔrɔjan ka na o yɔrɔ filɛ. O gafew b'u hakili jigi ko u be tagama yɔrɔ ɲanaman dɔ la. O yɔrɔ la, adamadenw ka koow cogoya n'u ka miiriyaw ye kelen ye."
+      },
       "morale": "Certains lieux gardent la mémoire de ceux qui les ont habités.",
       "source": "À compléter.",
       "a_verifier": true,
       "immersif": false,
       "image": null,
-      "audio": [
-        {
-          "langue": "Français",
-          "fichier": null
-        }
-      ],
       "scenes": []
     },
     {
@@ -459,18 +507,14 @@
       "lat": 10.3,
       "lng": -3.57,
       "resume": "Hautes murailles de pierre en pays lobi, les ruines de Loropéni sont inscrites au patrimoine mondial de l'UNESCO. Leurs bâtisseurs et leur rôle exact, peut-être lié au commerce de l'or, restent discutés.",
-      "texte": "Dans le sud-ouest du Burkina Faso, en pays lobi, de hauts murs de pierre se dressent au milieu de la végétation, près de la ville de Loropéni. Épais et construits en pierre de latérite, ils entourent un vaste espace aujourd'hui vide. Ce sont les ruines de Loropéni.\n\nCes ruines sont célèbres : elles ont été le premier site du Burkina Faso inscrit sur la liste du patrimoine mondial de l'UNESCO. Elles font partie d'un ensemble de fortifications de pierre dispersées dans la région, dont elles sont les mieux conservées.\n\nMais qui les a construites, et pourquoi ? C'est là que commence le mystère. Selon certains récits, les Lobi, qui vivent aujourd'hui dans la région, trouvèrent ces murs déjà debout à l'arrivée de leurs ancêtres. Les historiens et les archéologues avancent plusieurs hypothèses, sans avoir encore tout tranché.\n\nUne piste revient souvent : la région était riche en or, et ces enceintes auraient pu être liées au commerce de l'or qui reliait autrefois l'intérieur de l'Afrique de l'Ouest aux grandes routes marchandes. Les murs auraient pu protéger des marchandises, des personnes, ou affirmer le pouvoir d'un royaume. Les chercheurs débattent encore de l'âge exact du site et de l'identité de ses bâtisseurs.\n\nAutour des ruines, comme autour de beaucoup de lieux anciens, circulent aussi des récits que l'on se transmet à voix basse, sur ceux qui vivaient derrière ces murs et sur ce qu'ils y gardaient.\n\nLes pierres de Loropéni se taisent. Mais elles posent des questions à chaque visiteur, et rappellent que l'histoire de l'Afrique de l'Ouest est bien plus ancienne et plus riche qu'on ne le croit parfois.",
+      "textes": {
+        "fr": "Dans le sud-ouest du Burkina Faso, en pays lobi, de hauts murs de pierre se dressent au milieu de la végétation, près de la ville de Loropéni. Épais et construits en pierre de latérite, ils entourent un vaste espace aujourd'hui vide. Ce sont les ruines de Loropéni.\n\nCes ruines sont célèbres : elles ont été le premier site du Burkina Faso inscrit sur la liste du patrimoine mondial de l'UNESCO. Elles font partie d'un ensemble de fortifications de pierre dispersées dans la région, dont elles sont les mieux conservées.\n\nMais qui les a construites, et pourquoi ? C'est là que commence le mystère. Selon certains récits, les Lobi, qui vivent aujourd'hui dans la région, trouvèrent ces murs déjà debout à l'arrivée de leurs ancêtres. Les historiens et les archéologues avancent plusieurs hypothèses, sans avoir encore tout tranché.\n\nUne piste revient souvent : la région était riche en or, et ces enceintes auraient pu être liées au commerce de l'or qui reliait autrefois l'intérieur de l'Afrique de l'Ouest aux grandes routes marchandes. Les murs auraient pu protéger des marchandises, des personnes, ou affirmer le pouvoir d'un royaume. Les chercheurs débattent encore de l'âge exact du site et de l'identité de ses bâtisseurs.\n\nAutour des ruines, comme autour de beaucoup de lieux anciens, circulent aussi des récits que l'on se transmet à voix basse, sur ceux qui vivaient derrière ces murs et sur ce qu'ils y gardaient.\n\nLes pierres de Loropéni se taisent. Mais elles posent des questions à chaque visiteur, et rappellent que l'histoire de l'Afrique de l'Ouest est bien plus ancienne et plus riche qu'on ne le croit parfois."
+      },
       "morale": "Les pierres se taisent, mais elles invitent à chercher.",
       "source": "À compléter (fiche UNESCO).",
       "a_verifier": true,
       "immersif": false,
       "image": null,
-      "audio": [
-        {
-          "langue": "Français",
-          "fichier": null
-        }
-      ],
       "scenes": []
     }
   ]
