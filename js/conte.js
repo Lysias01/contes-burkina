@@ -185,6 +185,12 @@ function brancherParallaxe() {
   visuel.addEventListener("pointerleave", () => regler(0, 0));
 }
 
+/* Les adresses citées dans la source deviennent des liens (le texte est d'abord échappé) */
+function sourceAvecLiens(texte) {
+  return echapper(texte).replace(/https?:\/\/[^\s<]+[^\s<.,;:]/g,
+    (adresse) => `<a href="${adresse}" target="_blank" rel="noopener">${adresse}</a>`);
+}
+
 /* ---------- Mode immersif : scène par scène ---------- */
 function htmlImmersif(conte, suivant) {
   const points = scenes.map((s, i) =>
@@ -228,7 +234,7 @@ function htmlImmersif(conte, suivant) {
         <div id="quiz-corps"></div>
         <div class="quiz-retour" id="quiz-retour" aria-live="polite"></div>
       </section>` : ""}
-      <p class="source">Source : ${echapper(conte.source)}</p>
+      <p class="source">Source : ${sourceAvecLiens(conte.source)}</p>
     </section>`;
 }
 
@@ -384,6 +390,14 @@ function brancherBalayage(conte) {
       ? { x: e.touches[0].clientX, y: e.touches[0].clientY }
       : null;
   }, { passive: true });
+  // Geste nettement horizontal : c'est un balayage de scène, pas un défilement. On le
+  // garde pour nous, sinon le navigateur lance un « élan » et perd le toucher suivant.
+  scene.addEventListener("touchmove", (e) => {
+    if (!depart || e.touches.length !== 1 || !e.cancelable) return;
+    const dx = e.touches[0].clientX - depart.x;
+    const dy = e.touches[0].clientY - depart.y;
+    if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy) * 1.5) e.preventDefault();
+  }, { passive: false });
   scene.addEventListener("touchend", (e) => {
     if (!depart) return;
     const dx = e.changedTouches[0].clientX - depart.x;
@@ -442,6 +456,17 @@ function afficherScene(i, conte, anime) {
     bloc.classList.remove("sortie");
     bloc.classList.remove("entree");
     requestAnimationFrame(() => requestAnimationFrame(() => bloc.classList.add("entree")));
+    // Sur téléphone, l'illustration est au-dessus du texte : après « Scène suivante »,
+    // on remonte au début de la nouvelle scène au lieu de laisser le visiteur sur les boutons.
+    // Saut instantané : un toucher pendant un défilement animé serait perdu.
+    const haut = bloc.getBoundingClientRect().top;
+    const entete = document.getElementById("entete").offsetHeight;
+    if (anime && haut < entete) {
+      const racine = document.documentElement;
+      racine.style.scrollBehavior = "auto";
+      window.scrollBy(0, haut - entete - 8);
+      racine.style.scrollBehavior = "";
+    }
   };
   if (!anime) return remplir();
   bloc.classList.add("sortie");
@@ -490,7 +515,7 @@ function htmlFiche(conte, suivant) {
         <p>${echapper(conte.morale)}</p>
         <div class="boutons"><a class="bouton" href="conte.html?id=${suivant.id}">Récit suivant : ${echapper(suivant.titre)}</a></div>
       </div>
-      <p class="source">Source : ${echapper(conte.source)}</p>
+      <p class="source">Source : ${sourceAvecLiens(conte.source)}</p>
     </section>`;
 }
 

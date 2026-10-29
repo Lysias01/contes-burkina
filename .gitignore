@@ -1,0 +1,13 @@
+# Captures d'écran et rapport de travail : restent sur le poste, pas dans le dépôt
+shots/
+rapport/
+
+# Fichiers compilés de Python
+__pycache__/
+*.pyc
+
+# Réglages locaux de VS Code (port de Live Server)
+.vscode/
+
+# Liste de travail des faits à vérifier
+verifications.md

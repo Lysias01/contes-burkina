@@ -44,8 +44,8 @@
       "lng": -0.3659,
       "resume": "Fille d'un roi de Gambaga, Yennenga est la meilleure cavalière du royaume. Privée de mariage par son père, elle s'enfuit sur son étalon et rencontre le chasseur Rialé. De leur union naît Ouédraogo, ancêtre du peuple moaga.",
       "morale": "Le courage de suivre sa propre route peut donner naissance à tout un peuple.",
-      "source": "Tradition orale mossi ; à compléter avec une référence écrite.",
-      "a_verifier": true,
+      "source": "Version rédigée par le groupe d'après la tradition orale mossi. Faits vérifiés sur : Wikipédia, « Yennenga », https://fr.wikipedia.org/wiki/Yennenga ; Wikipédia, « Mogho Naaba », https://fr.wikipedia.org/wiki/Mogho_Naaba (pages consultées le 29 octobre 2026).",
+      "a_verifier": false,
       "immersif": true,
       "image": "assets/images/yennenga.svg",
       "scenes": [
@@ -157,8 +157,8 @@
       "lng": -1.52709,
       "resume": "Pendant une saison de famine, le lièvre et l'hyène cultivent un champ ensemble. L'hyène, gourmande, vide en cachette le grenier commun. Le lièvre, petit mais rusé, la laisse se prendre au piège de sa propre gloutonnerie.",
       "morale": "Qui veut tout garder pour lui finit par tout perdre : la patience et la ruse l'emportent sur l'avidité.",
-      "source": "Version rédigée d'après la tradition orale ; à compléter avec une référence écrite.",
-      "a_verifier": true,
+      "source": "Version rédigée par le groupe d'après la tradition orale (conte animalier, sans fait historique).",
+      "a_verifier": false,
       "immersif": true,
       "image": "assets/images/lievre-hyene.svg",
       "scenes": [
@@ -266,12 +266,12 @@
       "peuple": "Bobo",
       "langue": "Dioula",
       "ville": "Bobo-Dioulasso",
-      "lat": 11.12,
-      "lng": -4.24,
+      "lat": 11.14832,
+      "lng": -4.28666,
       "resume": "Non loin de Bobo-Dioulasso, au fond d'une gorge du Dafra, une mare abrite de grands silures que personne n'ose pêcher. On raconte qu'ils sont liés aux ancêtres, et l'on vient encore leur apporter des offrandes pour demander leur protection.",
       "morale": "Respecter la nature, c'est respecter ceux qui nous ont précédés.",
-      "source": "Version rédigée d'après la tradition orale ; à compléter avec une référence écrite.",
-      "a_verifier": true,
+      "source": "Version rédigée par le groupe d'après la tradition orale. Faits vérifiés sur : Katja Werthmann, « Offerings to sacred fish: a popular sacrificial site in Burkina Faso », conférence EASA, Ljubljana, 2008, https://nomadit.co.uk/conference/easa08/paper/2795 ; Jonathan David Thompson, « Burkina Faso: Dafra's Sacred Fish », GoNOMAD, https://www.gonomad.com/?p=3304 ; Wikipédia (anglais), « Bobo-Dioulasso », https://en.wikipedia.org/wiki/Bobo-Dioulasso (pages consultées le 29 octobre 2026). Le récit d'origine de la scène 3 suit la tradition orale et n'a pas été vérifié sur une source écrite.",
+      "a_verifier": false,
       "immersif": true,
       "image": "assets/images/dafra.svg",
       "scenes": [
@@ -383,10 +383,10 @@
       "lng": 0.35921,
       "resume": "La tradition du Gulmu raconte que Diaba Lompo, fondateur du royaume gourmantché, serait descendu du ciel pour apporter l'ordre et la royauté aux hommes de l'Est.",
       "textes": {
-        "fr": "Écoutez, enfants du Gulmu, l'histoire que les anciens racontent à l'est du pays, du côté de Fada N'Gourma. Elle commence en un temps où les hommes vivaient sans roi : chaque famille suivait sa propre loi, et les disputes ne finissaient jamais.\n\nOn raconte qu'un jour, le ciel s'ouvrit au-dessus de la savane. Un homme en descendit, avec ses compagnons et ses biens. Il s'appelait Diaba Lompo. Les conteurs ne s'accordent pas sur la manière dont il descendit : chacun a sa version, et c'est ainsi que vivent les légendes.\n\nLes gens du pays eurent d'abord peur de cet étranger venu d'en haut. Mais Diaba Lompo ne venait pas faire la guerre. On raconte qu'il savait écouter, juger avec sagesse et réconcilier ceux qui se querellaient. Peu à peu, les familles vinrent lui soumettre leurs différends, et sa parole devint loi.\n\nOn dit qu'il organisa le pays : il plaça des chefs dans les villages, fixa les règles et les coutumes, et confia à ses fils le soin de gouverner les différentes provinces. Ainsi serait né le royaume du Gulmu, le pays des Gourmantché.\n\nSelon la tradition, les rois du Gulmu descendent de Diaba Lompo, et leur siège se trouve à Fada N'Gourma. Quand on raconte son histoire, on ne parle pas seulement d'un homme tombé du ciel : on parle de ce qui unit un peuple, une origine commune et un ordre accepté par tous.\n\nEt si vous demandez aux anciens si tout cela est bien vrai, ils sourient : « Le ciel est haut, mais l'histoire, elle, est bien vivante parmi nous. »"
+        "fr": "Écoutez, enfants du Gulmu, l'histoire que les anciens racontent à l'est du pays, du côté de Fada N'Gourma. Elle commence en un temps où les hommes vivaient sans roi : chaque famille suivait sa propre loi, et les disputes ne finissaient jamais.\n\nOn raconte qu'un jour, le ciel s'ouvrit au-dessus de la savane. Un homme en descendit, avec ses compagnons et ses biens. Il s'appelait Diaba Lompo. Les conteurs ne s'accordent pas sur la manière dont il descendit : chacun a sa version, et c'est ainsi que vivent les légendes. Chez les Mossi, une autre tradition fait de lui un fils de la princesse Yennenga et du chasseur Rialé.\n\nLes gens du pays eurent d'abord peur de cet étranger venu d'en haut. Mais Diaba Lompo ne venait pas faire la guerre. On raconte qu'il savait écouter, juger avec sagesse et réconcilier ceux qui se querellaient. Peu à peu, les familles vinrent lui soumettre leurs différends, et sa parole devint loi.\n\nOn dit qu'il organisa le pays : il plaça des chefs dans les villages, fixa les règles et les coutumes, et confia à ses fils le soin de gouverner les différentes provinces. Ainsi serait né le royaume du Gulmu, le pays des Gourmantché.\n\nSelon la tradition, les rois du Gulmu descendent de Diaba Lompo, et leur siège se trouve à Fada N'Gourma. Quand on raconte son histoire, on ne parle pas seulement d'un homme tombé du ciel : on parle de ce qui unit un peuple, une origine commune et un ordre accepté par tous.\n\nEt si vous demandez aux anciens si tout cela est bien vrai, ils sourient : « Le ciel est haut, mais l'histoire, elle, est bien vivante parmi nous. »"
       },
       "morale": "Un peuple se construit autour d'une histoire commune.",
-      "source": "À compléter.",
+      "source": "Wikipédia, « Diaba Lompo », https://fr.wikipedia.org/wiki/Diaba_Lompo ; Wikipédia, « Fada N'Gourma », https://fr.wikipedia.org/wiki/Fada_N%27Gourma ; Wikipédia, « Yennenga », https://fr.wikipedia.org/wiki/Yennenga (pages consultées le 29 octobre 2026). La descente du ciel suit la tradition orale du Gulmu et n'a pas pu être vérifiée sur une source écrite.",
       "a_verifier": true,
       "immersif": false,
       "image": "assets/images/diaba-lompo.svg",
@@ -407,7 +407,7 @@
         "mos": "Yʋʋm wʋsg sẽn looge, sẽn deng t'a Zeova nin-buiidã kẽed tẽn-kãnga, zĩ-yũudd a ye n kẽng Waagadougou rɩtgẽ wã. A ra baood-a lame daar fãa, t'a yaool n bas-a.\n\nZĩ-kãnga ra yõogda tẽngã. A sẽn da gãneg a gãagã ra pa tarẽ ye, la a nao wã ra pa le tõe n gãneg-a ye. B yeelame t'a gãe tɩɩgã tẽngre, a sẽn da tẽed tɩ a pa na n leb n yã a tẽn-gãongã ye.\n\nRẽ n so t'a bõn-buudã yii we-kãense. Kẽerã sẽn da pa tar pãng n na n zoe wã kɩtame t'a sul a ninã. La rũngã pa kʋ-a ye. A Zezi kẽnga taoor bilfu, n yals n wẽnemd b poorẽ n yeel-a t'a tũ bãmba. Kẽerã yikame n tũ-a n ta ko-kãseng sẽn be koom-koɛɛgẽ, tɩ b solg-a-la tɩɩsã poorẽ. A rɩka bõn-yũudlã, n paam sũ-noogo, la a lebg n tara pãnga.\n\nLa raoã leb n waa a zak rãmb nengẽ n togs-b bũmb nins fãa a sẽn maanã. B yeelame tɩ daarã, b maana kaool n yeel tɩ Sebõ nebã ra na n maan bõn-naands ye.\n\nHal tɩ ta rũndã-rũndã, b ket n getame t'a Zeova waoogda a bu-zẽmsã. Tẽngã neb pa yɛɛsd-b ye, la b yetame tɩ b sã n wa ki, b waoogd-a-la wa b sẽn waoogd ned to-to. Neb n wat n na n ges-b-la neere, tɩ tẽn-kãng neb n wilgd-b b sẽn maand to-to wã.\n\nKãsem-dãmbã sã n togsd kom-bɩɩsã yel-bũndã, b baasda ne manesem a ye. B pa yĩmda bark ning b sẽn maan-bã ye."
       },
       "morale": "La reconnaissance crée des liens qui traversent les générations.",
-      "source": "À compléter.",
+      "source": "Wikipédia, « Sabou (Sabou) », https://fr.wikipedia.org/wiki/Sabou_%28Sabou%29 ; Wikipédia, « Tourisme au Burkina Faso », https://fr.wikipedia.org/wiki/Tourisme_au_Burkina_Faso (pages consultées le 29 octobre 2026). La légende du chasseur guidé par un crocodile suit la tradition orale et n'a pas pu être vérifiée sur une source écrite.",
       "a_verifier": true,
       "immersif": false,
       "image": "assets/images/crocodiles-sabou.svg",
@@ -428,8 +428,8 @@
         "dyu": "Muso dɔw tɔgɔw be tɛmɛ wagati bɛɛ kan. Bobo Dioulasso dugu la, Guimbi Ouattara ka koo bele be to ka kɛ ten. Walisa k'a ka maana faamu, an ka kan ka kɔsegi saan kɛmɛkulu 19nan na. O wagati la, dugu tɔgɔ wɛrɛ tun be yen: Sya.\n\nGuimbi bɔra Ouattara, Dioula mara la. A fɔra yen ko u faaw bɔra Kong mara la, Côte d'Ivoire jamana na. O yɔrɔ la, u tun be lɔyɔrɔba sɔrɔ politikiko ni jagokow la. Mɔgɔw tun b'a fɔ ko Guimbi tun ye hakilitigi ye, ko a ye mɔgɔbaba ye ani ko a tun be sɔn ka mɔgɔw sɔn.\n\nO wagati tun ka gwɛlɛ. O kama, u tun ka ɲi k'u yɛrɛ tanga kɛlɛw ma ani ka jagokow kɛ walisa ka see sɔrɔ u juguw kan. A fɔra ko Guimbi Ouattara y'a jɔyɔrɔba sɔrɔ ka dugu latanga: a tun be se ka mɔgɔ dɔw ladon, ka ladili di kuntigiw ma ani k'a yɛrɛ tanga mɔgɔ wɛrɛw ma minw tun be Sya bagabaga.\n\nSaan 1800 wagati laban na, Erɔpu minw tagara bɔ dugu dɔw la, olu fana y'a lakali ko muso tɔgɔba dɔ tun be yen. A tun be lonanw ladon ka ɲɛ ani a tun b'a seko bɛɛ kɛ k'o dugu ka koow latigɛ. Lɔnnikɛlaw bele be sɔsɔli kɛra a ka setigiya koo la: yala a tun ye masamuso ye tiɲɛn na wa, wala a tun be bonya la mɔgɔ bɛɛ kan wa? Tuma dɔw la, mɔgɔ tɛ se k'a latigɛ min ka ɲi ka kɛ.\n\nNka, an lanin b'a la ko a hakili be to a la. Bobo-Dioulasso dugu la, a tɔgɔ b'a yira ko a jaa ka gwɛlɛ, a ye lonanw ladon ani a tun ye hakilitigi ye.\n\nA ka maana b'an hakili jigi koo nɔgɔman dɔ la: wagati gwɛlɛw na, muso dɔ sera k'a ka lɔyɔrɔ sigi mɔgɔbabaw cɛma ani ka a ka denbaya tanga."
       },
       "morale": "Le courage n'a pas de genre.",
-      "source": "À compléter.",
-      "a_verifier": true,
+      "source": "Wikipédia, « Guimbi Ouattara », https://fr.wikipedia.org/wiki/Guimbi_Ouattara ; Wikipédia, « Bobo-Dioulasso », https://fr.wikipedia.org/wiki/Bobo-Dioulasso ; Wikipédia (anglais), « Bobo-Dioulasso », https://en.wikipedia.org/wiki/Bobo-Dioulasso (pages consultées le 29 octobre 2026).",
+      "a_verifier": false,
       "immersif": false,
       "image": "assets/images/guimbi-ouattara.svg",
       "scenes": []
@@ -449,8 +449,8 @@
         "mos": "Yʋʋm kob-gĩnd 19 wã saabẽ wã, Waagadougou soolmã ra yaa Mozi soolmã sẽn da tar pãng n yɩɩda. A Moog Naaba, Moog rĩmã, sẽn yaa Mozi tẽngã, n da soog a Naamã. Wakat kãnga, Naaba Wobgo n da boond-a t'a Boukary Koutou.\n\nWakat kãng la Erop pãn-soaadbã ra zabd ne Afirik Wɛtgã. A Frans sodaasã ra kẽnda tẽns a taab pʋsẽ n baood n na n kɩt tɩ soolem nins b sẽn da yã wã tõog n dɩ b naamã. A Moogã Naaba zãgsame n na n kɩt t'a rĩungã zĩnd a nin-buiidã nugẽ.\n\nYʋʋmd 1896 wã, Frans tãb-biis kẽer kẽnga Ouagadougou n deeg tẽngã. A Naaba Wobgo basa a roogã. B wilgame t'a ra pa tõog n le soog a naamã ye.\n\nFrans nebã yãka rĩm a to t'a wa soog a naamã. A Naaba Wobgo me kẽnga zĩ-gõonegẽ, n kẽng Britãnsã soolmẽ wã, la a wa n kell n yɩɩ yembdo, n zãag ne Ouagadougou.\n\nBurkĩna neb wʋsg nifẽ, Naaba Wobgo lebga rĩmã mak-sõngo: rĩmã sẽn yãk yam n na n menes a roogã n yɩɩd t'a sak sãnda naam n pa zab ne-a ye. B tẽegda yẽ yell Ouagadougou, la b togsd-a-la kom-bɩɩsã tɩ b zãms-b tɩ b tall waoogre.\n\nKibis-mitbã ket n vaeesda wakat kãngã, b sẽn tũnugd ne kolone rãmbã sɛb la b sẽn da yet tɩ rĩm-dãmbã tara noorã. Sẽn paase, b sẽn da wa n gomd bũmb ning b sẽn maan to-to wã pa yembr ye, la yaa vẽeneg tɩ a Ouagadougou pa sak n sak n bas ye."
       },
       "morale": "La dignité d'un peuple ne se négocie pas.",
-      "source": "À compléter.",
-      "a_verifier": true,
+      "source": "Wikipédia, « Boukary Koutou », https://fr.wikipedia.org/wiki/Boukary_Koutou ; Wikipédia (anglais), « Wobgho », https://en.wikipedia.org/wiki/Wobgho ; Wikipédia, « Mogho Naaba », https://fr.wikipedia.org/wiki/Mogho_Naaba (pages consultées le 29 octobre 2026).",
+      "a_verifier": false,
       "immersif": false,
       "image": "assets/images/naaba-wobgo.svg",
       "scenes": []
@@ -470,8 +470,8 @@
         "ful": "Wakkati ɗuɗɗi, nder Sahel, go'o debbo biyeteeɗo Samba jooɗii. Baabiraawo maako hokki mo kuuje maako, ngam ɗe ɗe'e ko'e mum. Kaŋko o acci mo, sey o wi'i mo: \"To a wurtini dabbaaji maaɗa fuu, a yejjita, ndiyam ɗam naa' ɗum nyaamduɗo\".\n\nHaa saa'i maajum sa'aare ɓillaare mawnini. Ɗuum waɗi ndiyam ɓaawo ndiyam ɓadake, leɗɗe boo laati cembiɗam. Ngam maajum Samba ɓeydi ɓeydaago nder nyalawma fuu, ngam baali maako ɗon nyaama, ɓe ɗon nyaami.\n\nNder jemma go'oto, o yi'i diga nder dunes ɗiɗo, haa o heɓii daande ɗon heewi. Ɗuum ndiyam ɗon laaɓta, ɓadake ɓadugo nder lewru. Nde dabbaaji mum'en ɗon njahi nder ndiyam, wolde mawnde ƴetti diga ndiyam, wi'i: \"Moye ɓadataa ɓaduki debbo am?\" Sey o yi'i gooduɗo baawɗe, o mawnini bana baobab, o heewi ɓerɗe njamndi.\n\nSamba huli masin, ammaa o siftori bolle mawɗo maako. O hokki yamiroore maako booɗɗum, o toroo ngam o hokkamo kuuje maako ndiyam. Ammaa o wi'i, \"Ndan, ammaa ko waɗi ko tati: to dabbaaji mon poyi maayo am, to a halki ndiyam am, ammaa a acca ɗum ngam ɓaawo maaɗa\".\n\nSamba hokki baali maako ndiyam go'oto go'to, o hokkiɓe ndiyam dow maayo. O ɗon heewa tan ko'e maako. Nde subaka, seyjo go'oto wari e baali mawɗi. O ɗon moƴƴina haala kaalankooɓe ɓe'e, o wurtina dabbaaji maako fuu nder le'i. Ɗon e ɗon ɓooyaaki, ndiyam ɓeydi ɓeydaaki. Sey mawɗo mawɗo ɓe'e wari, ɓerɗe maako ɗon maaya.\n\nO wi'i Samba: \"An, a ɗon mawnina ndiyam, a heɓayɗum\". Ɓe mbi'i: \"To sahaa fuɗnaare fuu, Samba heɓii saŋgeere heewi nder nokkuure go'o\". Nde o mawni, o wi'i ɓikkoy maako bolle mawɗo maako, o ɓeydi bolle maako: \"Ndam woni nyamndu\". To a torra mo, o dilli."
       },
       "morale": "L'eau est un bien précieux : qui la respecte la retrouve, qui la gaspille la perd.",
-      "source": "Conte rédigé dans l'esprit des contes peuls ; à remplacer par une version recueillie auprès d'un locuteur fulfulde",
-      "a_verifier": true,
+      "source": "Conte original rédigé par le groupe dans l'esprit des contes peuls (sans fait historique) ; pas encore de version recueillie auprès d'un conteur fulfulde.",
+      "a_verifier": false,
       "immersif": false,
       "image": "assets/images/conte-peul.svg",
       "scenes": []
@@ -491,8 +491,8 @@
         "dyu": "Burkina Faso worodugu ni tileben fan fɛ, Banfora gɛrɛfɛ, dugukolo be yɛlɛla ka kɛ cɛncɛn kulujan ye. O yɔrɔ nunu ye Sindou kuluw ye: kɔɔw, sankasow ani kongosogow. Sanji ni fɔɲɔ y'u dan tuma o tuma.\n\nDugukolo lɔnnikɛlaw y'a fɔ k'o cogo kabakomanw sababu ye kongosogow ɲagaminin ye. Nka, su donna Sindou dugu kan tuma min na, cɛkɔrɔbaw ye koo wɛrɛ lakali.\n\nMɔgɔw b'a fɔ ko fɔlɔfɔlɔ, o faraw tun tɛ farakuru dama ye. Lɔnnikɛbaga dɔw tun siginin bɛ o yɔrɔ ra, o bɛɛ tun bɛ dogo. Mɔgɔ minw tun siginin be faraw jukɔrɔ, olu tun ka kan ka bɛn ni o kɔrɔsibagaw ye. O tun b'a yira ko u tun be se ka kɛnɛgbɛ sɛnɛ ani ka to hɛɛrɛ la.\n\nO kama, u b'a fɔ ko yɔrɔ dɔw la, mɔgɔ si tɛ se ka yɛlɛ yen. An t'a fɛ ka yɛlɛ yen tuma o tuma, an t'an kaan kɔrɔta, an tɛ taga n'an ka fɛɛn si ye. Mɔgɔ minw b'a baara kɛ, olu b'o kɛ ka barika la Ala ye, k'a ɲini a fɛ ko sanji ka ben.\n\nLɔnnikɛla dɔw b'a miiri ko kabakuru kelen kelen bɛɛ be mɔgɔ hakili jigi koo dɔ la. O ye kɛlɛkɛcɛ dɔ ye, muso dɔ be kɔnɔni kɛra, kongosogo dɔ be sinɔgɔra. U bɛɛ k'o lɔn, k'u seko bɛɛ kɛ ka mɛnni kɛ diinan mɔgɔkɔrɔw fɛ. N'i ye deen ye kuluw kan, i be se k'a faamu k'o kabakuruw tɛ i n'a fɔ kabakuru dama ye.\n\nSisan, mɔgɔ caaman be bɔ yɔrɔjan ka na o yɔrɔ filɛ. O gafew b'u hakili jigi ko u be tagama yɔrɔ ɲanaman dɔ la. O yɔrɔ la, adamadenw ka koow cogoya n'u ka miiriyaw ye kelen ye."
       },
       "morale": "Certains lieux gardent la mémoire de ceux qui les ont habités.",
-      "source": "À compléter.",
-      "a_verifier": true,
+      "source": "Wikipédia, « Pics de Sindou », https://fr.wikipedia.org/wiki/Pics_de_Sindou ; Wikipédia, « Tourisme au Burkina Faso », https://fr.wikipedia.org/wiki/Tourisme_au_Burkina_Faso (pages consultées le 29 octobre 2026). Les génies et les rites évoqués suivent la tradition orale ; Wikipédia confirme seulement que les pics sont un lieu mystique dans les traditions sénoufo.",
+      "a_verifier": false,
       "immersif": false,
       "image": "assets/images/pics-sindou.svg",
       "scenes": []
@@ -511,8 +511,8 @@
         "fr": "Dans le sud-ouest du Burkina Faso, en pays lobi, de hauts murs de pierre se dressent au milieu de la végétation, près de la ville de Loropéni. Épais et construits en pierre de latérite, ils entourent un vaste espace aujourd'hui vide. Ce sont les ruines de Loropéni.\n\nCes ruines sont célèbres : elles ont été le premier site du Burkina Faso inscrit sur la liste du patrimoine mondial de l'UNESCO. Elles font partie d'un ensemble de fortifications de pierre dispersées dans la région, dont elles sont les mieux conservées.\n\nMais qui les a construites, et pourquoi ? C'est là que commence le mystère. Selon certains récits, les Lobi, qui vivent aujourd'hui dans la région, trouvèrent ces murs déjà debout à l'arrivée de leurs ancêtres. Les historiens et les archéologues avancent plusieurs hypothèses, sans avoir encore tout tranché.\n\nUne piste revient souvent : la région était riche en or, et ces enceintes auraient pu être liées au commerce de l'or qui reliait autrefois l'intérieur de l'Afrique de l'Ouest aux grandes routes marchandes. Les murs auraient pu protéger des marchandises, des personnes, ou affirmer le pouvoir d'un royaume. Les chercheurs débattent encore de l'âge exact du site et de l'identité de ses bâtisseurs.\n\nAutour des ruines, comme autour de beaucoup de lieux anciens, circulent aussi des récits que l'on se transmet à voix basse, sur ceux qui vivaient derrière ces murs et sur ce qu'ils y gardaient.\n\nLes pierres de Loropéni se taisent. Mais elles posent des questions à chaque visiteur, et rappellent que l'histoire de l'Afrique de l'Ouest est bien plus ancienne et plus riche qu'on ne le croit parfois."
       },
       "morale": "Les pierres se taisent, mais elles invitent à chercher.",
-      "source": "À compléter (fiche UNESCO).",
-      "a_verifier": true,
+      "source": "UNESCO, « Ruines de Loropéni », Liste du patrimoine mondial, https://whc.unesco.org/fr/list/1225/ ; Wikipédia, « Ruines de Loropéni », https://fr.wikipedia.org/wiki/Ruines_de_Lorop%C3%A9ni (pages consultées le 29 octobre 2026).",
+      "a_verifier": false,
       "immersif": false,
       "image": "assets/images/loropeni.svg",
       "scenes": []

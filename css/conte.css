@@ -217,7 +217,7 @@
 /* Texte complet sous la fiche : même typographie que les scènes */
 .texte-complet { max-width: 40rem; margin-top: 48px; }
 .texte-complet p { font-size: var(--t-l); line-height: 1.6; }
-.source { font-size: var(--t-s); color: var(--ecru-doux); margin-top: 24px; }
+.source { font-size: var(--t-s); color: var(--ecru-doux); margin-top: 24px; overflow-wrap: anywhere; }
 
 /* Langue du récit (en haut) et écoute */
 .choix-langue {

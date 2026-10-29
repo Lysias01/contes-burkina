@@ -45,7 +45,14 @@
 *::before,
 *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* l'iPhone ne grossit pas le texte en paysage */
+  text-size-adjust: 100%;
+}
+
+/* Pas de zoom au double toucher sur les commandes (taper vite « Scène suivante », par exemple) */
+a, button, select, input, label, summary { touch-action: manipulation; }
 
 body {
   margin: 0;
