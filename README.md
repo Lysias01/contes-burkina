@@ -10,8 +10,8 @@ Projet du groupe 6, module Web Multimédia 2026. En ligne : https://lysias01.git
 - **Bibliothèque** : les 10 récits, recherche sans tenir compte des accents, filtres par type.
 - **Lecture scène par scène** pour trois récits immersifs : illustrations SVG animées avec parallaxe, navigation par boutons, clavier (flèches) ou balayage sur téléphone, un choix interactif au milieu du récit et un quiz de trois questions à la fin.
 - **Langues** : chaque récit se lit et s'écoute en français et, quand la traduction automatique le permet, en mooré, dioula ou fulfulde. La langue nationale s'affiche en grand, la traduction française en petit dessous. Le texte lu par la voix de synthèse est exactement le texte affiché.
-- **Musique d'ambiance** facultative (bouton dans l'en-tête), jamais lancée sans geste de l'utilisateur, plus discrète pendant les narrations.
-- **Pensé pour le téléphone** : zones tactiles de 44 px minimum, encoches respectées, aucune lecture automatique, `prefers-reduced-motion` respecté, utilisable entièrement au clavier.
+- **Musique d'ambiance** activée par défaut : elle démarre dès que le navigateur l'autorise (au chargement, ou au premier toucher, clic ou touche du clavier). Le bouton de l'en-tête la coupe, et ce choix est mémorisé. Elle se fait plus discrète pendant les narrations.
+- **Pensé pour le téléphone** : zones tactiles de 44 px minimum, encoches respectées, aucune narration lancée sans geste, `prefers-reduced-motion` respecté, utilisable entièrement au clavier.
 - **Partage** : favicon, icône d'écran d'accueil, aperçu Open Graph (WhatsApp, réseaux sociaux), page 404.
 
 ## Lancer le site sur son ordinateur
@@ -40,12 +40,12 @@ apropos.html          démarche, équipe, technologies, crédits
 css/                  style.css (charte commune) + une feuille par page
 js/                   app.js (commun : en-tête, musique, données) + un script par page
 data/contes.json      les récits, leurs textes dans chaque langue, la liste des langues
-data/burkina.geojson  contour du pays
+data/burkina.geojson  contour du pays (geoBoundaries, CC BY 4.0)
 assets/images/        illustrations SVG des récits, image de partage (partage.jpg)
 assets/icones/        favicon.svg, apple-touch-icon.png
 assets/audio/         narrations MP3 générées + empreintes.json
-assets/musique/       musique d'ambiance (ambiance.mp3)
-tools/                generer_audio.py (traductions et narrations de synthèse)
+assets/musique/       musique d'ambiance composée par tools/composer_ambiance.py
+tools/                generer_audio.py (traductions et narrations), composer_ambiance.py (musique)
 verifications.md      faits à vérifier pour chaque récit
 ```
 
@@ -96,6 +96,10 @@ python tools/generer_audio.py --nettoyer      # supprime les MP3 qui ne servent 
 ```
 
 Si vous modifiez un texte français, mettez aussi à jour (ou supprimez) ses traductions : `--traduire` ne complète que les traductions **absentes**, pour ne jamais écraser une traduction relue. `assets/audio/empreintes.json` garde l'empreinte du texte de chaque MP3 ; `--verifier` signale tout audio périmé.
+
+## Régénérer la musique d'ambiance
+
+`python tools/composer_ambiance.py` recompose `assets/musique/ambiance.mp3` par synthèse sonore (numpy, scipy et ffmpeg, dans le même environnement que les narrations). Le morceau boucle sans couture ; `--graine 12` (ou un autre nombre) donne une autre variation de la mélodie.
 
 ## Technologies
 

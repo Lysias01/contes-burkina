@@ -108,22 +108,35 @@ function construireEntete() {
 }
 
 /* ---------- Musique d'ambiance ----------
-   Jamais de lecture automatique : la musique ne part qu'après un geste
-   de l'utilisateur. Le choix est mémorisé d'une page à l'autre. */
+   Activée par défaut : elle démarre dès le chargement si le navigateur l'autorise,
+   sinon au premier geste sur la page (les navigateurs bloquent le son avant toute
+   interaction). Le bouton permet de la couper ; ce choix est mémorisé d'une page à l'autre. */
 const MUSIQUE = {
   fichier: "assets/musique/ambiance.mp3",
   cle: "contes-musique",
+  clePosition: "contes-musique-position", // où en était la musique sur la page précédente
   volume: 0.35,
   volumeBas: 0.1, // pendant qu'un enregistrement de récit joue
   fondu: 1000,    // durée des montées et descentes du son, en ms
+  fonduReprise: 300, // plus court quand la musique continue d'une page à l'autre
 };
 
+// Musique voulue, sauf si le visiteur l'a coupée
 function lirePreference() {
-  try { return localStorage.getItem(MUSIQUE.cle) === "oui"; } catch (e) { return false; }
+  try { return localStorage.getItem(MUSIQUE.cle) !== "non"; } catch (e) { return true; }
 }
 
 function ecrirePreference(active) {
   try { localStorage.setItem(MUSIQUE.cle, active ? "oui" : "non"); } catch (e) { /* stockage indisponible */ }
+}
+
+/* Position de la musique d'une page à l'autre (même onglet) : elle continue au lieu de recommencer */
+function lirePosition() {
+  try { return JSON.parse(sessionStorage.getItem(MUSIQUE.clePosition)); } catch (e) { return null; }
+}
+
+function ecrirePosition(position) {
+  try { sessionStorage.setItem(MUSIQUE.clePosition, JSON.stringify({ position, quand: Date.now() })); } catch (e) { /* stockage indisponible */ }
 }
 
 function brancherMusique(bouton) {
@@ -132,7 +145,8 @@ function brancherMusique(bouton) {
   musique.loop = true;
   musique.preload = "metadata";
   musique.volume = 0;
-  let enLecture = false;
+  let voulue = lirePreference(); // ce que le visiteur a choisi (le bouton l'affiche)
+  let enLecture = false;          // ce qui se passe vraiment
   let animation = 0;
 
   // Un autre son de la page (le lecteur du récit) est-il en train de jouer ?
@@ -141,12 +155,12 @@ function brancherMusique(bouton) {
   const volumeCible = () => (autreSonEnCours() ? MUSIQUE.volumeBas : MUSIQUE.volume);
 
   // Fait glisser le volume jusqu'à la cible, puis appelle « ensuite »
-  function glisserVers(cible, ensuite) {
+  function glisserVers(cible, ensuite, duree = MUSIQUE.fondu) {
     cancelAnimationFrame(animation);
     const depart = musique.volume;
     const debut = performance.now();
     const etape = (maintenant) => {
-      const t = Math.min(1, (maintenant - debut) / MUSIQUE.fondu);
+      const t = Math.min(1, (maintenant - debut) / duree);
       musique.volume = Math.min(1, Math.max(0, depart + (cible - depart) * t));
       if (t < 1) animation = requestAnimationFrame(etape);
       else if (ensuite) ensuite();
@@ -155,8 +169,8 @@ function brancherMusique(bouton) {
   }
 
   function majBouton() {
-    const libelle = enLecture ? "Couper la musique" : "Activer la musique";
-    bouton.setAttribute("aria-pressed", enLecture);
+    const libelle = voulue ? "Couper la musique" : "Activer la musique";
+    bouton.setAttribute("aria-pressed", voulue);
     bouton.title = libelle;
     bouton.querySelector(".visuellement-cache").textContent = libelle;
   }
@@ -167,53 +181,74 @@ function brancherMusique(bouton) {
     } catch (e) {
       return false; // navigateur pas encore autorisé, ou fichier illisible
     }
+    if (!voulue) {                // coupée entre-temps
+      musique.pause();
+      return false;
+    }
     enLecture = true;
-    majBouton();
-    glisserVers(volumeCible());
+    glisserVers(volumeCible(), null, musique.currentTime > 1 ? MUSIQUE.fonduReprise : MUSIQUE.fondu);
     return true;
   }
 
   function couper() {
     enLecture = false;
-    majBouton();
-    glisserVers(0, () => { if (!enLecture) musique.pause(); });
+    glisserVers(0, () => { if (!voulue) musique.pause(); });
+  }
+
+  // Lecture dès que possible : tout de suite si le navigateur l'autorise, sinon au premier geste
+  function demarrer() {
+    jouer().then((ok) => { if (!ok && voulue) attendreGeste(); });
   }
 
   bouton.addEventListener("click", () => {
-    if (enLecture) {
+    voulue = !voulue;
+    ecrirePreference(voulue);
+    majBouton();
+    if (voulue) demarrer();
+    else {
+      arreterAttente();
       couper();
-      ecrirePreference(false);
-    } else {
-      ecrirePreference(true);
-      jouer();
     }
   });
 
-  // Musique activée sur une page précédente : elle reprend au premier geste ici
-  function reprendre(e) {
+  // Gestes qui donnent au navigateur le droit de jouer un son
+  const GESTES = ["pointerdown", "touchend", "click", "keydown"];
+  function surGeste(e) {
     if (bouton.contains(e.target)) return; // le bouton gère lui-même son clic
-    if (e.type === "keydown" && e.key === "Escape") return; // n'ouvre pas le droit de jouer
-    if (!enLecture && lirePreference()) jouer().then((ok) => { if (ok) arreterReprise(); });
-    else arreterReprise();
+    if (e.type === "keydown" && e.key === "Escape") return; // Échap n'ouvre pas le droit de jouer
+    if (!voulue || enLecture) return arreterAttente();
+    jouer().then((ok) => { if (ok) arreterAttente(); });
   }
-  function arreterReprise() {
-    document.removeEventListener("click", reprendre);
-    document.removeEventListener("keydown", reprendre);
+  function attendreGeste() {
+    GESTES.forEach((type) => document.addEventListener(type, surGeste, true));
   }
-  if (lirePreference()) {
-    document.addEventListener("click", reprendre);
-    document.addEventListener("keydown", reprendre);
+  function arreterAttente() {
+    GESTES.forEach((type) => document.removeEventListener(type, surGeste, true));
   }
+  majBouton();
 
   // Le récit parle : la musique se fait discrète, puis revient
   const ajuster = () => { if (enLecture) glisserVers(volumeCible()); };
   ["play", "pause", "ended"].forEach((type) => document.addEventListener(type, ajuster, true));
 
   // Le bouton n'apparaît que si le fichier se charge
-  musique.addEventListener("loadedmetadata", () => { bouton.hidden = false; }, { once: true });
+  // En quittant la page, on note où en est la musique ; en revenant par « Précédent », elle continue
+  window.addEventListener("pagehide", () => { if (enLecture) ecrirePosition(musique.currentTime); });
+  window.addEventListener("pageshow", (e) => { if (e.persisted && voulue && musique.paused) demarrer(); });
+
+  musique.addEventListener("loadedmetadata", () => {
+    bouton.hidden = false;
+    // Reprise là où la page précédente s'était arrêtée, plus le temps passé à changer de page
+    const memo = lirePosition();
+    if (memo && Number.isFinite(memo.position) && musique.duration) {
+      const ecoule = Math.min(30, Math.max(0, (Date.now() - memo.quand) / 1000));
+      musique.currentTime = (memo.position + ecoule) % musique.duration;
+    }
+    if (voulue) demarrer();
+  }, { once: true });
   musique.addEventListener("error", () => {
     cancelAnimationFrame(animation);
-    arreterReprise();
+    arreterAttente();
     bouton.remove();
   });
   musique.src = MUSIQUE.fichier;

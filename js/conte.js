@@ -42,7 +42,11 @@ async function demarrer() {
     brancherScenes(conte);
     brancherEcoute(() => cheminAudio(conte, actuelle + 1));
   } else {
+    // La couverture est insérée dans la page (comme les scènes) pour être animée
+    await chargerIllustration(conte.image);
     zone.innerHTML = tete + htmlFiche(conte, suivant);
+    afficherIllustration({ image: conte.image, titre: conte.titre }, 0, conte);
+    brancherParallaxe();
     remplirFiche(conte);
     brancherEcoute(() => cheminAudio(conte, null));
   }
@@ -473,7 +477,7 @@ function htmlFiche(conte, suivant) {
     : "";
   return `
     <section class="conteneur fiche">
-      <div class="scene-visuel">${visuelConte(conte)}</div>
+      <div class="scene-visuel" id="scene-visuel"></div>
       <div class="fiche-texte">
         <p>${echapper(conte.resume)}</p>
         ${aUnTexte ? "" : `<p class="bientot">La version illustrée scène par scène de ce récit est en préparation.</p>`}

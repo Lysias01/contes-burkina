@@ -134,6 +134,7 @@
   .maplibregl-ctrl-group button { width: var(--cible); height: var(--cible); }
 }
 .maplibregl-ctrl-top-right { padding-right: env(safe-area-inset-right); }
+.bouton-recentrer { display: grid; place-items: center; color: var(--nuit); }
 .maplibregl-ctrl-bottom-right { padding-bottom: env(safe-area-inset-bottom); }
 
 /* Petits écrans : aperçu plus compact */
