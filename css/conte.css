@@ -258,6 +258,19 @@
   font-size: var(--t-s);
   color: var(--ecru);
 }
+.sous-titre-etiquette {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 1px 7px;
+  border-radius: 3px;
+  background: var(--mil);
+  color: var(--nuit);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
 
 @media (max-width: 860px) {
   .scene, .fiche { grid-template-columns: 1fr; min-height: 0; }

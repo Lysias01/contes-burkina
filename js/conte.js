@@ -97,7 +97,10 @@ function htmlEcoute(libelle) {
       </button>
       <span class="ecoute-etat" id="ecoute-etat" aria-live="polite"></span>
     </div>
-    <p class="sous-titre" id="sous-titre" aria-live="polite" hidden></p>`;
+    <p class="sous-titre" id="sous-titre" aria-live="polite" hidden>
+      <span class="sous-titre-etiquette" aria-hidden="true">Sous-titre</span>
+      <span id="sous-titre-texte"></span>
+    </p>`;
 }
 
 function majEcoute(enCours) {
@@ -120,8 +123,9 @@ function arreterEcoute() {
 
 function majSousTitre(texte) {
   const bloc = document.getElementById("sous-titre");
-  if (!bloc) return;
-  bloc.textContent = texte;
+  const zoneTexte = document.getElementById("sous-titre-texte");
+  if (!bloc || !zoneTexte) return;
+  zoneTexte.textContent = texte;
   bloc.hidden = !texte;
 }
 
