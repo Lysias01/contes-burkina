@@ -305,5 +305,84 @@
   "loropeni-fr.mp3": {
     "empreinte": "1e508a736d398884fe85395544b10701b1deb926",
     "lettres_non_lues": []
+  },
+  "diaba-lompo-mos.mp3": {
+    "empreinte": "3c4de767b2ae359cda966c05a48205228efa4c3e",
+    "lettres_non_lues": []
+  },
+  "diaba-lompo-dyu.mp3": {
+    "empreinte": "473950fec64e1b6d969a389c3f381640951952ed",
+    "lettres_non_lues": []
+  },
+  "diaba-lompo-ful.mp3": {
+    "empreinte": "16b421e13d2e4c1be0f3894c5067f159fcd321f8",
+    "lettres_non_lues": []
+  },
+  "crocodiles-sabou-dyu.mp3": {
+    "empreinte": "0fa7882846c688b8497fb01f85e70a1e751638b4",
+    "lettres_non_lues": []
+  },
+  "crocodiles-sabou-ful.mp3": {
+    "empreinte": "5421edbda73d05a35caa5170bdecd258f93cc2a4",
+    "lettres_non_lues": []
+  },
+  "guimbi-ouattara-mos.mp3": {
+    "empreinte": "ffc7d5a6645727591472283a7413e5562c12d467",
+    "lettres_non_lues": [
+      "0",
+      "1",
+      "8",
+      "9",
+      "c"
+    ]
+  },
+  "guimbi-ouattara-ful.mp3": {
+    "empreinte": "5b25038877b0b69a31ef70f25a85cc3a41725955",
+    "lettres_non_lues": []
+  },
+  "naaba-wobgo-dyu.mp3": {
+    "empreinte": "5e380dc2e4d1e4b1a91ad4f78a8690fe856750b3",
+    "lettres_non_lues": [
+      "1",
+      "6",
+      "8",
+      "9"
+    ]
+  },
+  "naaba-wobgo-ful.mp3": {
+    "empreinte": "550bb549dd4512414b449815387f552159f44c3d",
+    "lettres_non_lues": []
+  },
+  "conte-peul-mos.mp3": {
+    "empreinte": "5a918d35d8db6c955a0309e6d5bf1638659c5781",
+    "lettres_non_lues": [
+      "h"
+    ]
+  },
+  "conte-peul-dyu.mp3": {
+    "empreinte": "5c73323e2934ad4b3ecd828d51677f2ff8a7b390",
+    "lettres_non_lues": []
+  },
+  "pics-sindou-mos.mp3": {
+    "empreinte": "fe541635dccce3d237a7d69e6de66d81ad57e33e",
+    "lettres_non_lues": []
+  },
+  "pics-sindou-ful.mp3": {
+    "empreinte": "9c0390e944332b5302c6cda2bc275e50976e14cd",
+    "lettres_non_lues": []
+  },
+  "loropeni-mos.mp3": {
+    "empreinte": "4b326c855e37f3afd9ffbed62be6f107073990ef",
+    "lettres_non_lues": [
+      "c"
+    ]
+  },
+  "loropeni-dyu.mp3": {
+    "empreinte": "f70477a4f4553404a72c75c5533c64397ee710cb",
+    "lettres_non_lues": []
+  },
+  "loropeni-ful.mp3": {
+    "empreinte": "cc8146487944ce1987d2cb9bd4b503fd4e864271",
+    "lettres_non_lues": []
   }
 }

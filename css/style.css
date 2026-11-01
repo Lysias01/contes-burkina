@@ -1,18 +1,32 @@
 /* =========================================================
    Contes et Légendes du Burkina Faso — Groupe 6
-   Charte graphique : la veillée (nuit indigo, feu, mil)
+   Charte graphique : la veillée tissée. La terre et le feu,
+   les pagnes du Faso Dan Fani, les murs peints de Tiébélé.
    ========================================================= */
 
 :root {
   /* Couleurs */
-  --nuit: #1d2251;        /* indigo des pagnes, ciel de la veillée */
-  --nuit-2: #262c63;      /* surfaces */
-  --nuit-3: #323a7a;      /* bordures, survols */
-  --ecru: #f3e7cf;        /* coton écru : texte principal */
-  --ecru-doux: #c9bfae;   /* texte secondaire */
-  --mil: #e8a934;         /* or du mil, flamme : accent */
-  --laterite: #c2502b;    /* terre rouge : légendes */
-  --karite: #5b9461;      /* vert karité : récits historiques */
+  --nuit: #1c0f0b;        /* terre dans la nuit : fond du site */
+  --nuit-2: #2d1812;      /* surfaces */
+  --nuit-3: #4f2d1f;      /* bordures, survols */
+  --ecru: #f7e9cd;        /* coton écru : texte principal */
+  --ecru-doux: #d9c4a2;   /* texte secondaire */
+  --mil: #eda521;         /* or du mil, flamme : accent */
+  --laterite: #c94f1c;    /* terre rouge : légendes */
+  --karite: #8aa24a;      /* vert karité : récits historiques */
+  --indigo: #232c70;      /* indigo des pagnes : le ciel */
+  --coton: #f5e8cf;       /* la page du livre de contes */
+  --encre: #25120b;       /* le texte sur le coton */
+  --encre-douce: #5f4230;
+  --laterite-fonce: #a23c12;
+  --sable: #efe3c6;       /* carte : les pays voisins */
+  --savane: #cdd49c;      /* carte : le Burkina */
+  --eau: #a8cfd4;         /* carte : fleuves et lacs */
+  --tronc: #5a3d26;       /* carte : frontière, relief, troncs */
+
+  /* Motifs (des masques : leur couleur vient de background-color) */
+  --motif-triangles: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10'%3E%3Cpath d='M0 0h24L12 10z'/%3E%3C/svg%3E");
+  --motif-bogolan: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' fill='none' stroke='%23000' stroke-width='3'%3E%3Cpath d='M0 20l20-14 20 14 20-14 20 14M100 0v40M120 0v40M110 10h20M20 60l20 20-20 20L0 80zM80 70h40v40H80zM92 82h16v16H92zM140 60l20 20-20 20M0 130h40M0 142h40M0 154h40M60 124l14 14 14-14 14 14 14-14M130 120l30 30M160 120l-30 30'/%3E%3C/svg%3E");
 
   /* Couleur par type de récit */
   --type-conte: var(--mil);
@@ -20,7 +34,7 @@
   --type-historique: var(--karite);
 
   /* Typographie */
-  --f-titre: "Gloock", Georgia, serif;
+  --f-titre: "Caprasimo", Georgia, serif;
   --f-texte: "Literata", Georgia, serif;
 
   --t-xs: 0.8125rem;
@@ -28,17 +42,17 @@
   --t-m: 1.0625rem;
   --t-l: 1.375rem;
   --t-xl: 2rem;
-  --t-xxl: clamp(2.6rem, 6vw, 4.75rem);
+  --t-xxl: clamp(2.7rem, 6.6vw, 5.4rem);
 
   --gouttiere: clamp(16px, 4vw, 48px);
   --largeur: 1180px;
-  --entete: 64px;
+  --entete: 72px;
   --cible: 44px;          /* taille minimale d'une zone tactile */
 }
 
 /* Téléphone en paysage : l'en-tête prend moins de hauteur */
 @media (max-height: 500px) and (orientation: landscape) {
-  :root { --entete: 52px; }
+  :root { --entete: 56px; }
 }
 
 *,
@@ -63,6 +77,30 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
+/* Trame discrète façon bogolan, sur tout le fond du site */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--mil);
+  opacity: 0.045;
+  -webkit-mask: var(--motif-bogolan);
+  mask: var(--motif-bogolan);
+  pointer-events: none;
+}
+
+/* La page du livre de contes : les couleurs s'inversent à l'intérieur */
+.coton, .scene-texte, .fiche-texte, .texte-complet, .morale, .quiz, .maplibregl-popup-content, .equipe, .credits, .disposition-carte {
+  --nuit: var(--coton);
+  --nuit-2: #ead9b8;
+  --nuit-3: #cdb68d;
+  --ecru: var(--encre);
+  --ecru-doux: var(--encre-douce);
+  --mil: var(--laterite-fonce);
+  background: var(--coton);
+  color: var(--encre);
+}
 
 img, svg { display: block; max-width: 100%; }
 
@@ -74,7 +112,6 @@ h1, h2, h3 {
   font-weight: 400;
   line-height: 1.1;
   margin: 0 0 0.5em;
-  letter-spacing: 0.005em;
 }
 h1 { font-size: var(--t-xxl); }
 h2 { font-size: var(--t-xl); }
@@ -83,7 +120,7 @@ h3 { font-size: var(--t-l); }
 p { margin: 0 0 1em; }
 
 :focus-visible {
-  outline: 2px solid var(--mil);
+  outline: 3px solid var(--mil);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -109,29 +146,44 @@ p { margin: 0 0 1em; }
   top: 0;
   z-index: 50;
   height: var(--entete);
-  background: rgba(29, 34, 81, 0.92);
-  backdrop-filter: blur(8px);
+  background: var(--nuit);
 }
 /* Bande tissée façon Faso Dan Fani, signature du site */
-.entete::after {
+.entete::after,
+.bande-tissee {
   content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 4px;
+  display: block;
+  height: 7px;
   background: repeating-linear-gradient(
     90deg,
-    var(--mil) 0 22px,
-    var(--nuit) 22px 26px,
-    var(--laterite) 26px 40px,
-    var(--nuit) 40px 44px,
-    var(--karite) 44px 56px,
-    var(--nuit) 56px 60px,
-    var(--ecru) 60px 64px,
-    var(--nuit) 64px 68px
+    var(--mil) 0 26px,
+    var(--encre) 26px 30px,
+    var(--laterite) 30px 46px,
+    var(--encre) 46px 50px,
+    var(--ecru) 50px 56px,
+    var(--encre) 56px 60px,
+    var(--indigo) 60px 80px,
+    var(--encre) 80px 84px,
+    var(--karite) 84px 96px,
+    var(--encre) 96px 100px
   );
 }
+.entete::after { position: absolute; left: 0; right: 0; bottom: 0; }
+/* Sous la bande, des triangles comme sur les murs peints de Tiébélé */
+.entete::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 10px;
+  background: var(--mil);
+  -webkit-mask: var(--motif-triangles) repeat-x;
+  mask: var(--motif-triangles) repeat-x;
+  pointer-events: none;
+}
 .entete .conteneur {
-  height: 100%;
+  height: calc(100% - 7px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -141,7 +193,7 @@ p { margin: 0 0 1em; }
   display: inline-block; /* pas de flex : l'espace avant « du Faso » serait supprimé */
   line-height: var(--cible);
   font-family: var(--f-titre);
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: var(--ecru);
   text-decoration: none;
   white-space: nowrap;
@@ -176,12 +228,13 @@ p { margin: 0 0 1em; }
   min-height: var(--cible);
   color: var(--ecru-doux);
   text-decoration: none;
-  font-size: var(--t-s);
-  padding: 0 12px;
-  border-radius: 999px;
+  font-size: var(--t-m);
+  padding: 0 14px;
+  box-shadow: inset 0 0 0 transparent;
+  transition: box-shadow 0.2s ease, color 0.2s ease;
 }
-.nav a:hover { color: var(--ecru); background: var(--nuit-2); }
-.nav a[aria-current="page"] { color: var(--nuit); background: var(--mil); }
+.nav a:hover { color: var(--ecru); box-shadow: inset 0 -3px 0 var(--nuit-3); }
+.nav a[aria-current="page"] { color: var(--mil); font-weight: 600; box-shadow: inset 0 -3px 0 var(--mil); }
 
 .bouton-menu {
   display: none;
@@ -223,20 +276,25 @@ p { margin: 0 0 1em; }
   font: inherit;
   font-size: var(--t-s);
   font-weight: 600;
-  padding: 12px 22px;
-  border-radius: 999px;
-  border: 1px solid transparent;
+  padding: 13px 24px;
+  border-radius: 6px;
+  border: 2px solid transparent;
   background: var(--mil);
   color: var(--nuit);
   text-decoration: none;
   cursor: pointer;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--mil) 62%, var(--encre));
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease, color 0.2s ease;
 }
 .bouton:hover { background: var(--ecru); color: var(--nuit); }
+.bouton:active { transform: translateY(3px); box-shadow: 0 1px 0 color-mix(in srgb, var(--mil) 62%, var(--encre)); }
 .bouton.secondaire {
   background: transparent;
   color: var(--ecru);
   border-color: var(--ecru-doux);
+  box-shadow: none;
 }
+.bouton.secondaire:active { transform: translateY(1px); box-shadow: none; }
 .bouton.secondaire:hover { border-color: var(--ecru); background: var(--nuit-2); }
 .bouton:disabled { opacity: 0.4; cursor: default; }
 
@@ -260,9 +318,9 @@ p { margin: 0 0 1em; }
 
 /* ---------- Pied de page ---------- */
 .pied {
-  margin-top: 96px;
-  padding: 32px 0 calc(40px + env(safe-area-inset-bottom));
-  border-top: 1px solid var(--nuit-3);
+  margin-top: 72px;
+  padding: 28px 0 calc(32px + env(safe-area-inset-bottom));
+  border-top: 7px solid var(--laterite);
   color: var(--ecru-doux);
   font-size: var(--t-s);
 }

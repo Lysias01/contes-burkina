@@ -3,15 +3,14 @@
    ========================================================= */
 
 const TYPES = {
-  conte: { libelle: "Conte", couleur: "#e8a934" },
-  legende: { libelle: "Légende", couleur: "#c2502b" },
-  historique: { libelle: "Récit historique", couleur: "#5b9461" },
+  conte: { libelle: "Conte", couleur: "#eda521" },
+  legende: { libelle: "Légende", couleur: "#c94f1c" },
+  historique: { libelle: "Récit historique", couleur: "#8aa24a" },
 };
 
 const PAGES = [
   { href: "index.html", libelle: "Accueil" },
   { href: "carte.html", libelle: "Carte" },
-  { href: "bibliotheque.html", libelle: "Bibliothèque" },
   { href: "apropos.html", libelle: "À propos" },
 ];
 
@@ -50,7 +49,7 @@ function languesDuConte(conte) {
 function construireEntete() {
   const actuelle = location.pathname.split("/").pop() || "index.html";
   const liens = PAGES.map((p) => {
-    const actif = p.href === actuelle || (actuelle === "conte.html" && p.href === "bibliotheque.html");
+    const actif = p.href === actuelle || (actuelle === "conte.html" && p.href === "carte.html");
     return `<a href="${p.href}"${actif ? ' aria-current="page"' : ""}>${p.libelle}</a>`;
   }).join("");
 
@@ -263,15 +262,15 @@ function illustrationSecours(conte, classe = "") {
   <svg class="${classe}" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${echapper(conte.titre)}">
     <defs>
       <linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#1d2251"/>
+        <stop offset="0" stop-color="#232c70"/>
         <stop offset="1" stop-color="${c}" stop-opacity="0.55"/>
       </linearGradient>
     </defs>
     <rect width="400" height="240" fill="url(#${id})"/>
-    <circle cx="310" cy="62" r="22" fill="#f3e7cf" opacity="0.9"/>
-    <path d="M0 190 Q90 150 180 178 T400 168 V240 H0Z" fill="#14173a" opacity="0.65"/>
-    <path d="M0 212 Q120 190 230 206 T400 200 V240 H0Z" fill="#14173a"/>
-    <path d="M86 206 c2-30 -4-52 -2-70 c-14-6 -28-14 -34-26 c10 6 22 10 32 10 c-6-10 -8-22 -4-32 c4 12 10 20 18 26 c2-12 8-22 16-28 c-2 12 -2 22 2 32 c8-4 18-12 24-22 c-2 14 -12 26 -26 32 c0 20 -6 42 -4 78 z" fill="#14173a"/>
+    <circle cx="310" cy="62" r="22" fill="#f7e9cd" opacity="0.9"/>
+    <path d="M0 190 Q90 150 180 178 T400 168 V240 H0Z" fill="#170c0a" opacity="0.65"/>
+    <path d="M0 212 Q120 190 230 206 T400 200 V240 H0Z" fill="#170c0a"/>
+    <path d="M86 206 c2-30 -4-52 -2-70 c-14-6 -28-14 -34-26 c10 6 22 10 32 10 c-6-10 -8-22 -4-32 c4 12 10 20 18 26 c2-12 8-22 16-28 c-2 12 -2 22 2 32 c8-4 18-12 24-22 c-2 14 -12 26 -26 32 c0 20 -6 42 -4 78 z" fill="#170c0a"/>
   </svg>`;
 }
 

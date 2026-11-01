@@ -1,5 +1,5 @@
 /* =========================================================
-   accueil.js — étoiles, parallaxe et veillées mises en avant
+   accueil.js — étoiles et parallaxe de la veillée
    ========================================================= */
 
 const reduireMouvement = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -51,29 +51,6 @@ function activerParallaxe() {
   }, { passive: true });
 }
 
-/* 3. Les trois veillées (récits immersifs) */
-async function afficherVeillees() {
-  const liste = document.getElementById("veillees");
-  if (!liste) return;
-  try {
-    const contes = await chargerContes();
-    const choix = contes.filter((c) => c.immersif).slice(0, 3);
-    liste.innerHTML = choix.map((c, i) => `
-      <li class="veillee">
-        <a class="veillee-visuel" href="conte.html?id=${c.id}" tabindex="-1" aria-hidden="true">${visuelConte(c)}</a>
-        <div>
-          <p class="veillee-numero">Veillée ${i + 1}</p>
-          <h3><a href="conte.html?id=${c.id}">${echapper(c.titre)}</a></h3>
-          <div class="meta">${pastilleType(c.type)}<span>${echapper(c.ville)}</span><span>${echapper(c.langue)}</span></div>
-          <p>${echapper(c.resume)}</p>
-          <a class="bouton secondaire" href="conte.html?id=${c.id}">Écouter le récit</a>
-        </div>
-      </li>`).join("");
-  } catch (erreur) {
-    liste.outerHTML = `<p class="message">Les récits n'ont pas pu être chargés : ${echapper(erreur.message)}. Ouvrez le site avec Live Server ou depuis son adresse en ligne.</p>`;
-  }
-}
-
 /* Sur téléphone et tablette en portrait, le paysage est cadré depuis la gauche (là où se trouve le feu) */
 function cadrerPaysage() {
   // même condition que dans css/accueil.css
@@ -87,4 +64,3 @@ window.addEventListener("resize", cadrerPaysage);
 cadrerPaysage();
 allumerEtoiles();
 activerParallaxe();
-afficherVeillees();

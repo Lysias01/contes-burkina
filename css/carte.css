@@ -1,169 +1,355 @@
-/* ---------- Page carte : panneau + carte plein écran ---------- */
+/* ---------- Page carte : la carte occupe tout, le panneau flotte au-dessus ---------- */
 .page-carte { overflow: hidden; }
 .page-carte .pied { display: none; }
 
 .disposition-carte {
-  display: grid;
-  grid-template-columns: 340px minmax(0, 1fr);
+  --panneau: clamp(270px, 26vw, 350px);
+  position: relative;
   height: calc(100svh - var(--entete));
+  overflow: hidden;
+  background: var(--nuit);
 }
 
+.zone-carte { position: absolute; inset: 0; scroll-margin-top: var(--entete); }
+#carte { position: absolute; inset: 0; background: var(--nuit); opacity: 0; transition: opacity 1.2s ease; }
+#carte.prete { opacity: 1; }
+
+/* Les bords de la carte se fondent dans le coton */
+.zone-carte::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 58% 50%, transparent 58%, color-mix(in srgb, var(--coton) 55%, transparent) 100%);
+}
+
+/* ---------- Panneau en verre ---------- */
 .panneau {
-  overflow-y: auto;
-  padding: 28px 24px 32px;
-  border-right: 1px solid var(--nuit-3);
+  position: absolute;
+  z-index: 6;
+  top: 16px;
+  bottom: 16px;
+  left: max(16px, env(safe-area-inset-left));
+  width: var(--panneau);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0 8px;
+  border: 1px solid color-mix(in srgb, var(--ecru) 14%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--coton) 94%, transparent);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 14px 40px color-mix(in srgb, var(--tronc) 30%, transparent);
 }
-.panneau h1 { font-size: var(--t-xl); }
-.aide { color: var(--ecru-doux); font-size: var(--t-s); }
-
-.filtres {
-  border: 0;
-  margin: 20px 0 16px;
-  padding: 0;
-  display: grid;
-  gap: 8px;
-}
-.filtres legend, .filtre-langue span {
-  font-size: var(--t-xs);
-  color: var(--ecru-doux);
-  margin-bottom: 6px;
-}
-.filtres label { display: flex; align-items: center; gap: 12px; min-height: var(--cible); cursor: pointer; }
-.filtres input { accent-color: var(--mil); width: 20px; height: 20px; margin: 0; }
-.filtres .type { font-size: var(--t-s); color: var(--ecru); }
-
-.filtre-langue { display: grid; gap: 2px; margin-bottom: 24px; }
+.panneau-tete { padding: 0 22px 14px; }
+.panneau h1 { font-size: clamp(1.6rem, 2.3vw, 2.1rem); margin-bottom: 8px; }
+.aide { color: var(--ecru-doux); font-size: var(--t-s); line-height: 1.5; margin-bottom: 12px; }
+.legende-arbres { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.legende-arbres .type { color: var(--ecru); }
 
 .liste-recits {
   list-style: none;
   margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--nuit-3);
+  padding: 0 8px;
+  overflow-y: auto;
+  flex: 1;
+  border-top: 1px solid color-mix(in srgb, var(--ecru) 12%, transparent);
+  scrollbar-width: thin;
+  scrollbar-color: var(--nuit-3) transparent;
 }
+.liste-recits li:first-child button { margin-top: 8px; }
 .liste-recits button {
+  position: relative;
   width: 100%;
+  min-height: 76px;
   text-align: left;
   background: none;
   border: 0;
-  border-bottom: 1px solid var(--nuit-3);
+  border-radius: 6px;
   color: var(--ecru);
   font: inherit;
-  padding: 14px 4px;
+  padding: 8px;
   cursor: pointer;
   display: grid;
-  gap: 2px;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  transition: background 0.2s ease;
 }
-.liste-recits button:hover,
-.liste-recits button[aria-current="true"] { background: var(--nuit-2); }
-.liste-recits .titre { font-size: var(--t-m); line-height: 1.35; }
+.liste-recits button:hover { background: color-mix(in srgb, var(--nuit-3) 60%, transparent); }
+.liste-recits button[aria-current="true"] { background: var(--nuit-3); box-shadow: inset 3px 0 0 var(--mil); }
+.vignette { display: block; width: 64px; height: 64px; border-radius: 4px; overflow: hidden; background: var(--nuit-2); }
+.vignette img, .vignette svg { width: 100%; height: 100%; object-fit: cover; }
+.recit-texte { display: grid; gap: 1px; min-width: 0; }
+.liste-recits .titre { font-size: var(--t-s); font-weight: 600; line-height: 1.3; }
 .liste-recits .lieu { font-size: var(--t-xs); color: var(--ecru-doux); }
 
-.zone-carte { position: relative; scroll-margin-top: var(--entete); }
-#carte { position: absolute; inset: 0; background: var(--nuit-2); }
-
-/* En haut à gauche : loin des contrôles (à droite) et de l'attribution (en bas) */
+/* ---------- Bouton 2D/3D ---------- */
 .bascule-3d {
   position: absolute;
-  left: max(12px, env(safe-area-inset-left));
-  top: 12px;
+  left: calc(var(--panneau) + 32px);
+  top: 16px;
   z-index: 5;
-  box-shadow: 0 6px 24px rgba(16, 19, 58, 0.35);
+  color: var(--ecru);
+  border-color: var(--mil);
+  background: color-mix(in srgb, var(--coton) 92%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--tronc) 25%, transparent);
 }
+.bascule-3d:hover { background: var(--mil); color: var(--coton); }
+.bascule-3d[hidden] { display: none; }
 
-/* Marqueurs : un point de 22 px au centre d'une zone tactile de 44 px */
+/* ---------- Arbres à palabres : le pied de l'arbre est sur le point exact ---------- */
+.maplibregl-marker { z-index: 2; }
 .marqueur {
-  --c: var(--mil);
+  --c: var(--type-conte);
   width: var(--cible);
   height: var(--cible);
-  border-radius: 50%;
   border: 0;
-  background: radial-gradient(circle, var(--c) 0 8px, var(--nuit) 8.5px 11px, transparent 11.5px);
+  border-radius: 50%;
+  background: none;
   cursor: pointer;
   padding: 0;
   /* pas de position ici : MapLibre place chaque marqueur en absolu sur ses coordonnées */
 }
+.marqueur[data-type="legende"] { --c: var(--type-legende); }
+.marqueur[data-type="historique"] { --c: var(--type-historique); }
+
+/* Ombre au sol, sur le point exact */
+.marqueur::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 34px;
+  height: 12px;
+  margin: -6px 0 0 -17px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, color-mix(in srgb, var(--tronc) 50%, transparent) 0, transparent 72%);
+  opacity: 0;
+  transition: opacity 0.6s ease var(--apparition, 0ms);
+}
+.marqueur.plante::before { opacity: 1; }
+
+/* Anneau de l'arbre actif */
 .marqueur::after {
   content: "";
   position: absolute;
-  inset: 4px;
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 22px;
+  margin: -11px 0 0 -23px;
   border-radius: 50%;
   border: 2px solid var(--c);
   opacity: 0;
 }
-.marqueur:hover::after,
-.marqueur.actif::after { opacity: 1; }
-.marqueur[data-type="legende"] { --c: var(--type-legende); }
-.marqueur[data-type="historique"] { --c: var(--type-historique); }
+.marqueur.actif::after { animation: onde 2.4s ease-out infinite; }
 
-/* Fenêtre d'aperçu */
-.maplibregl-popup-content {
+.arbre {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 42px;
+  margin: -36px 0 0 -15px;
+  overflow: visible;
+  transform-origin: 50% 86%;
+  transform: scale(0);
+  transition: transform 0.7s cubic-bezier(0.2, 1.3, 0.4, 1) var(--apparition, 0ms);
+  /* Un liseré clair détache l'arbre de la savane */
+  stroke: var(--coton);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+.marqueur.plante .arbre { transform: scale(1); }
+.marqueur:hover .arbre,
+.marqueur:focus-visible .arbre,
+.marqueur.survol .arbre { transform: scale(1.2); transition-delay: 0ms; }
+.marqueur.actif .arbre { transform: scale(1.3); transition-delay: 0ms; }
+.arbre-tronc { fill: var(--tronc); }
+.arbre-couronne { fill: var(--c); transform-box: fill-box; transform-origin: 50% 100%; animation: balance 6s ease-in-out infinite; }
+
+/* Le feuillage bouge à peine, comme sous une brise */
+@keyframes balance {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+@keyframes onde {
+  0% { transform: scale(0.5); opacity: 0.9; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+/* Le nom du récit, au survol ou au clavier */
+.etiquette {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 14px);
+  transform: translate(-50%, 6px);
+  padding: 5px 12px;
+  border-radius: 999px;
   background: var(--nuit);
+  border: 1px solid var(--nuit-3);
   color: var(--ecru);
-  border-radius: 14px;
+  font-family: var(--f-texte);
+  font-size: var(--t-xs);
+  line-height: 1.4;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.marqueur:hover .etiquette,
+.marqueur:focus-visible .etiquette,
+.marqueur.survol .etiquette { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.marqueur.actif .etiquette { display: none; }
+.marqueur:hover, .marqueur:focus-visible, .marqueur.survol { z-index: 3; }
+
+/* ---------- Fenêtre d'aperçu ---------- */
+.maplibregl-popup { z-index: 3; }
+.maplibregl-popup-content {
+  border: 0;
+  border-radius: 8px;
   padding: 0;
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(16, 19, 58, 0.45);
+  box-shadow: 0 14px 36px color-mix(in srgb, var(--tronc) 40%, transparent);
   font-family: var(--f-texte);
+  animation: apercu-monte 0.5s cubic-bezier(0.2, 0.9, 0.3, 1);
 }
-.maplibregl-popup-tip { border-top-color: var(--nuit) !important; border-bottom-color: var(--nuit) !important; }
+@keyframes apercu-monte { from { opacity: 0; transform: translateY(14px) scale(0.97); } }
+.maplibregl-popup-tip { border-top-color: var(--coton) !important; border-bottom-color: var(--coton) !important; }
 .maplibregl-popup-close-button {
+  z-index: 2;
   width: var(--cible);
   height: var(--cible);
   color: var(--ecru);
   font-size: 26px;
   line-height: 1;
-  background: rgba(29, 34, 81, 0.7);
-  border-radius: 0 14px 0 14px;
+  background: color-mix(in srgb, var(--nuit) 70%, transparent);
+  border-radius: 0 8px 0 8px;
+  --ecru: var(--coton);
+  background: color-mix(in srgb, var(--encre) 55%, transparent);
 }
-.maplibregl-popup-close-button:hover { background: var(--nuit-3); }
-.apercu svg, .apercu img { width: 100%; height: 120px; object-fit: cover; }
-.apercu-corps { padding: 14px 16px 16px; }
-.apercu h2 { font-size: var(--t-l); margin: 6px 0 6px; }
-.apercu p { font-size: var(--t-s); color: var(--ecru-doux); margin-bottom: 12px; line-height: 1.5; }
-/* Le résumé est coupé à quelques lignes : le bouton « Lire le récit » reste visible */
-.apercu p {
+.maplibregl-popup-close-button:hover { background: var(--encre); }
+
+.apercu .apercu-visuel { aspect-ratio: auto; height: 170px; border-radius: 0; box-shadow: none; }
+.apercu .apercu-visuel::after {
+  content: "";
+  position: absolute;
+  inset: 72% 0 0;
+  background: linear-gradient(transparent, var(--nuit));
+  pointer-events: none;
+}
+.apercu .apercu-visuel > img, .apercu .apercu-visuel > svg { inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: bottom; }
+.apercu-corps { padding: 6px 18px 18px; }
+.apercu h2 { font-size: var(--t-l); margin: 6px 0 2px; }
+.apercu p { margin: 0; line-height: 1.5; }
+.apercu-lieu { font-size: var(--t-xs); color: var(--mil); margin-bottom: 8px !important; }
+/* Le résumé est coupé à quelques lignes : le bouton reste visible */
+.apercu-resume {
+  font-size: var(--t-s);
+  color: var(--ecru-doux);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
   line-clamp: 4;
   overflow: hidden;
 }
+.apercu-langues { font-size: var(--t-xs); color: var(--ecru-doux); margin: 8px 0 12px !important; }
+.apercu .bouton { width: 100%; justify-content: center; }
 
-/* Contrôles de la carte : zones tactiles de 44 px sur écran tactile */
+/* ---------- Contrôles de la carte, couleur coton ---------- */
+.maplibregl-ctrl-top-right { z-index: 5; padding-right: env(safe-area-inset-right); }
+.maplibregl-ctrl-bottom-right { z-index: 5; padding-bottom: env(safe-area-inset-bottom); }
+.maplibregl-ctrl-group:not(:empty) {
+  background: color-mix(in srgb, var(--coton) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ecru) 14%, transparent);
+  border-radius: 12px;
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+.maplibregl-ctrl-group button + button { border-top-color: color-mix(in srgb, var(--ecru) 14%, transparent); }
+.maplibregl-ctrl-group button:not(:disabled):hover { background: var(--nuit-3); }
+.bouton-recentrer { display: grid; place-items: center; color: var(--ecru); }
+.maplibregl-ctrl-attrib.maplibregl-compact,
+.maplibregl-ctrl-attrib.maplibregl-compact-show { background: color-mix(in srgb, var(--coton) 92%, transparent); color: var(--encre-douce); }
+.maplibregl-ctrl-attrib a { color: var(--ecru-doux); }
+
+/* Zones tactiles de 44 px sur écran tactile */
 @media (any-pointer: coarse), (max-width: 1024px) {
   .maplibregl-ctrl-group button { width: var(--cible); height: var(--cible); }
 }
-.maplibregl-ctrl-top-right { padding-right: env(safe-area-inset-right); }
-.bouton-recentrer { display: grid; place-items: center; color: var(--nuit); }
-.maplibregl-ctrl-bottom-right { padding-bottom: env(safe-area-inset-bottom); }
 
 /* Petits écrans : aperçu plus compact */
 @media (max-height: 820px), (max-width: 760px) {
-  .apercu svg, .apercu img { height: 90px; }
-  .apercu p { -webkit-line-clamp: 3; line-clamp: 3; }
+  .apercu .apercu-visuel { height: 104px; }
+  .apercu-resume { -webkit-line-clamp: 2; line-clamp: 2; }
 }
 @media (max-height: 500px) {
-  .apercu svg, .apercu img { display: none; }
-  .apercu-corps { padding: 10px 14px 12px; }
+  .apercu .apercu-visuel { display: none; }
+  .apercu-corps { padding: 10px 44px 12px 14px; }
   .apercu h2 { font-size: var(--t-m); }
-  .apercu p { -webkit-line-clamp: 2; line-clamp: 2; margin-bottom: 8px; }
+  .apercu-resume, .apercu-langues { display: none; }
+  .apercu-lieu { margin-bottom: 8px !important; }
+  .panneau { padding-top: 14px; }
+  .panneau h1 { font-size: 1.3rem; margin-bottom: 4px; }
+  .aide { display: none; }
 }
 
 .erreur-carte {
   position: absolute;
-  inset: 24px;
+  inset: 24px 24px 24px calc(var(--panneau) + 48px);
+  z-index: 5;
   display: grid;
   place-items: center;
   text-align: center;
 }
 
+/* ---------- Téléphone : la carte en haut, la liste dessous ---------- */
 @media (max-width: 760px) {
   .page-carte { overflow: auto; }
-  .disposition-carte {
-    grid-template-columns: 1fr;
-    grid-template-rows: 62svh auto;
-    height: auto;
+  .disposition-carte { display: grid; grid-template-rows: 62svh auto; height: auto; overflow: visible; }
+  .zone-carte { position: relative; order: -1; overflow: hidden; }
+  .panneau {
+    position: static;
+    width: auto;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
   }
-  .zone-carte { order: -1; min-height: 62svh; }
-  .panneau { border-right: 0; padding-bottom: calc(32px + env(safe-area-inset-bottom)); }
+  .liste-recits { overflow: visible; }
+  .bascule-3d { left: max(12px, env(safe-area-inset-left)); top: 12px; }
+  /* L'aperçu a besoin de toute la hauteur : le bouton revient quand on le ferme */
+  .zone-carte:has(.maplibregl-popup) .bascule-3d { display: none; }
+  .apercu .apercu-visuel { height: 84px; }
+  /* Le pincement remplace les boutons de zoom : la carte respire */
+  .maplibregl-ctrl-top-right .maplibregl-ctrl-group:first-child { display: none; }
+  .arbre { width: 22px; height: 31px; margin: -27px 0 0 -11px; }
+  .apercu-lieu { display: none; }
+  .apercu-langues { margin: 6px 0 10px !important; }
+  .apercu h2 { font-size: 1.2rem; margin-bottom: 6px; }
+  .marqueur::before { width: 28px; height: 10px; margin: -5px 0 0 -14px; }
+  .erreur-carte { inset: 24px; }
+}
+/* Petit téléphone : la carte est basse, l'aperçu garde l'essentiel */
+@media (max-width: 760px) and (max-height: 700px) {
+  .apercu .apercu-visuel { height: 64px; }
+  .apercu-resume { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #carte { opacity: 1; transition: none; }
+  .arbre-couronne, .marqueur::after { animation: none !important; }
+  .marqueur.actif::after { opacity: 1; }
+  .maplibregl-popup-content { animation: none; }
 }

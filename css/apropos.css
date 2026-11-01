@@ -1,36 +1,11 @@
-/* ---------- À propos ---------- */
-.tete-page h1 { max-width: 16ch; }
-
-.demarche {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 32px;
-  padding: 24px 0 8px;
-  border-top: 1px solid var(--nuit-3);
+/* ---------- Équipe et crédits ---------- */
+.equipe, .credits {
+  position: relative;
+  border-radius: 6px;
+  padding: clamp(30px, 4vw, 44px) clamp(20px, 4vw, 44px) clamp(22px, 3vw, 34px);
+  box-shadow: 0 18px 44px color-mix(in srgb, var(--encre) 60%, transparent);
 }
-.demarche h3 { color: var(--mil); font-size: var(--t-xl); margin: 16px 0 8px; }
-.demarche p { color: var(--ecru-doux); }
-
-.equipe, .technologies, .credits { padding-top: 80px; }
-
-.liste-technologies {
-  list-style: none;
-  margin: 24px 0 0;
-  padding: 0;
-  max-width: 760px;
-}
-.liste-technologies li {
-  display: grid;
-  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
-  gap: 4px 24px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--nuit-3);
-  color: var(--ecru-doux);
-}
-.liste-technologies strong { color: var(--ecru); font-weight: 600; }
-@media (max-width: 560px) {
-  .liste-technologies li { grid-template-columns: 1fr; }
-}
+.credits { margin-top: 32px; }
 .equipe .intro { color: var(--ecru-doux); }
 
 .membres {
@@ -77,7 +52,6 @@
 .credits .liste-langues strong { color: var(--ecru); font-weight: 600; }
 
 @media (max-width: 760px) {
-  .demarche { grid-template-columns: 1fr; gap: 8px; }
   .credits dl { grid-template-columns: 1fr; gap: 4px; }
   .credits dd { margin-bottom: 12px; }
 }

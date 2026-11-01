@@ -5,14 +5,11 @@ Projet du groupe 6, module Web Multimédia 2026. En ligne : https://lysias01.git
 
 ## Fonctionnalités
 
-- **Accueil** : une veillée animée sous le baobab (ciel étoilé, feu, parallaxe) et trois récits mis en avant.
-- **Carte interactive 2D/3D** (MapLibre GL JS) : un point par récit, coloré selon le type ; aperçu avec résumé et lien ; filtres par type et par langue ; vue 3D avec relief. Au doigt : glisser pour déplacer, pincer pour zoomer.
-- **Bibliothèque** : les 10 récits, recherche sans tenir compte des accents, filtres par type.
-- **Lecture scène par scène** pour trois récits immersifs : illustrations SVG animées avec parallaxe, navigation par boutons, clavier (flèches) ou balayage sur téléphone, un choix interactif au milieu du récit et un quiz de trois questions à la fin.
-- **Langues** : chaque récit se lit et s'écoute en français et, quand la traduction automatique le permet, en mooré, dioula ou fulfulde. La langue nationale s'affiche en grand, la traduction française en petit dessous. Le texte lu par la voix de synthèse est exactement le texte affiché.
-- **Musique d'ambiance** activée par défaut : elle démarre dès que le navigateur l'autorise (au chargement, ou au premier toucher, clic ou touche du clavier). Le bouton de l'en-tête la coupe, et ce choix est mémorisé. Elle se fait plus discrète pendant les narrations.
-- **Pensé pour le téléphone** : zones tactiles de 44 px minimum, encoches respectées, aucune narration lancée sans geste, `prefers-reduced-motion` respecté, utilisable entièrement au clavier.
-- **Partage** : favicon, icône d'écran d'accueil, aperçu Open Graph (WhatsApp, réseaux sociaux), page 404.
+- **Carte interactive 2D/3D** (MapLibre GL JS) : un point par récit, aperçu et lien vers le récit.
+- **Contes, légendes et récits historiques** : 10 récits, dont 3 à lire scène par scène.
+- **Illustrations animées** : une illustration SVG animée pour chaque récit.
+- **Audio** : les 10 récits se lisent et s'écoutent en français, mooré, dioula et fulfulde (voix de synthèse), avec une musique d'ambiance.
+- **Expérience interactive** : choix au milieu du récit, quiz à la fin, balayage sur téléphone.
 
 ## Lancer le site sur son ordinateur
 
@@ -32,40 +29,23 @@ Le site lit ses données dans `data/contes.json` : il doit être servi par un pe
 
 ```
 index.html            accueil (veillée animée)
-carte.html            carte interactive 2D/3D
+carte.html            carte interactive 2D/3D et liste des récits
 conte.html            lecture d'un récit (conte.html?id=yennenga)
-bibliotheque.html     tous les récits, recherche et filtres
-apropos.html          démarche, équipe, technologies, crédits
-404.html              page « introuvable » (servie par GitHub Pages)
+apropos.html          équipe, crédits et licences
 css/                  style.css (charte commune) + une feuille par page
 js/                   app.js (commun : en-tête, musique, données) + un script par page
 data/contes.json      les récits, leurs textes dans chaque langue, la liste des langues
 data/burkina.geojson  contour du pays (geoBoundaries, CC BY 4.0)
-assets/images/        illustrations SVG des récits, image de partage (partage.jpg)
-assets/icones/        favicon.svg, apple-touch-icon.png
-assets/audio/         narrations MP3 générées + empreintes.json
+assets/images/        illustrations SVG des récits
+assets/icones/        favicon.svg
+assets/audio/         narrations MP3 générées, sous-titres .vtt associés, empreintes.json
 assets/musique/       musique d'ambiance composée par tools/composer_ambiance.py
-tools/                generer_audio.py (traductions et narrations), composer_ambiance.py (musique)
-verifications.md      faits à vérifier pour chaque récit
+tools/                generer_audio.py (traductions et narrations), generer_sous_titres.py (sous-titres .vtt), composer_ambiance.py (musique), docker/ (environnement de génération)
 ```
 
 ## Ajouter ou compléter un récit
 
-Tout se fait dans `data/contes.json`, sans toucher au code. Copiez un bloc existant de la liste `contes`, puis :
-
-- `id` : identifiant unique sans accent ni espace (il sert dans l'adresse `conte.html?id=…` et dans le nom des audios).
-- `titre`, `resume`, `morale`, `source`, `ville`, `peuple` : textes affichés.
-- `langue` : nom de la langue du récit, tel qu'il figure dans `langues` (par exemple `Mooré`).
-
-- `type` : `conte`, `legende` ou `historique` (couleur du point sur la carte).
-- `lat` / `lng` : position sur la carte.
-- `scenes` : liste de `{ "titre", "textes", "image" }`. Si elle est vide, le récit s'affiche en fiche simple et son texte est dans `textes` au niveau du récit.
-- `textes` : une entrée par code de langue de `langues` (en haut du fichier), par exemple `{ "fr": "…", "mos": "…" }`. Paragraphes séparés par une ligne vide. C'est ce texte qui s'affiche **et** qui est lu par la voix de synthèse.
-- `image` : chemin d'une illustration ; sans image, une illustration de nuit est générée automatiquement.
-- `choix` (sur une scène) et `quiz` (sur le récit) : facultatifs, voir les récits immersifs pour le format.
-- `a_verifier` : passer à `false` une fois les faits vérifiés sur deux sources.
-
-Ensuite, lancez `python tools/generer_audio.py --traduire` (voir ci-dessous) pour créer les traductions et les audios du nouveau récit, puis `python -m http.server 8000` pour le vérifier.
+Tout se fait dans `data/contes.json` : copier un bloc de la liste `contes`, puis renseigner `id`, `titre`, `type` (`conte`, `legende` ou `historique`), `peuple`, `langue`, `ville`, `lat`, `lng`, `resume`, `morale`, `image`, et `textes` ou `scenes` (`choix` et `quiz` sont facultatifs). Lancer ensuite `python tools/generer_audio.py --traduire`.
 
 ## Régénérer les narrations audio
 
@@ -97,10 +77,22 @@ python tools/generer_audio.py --nettoyer      # supprime les MP3 qui ne servent 
 
 Si vous modifiez un texte français, mettez aussi à jour (ou supprimez) ses traductions : `--traduire` ne complète que les traductions **absentes**, pour ne jamais écraser une traduction relue. `assets/audio/empreintes.json` garde l'empreinte du texte de chaque MP3 ; `--verifier` signale tout audio périmé.
 
+## Régénérer les sous-titres
+
+Chaque MP3 est accompagné d'un `.vtt` du même nom, affiché en direct sous le bouton d'écoute. Le script lit la durée du MP3 (ffprobe) et répartit le temps entre les phrases selon leur longueur : le calage est donc approximatif. Il suffit d'avoir ffmpeg.
+
+```powershell
+python tools/generer_sous_titres.py                 # génère les .vtt manquants ou périmés
+python tools/generer_sous_titres.py --recit dafra   # un seul récit
+python tools/generer_sous_titres.py --tout          # tout régénérer
+```
+
+**Après toute régénération audio**, relancez ce script. Pour générer les narrations sans rien installer sur le poste, voir [tools/docker/README.md](tools/docker/README.md).
+
 ## Régénérer la musique d'ambiance
 
 `python tools/composer_ambiance.py` recompose `assets/musique/ambiance.mp3` par synthèse sonore (numpy, scipy et ffmpeg, dans le même environnement que les narrations). Le morceau boucle sans couture ; `--graine 12` (ou un autre nombre) donne une autre variation de la mélodie.
 
 ## Technologies
 
-HTML, CSS et JavaScript sans framework ni étape de compilation ; JSON pour les données ; SVG pour les illustrations ; MapLibre GL JS pour la carte ; fond de carte OpenFreeMap ; relief AWS Terrain Tiles ; Meta MMS-TTS et NLLB-200 pour les voix et les traductions ; polices Gloock et Literata ; hébergement GitHub Pages. Détail et crédits : page À propos.
+HTML, CSS et JavaScript sans framework ni compilation ; JSON ; SVG ; MapLibre GL JS ; OpenFreeMap ; relief AWS Terrain Tiles ; Meta MMS-TTS et NLLB-200 ; polices Caprasimo et Literata.

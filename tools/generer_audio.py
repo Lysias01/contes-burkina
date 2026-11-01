@@ -23,8 +23,9 @@ DONNEES = RACINE / "data" / "contes.json"
 AUDIO = RACINE / "assets" / "audio"
 EMPREINTES = AUDIO / "empreintes.json"
 
-# Langues dans lesquelles chaque scène des récits immersifs est traduite
-LANGUES_SCENES = ["mos", "dyu", "ful"]
+# Tout récit se lit et s'écoute dans ces langues, quelle que soit sa région d'origine :
+# un Dioula doit pouvoir découvrir un conte peul en dioula
+LANGUES_TRADUITES = ["mos", "dyu", "ful"]
 TRADUCTEUR = "facebook/nllb-200-distilled-600M"
 PAUSE_PHRASE, PAUSE_PARAGRAPHE = 0.35, 0.8   # secondes
 FREQUENCE, DEBIT = 24000, "64k"
@@ -85,11 +86,10 @@ def code_de_langue(donnees, nom):
 
 
 def langues_voulues(donnees, conte):
-    """Langues dans lesquelles ce récit doit exister, en plus du français."""
-    if conte.get("scenes"):
-        return list(LANGUES_SCENES)
+    """Langues dans lesquelles ce récit doit exister, en plus du français :
+    les langues traduites, et la langue d'origine du récit (gulmancema, lobiri : voir --verifier)."""
     code = code_de_langue(donnees, conte.get("langue"))
-    return [code] if code and code != "fr" else []
+    return LANGUES_TRADUITES + ([code] if code and code != "fr" and code not in LANGUES_TRADUITES else [])
 
 
 def empreinte(code, voix, texte):

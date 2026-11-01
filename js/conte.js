@@ -19,7 +19,7 @@ async function demarrer() {
 
   const index = contes.findIndex((c) => c.id === id);
   if (index === -1) {
-    zone.innerHTML = `<div class="conteneur"><p class="message">Ce récit n'existe pas ou a changé d'adresse. <a href="bibliotheque.html">Retrouvez tous les récits dans la bibliothèque.</a></p></div>`;
+    zone.innerHTML = `<div class="conteneur"><p class="message">Ce récit n'existe pas ou a changé d'adresse. <a href="carte.html">Retrouvez tous les récits sur la carte.</a></p></div>`;
     return;
   }
   const conte = contes[index];
@@ -61,7 +61,7 @@ function htmlChoixLangue(conte) {
     `<option value="${code}">${echapper(nomLangue(code))} (voix de synthèse)</option>`).join("");
   // Langue du récit sans traduction possible : on le dit plutôt que de l'inventer
   const absente = conte.langue && !codes.map(nomLangue).includes(conte.langue)
-    ? `<p class="note-langue">Pas encore de version en ${echapper(conte.langue)} : aucun outil de traduction automatique ne couvre cette langue.</p>`
+    ? `<p class="note-langue">Ce récit vient du pays où l'on parle ${echapper(conte.langue)}. Cette langue n'est pas encore proposée : aucun outil de traduction ne la couvre, et il faudra pour elle un traducteur et un conteur.</p>`
     : "";
   return `
     <div class="choix-langue">
@@ -84,7 +84,8 @@ function brancherChoixLangue(conte) {
 }
 
 function cheminAudio(conte, numero) {
-  return numero ? `assets/audio/${conte.id}-${numero}-${langue}.mp3` : `assets/audio/${conte.id}-${langue}.mp3`;
+  const base = numero ? `assets/audio/${conte.id}-${numero}-${langue}` : `assets/audio/${conte.id}-${langue}`;
+  return { audio: `${base}.mp3`, soustitres: `${base}.vtt` };
 }
 
 /* ---------- Écoute : un bouton, l'audio de la langue affichée ---------- */
@@ -95,7 +96,11 @@ function htmlEcoute(libelle) {
         <span class="ecoute-icone" aria-hidden="true">▶</span> <span class="ecoute-libelle">${libelle}</span>
       </button>
       <span class="ecoute-etat" id="ecoute-etat" aria-live="polite"></span>
-    </div>`;
+    </div>
+    <p class="sous-titre" id="sous-titre" aria-live="polite" hidden>
+      <span class="sous-titre-etiquette" aria-hidden="true">Sous-titre</span>
+      <span id="sous-titre-texte"></span>
+    </p>`;
 }
 
 function majEcoute(enCours) {
@@ -113,6 +118,38 @@ function arreterEcoute() {
   majEcoute(false);
   const etat = document.getElementById("ecoute-etat");
   if (etat) etat.textContent = "";
+  majSousTitre("");
+}
+
+function majSousTitre(texte) {
+  const bloc = document.getElementById("sous-titre");
+  const zoneTexte = document.getElementById("sous-titre-texte");
+  if (!bloc || !zoneTexte) return;
+  zoneTexte.textContent = texte;
+  zoneTexte.lang = langue;
+  bloc.hidden = !texte;
+}
+
+/* Un <audio> seul, contrairement à <video>, n'affiche jamais sa piste de
+   sous-titres : on lit nous-mêmes le sous-titre actif (track en mode « hidden »)
+   et on l'affiche dans la barre .sous-titre, en phase avec la lecture. */
+function brancherSousTitres(audio, chemin) {
+  audio.querySelectorAll("track").forEach((t) => t.remove());
+  const piste = document.createElement("track");
+  piste.kind = "subtitles";
+  piste.srclang = langue;
+  piste.src = chemin;
+  audio.appendChild(piste);
+  // On fixe le mode tout de suite : c'est ce qui déclenche le chargement du
+  // .vtt (attendre l'événement « load » du <track> suppose une promotion
+  // automatique via l'attribut default, pas fiable sur un track ajouté après coup).
+  const suivi = piste.track;
+  suivi.mode = "hidden";
+  suivi.addEventListener("cuechange", () => {
+    const actif = suivi.activeCues && suivi.activeCues[0];
+    // À l'arrêt, le retour au début réactive la première phrase : rien à afficher
+    majSousTitre(actif && !audio.paused ? actif.text : "");
+  });
 }
 
 function brancherEcoute(source) {
@@ -121,8 +158,11 @@ function brancherEcoute(source) {
   if (!audio || !bouton) return;
   bouton.addEventListener("click", () => {
     if (!audio.paused) return arreterEcoute();
-    const chemin = source();
-    if (audio.getAttribute("src") !== chemin) audio.src = chemin;
+    const { audio: chemin, soustitres } = source();
+    if (audio.getAttribute("src") !== chemin) {
+      audio.src = chemin;
+      brancherSousTitres(audio, soustitres);
+    }
     document.getElementById("ecoute-etat").textContent = "";
     audio.play().catch(() => {}); // un fichier absent est signalé par l'événement « error »
   });
@@ -132,6 +172,20 @@ function brancherEcoute(source) {
     majEcoute(false);
     document.getElementById("ecoute-etat").textContent = "L'audio de ce passage n'a pas pu être chargé.";
   });
+}
+
+/* ---------- Licence du récit ---------- */
+const LIENS_LICENCE = {
+  "CC BY-NC-SA 4.0": "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr",
+};
+
+function htmlLicence(conte) {
+  if (!conte.licence) return "";
+  const lien = LIENS_LICENCE[conte.licence];
+  const etiquette = lien
+    ? `<a href="${lien}" target="_blank" rel="noopener">${echapper(conte.licence)}</a>`
+    : echapper(conte.licence);
+  return `<p class="licence">Licence du récit : ${etiquette}</p>`;
 }
 
 /* ---------- Illustrations de scène ----------
@@ -185,12 +239,6 @@ function brancherParallaxe() {
   visuel.addEventListener("pointerleave", () => regler(0, 0));
 }
 
-/* Les adresses citées dans la source deviennent des liens (le texte est d'abord échappé) */
-function sourceAvecLiens(texte) {
-  return echapper(texte).replace(/https?:\/\/[^\s<]+[^\s<.,;:]/g,
-    (adresse) => `<a href="${adresse}" target="_blank" rel="noopener">${adresse}</a>`);
-}
-
 /* ---------- Mode immersif : scène par scène ---------- */
 function htmlImmersif(conte, suivant) {
   const points = scenes.map((s, i) =>
@@ -234,7 +282,7 @@ function htmlImmersif(conte, suivant) {
         <div id="quiz-corps"></div>
         <div class="quiz-retour" id="quiz-retour" aria-live="polite"></div>
       </section>` : ""}
-      <p class="source">Source : ${sourceAvecLiens(conte.source)}</p>
+      ${htmlLicence(conte)}
     </section>`;
 }
 
@@ -515,7 +563,7 @@ function htmlFiche(conte, suivant) {
         <p>${echapper(conte.morale)}</p>
         <div class="boutons"><a class="bouton" href="conte.html?id=${suivant.id}">Récit suivant : ${echapper(suivant.titre)}</a></div>
       </div>
-      <p class="source">Source : ${sourceAvecLiens(conte.source)}</p>
+      ${htmlLicence(conte)}
     </section>`;
 }
 
