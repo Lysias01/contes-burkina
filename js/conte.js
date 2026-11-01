@@ -84,7 +84,8 @@ function brancherChoixLangue(conte) {
 }
 
 function cheminAudio(conte, numero) {
-  return numero ? `assets/audio/${conte.id}-${numero}-${langue}.mp3` : `assets/audio/${conte.id}-${langue}.mp3`;
+  const base = numero ? `assets/audio/${conte.id}-${numero}-${langue}` : `assets/audio/${conte.id}-${langue}`;
+  return { audio: `${base}.mp3`, soustitres: `${base}.vtt` };
 }
 
 /* ---------- Écoute : un bouton, l'audio de la langue affichée ---------- */
@@ -95,7 +96,8 @@ function htmlEcoute(libelle) {
         <span class="ecoute-icone" aria-hidden="true">▶</span> <span class="ecoute-libelle">${libelle}</span>
       </button>
       <span class="ecoute-etat" id="ecoute-etat" aria-live="polite"></span>
-    </div>`;
+    </div>
+    <p class="sous-titre" id="sous-titre" aria-live="polite" hidden></p>`;
 }
 
 function majEcoute(enCours) {
@@ -113,6 +115,35 @@ function arreterEcoute() {
   majEcoute(false);
   const etat = document.getElementById("ecoute-etat");
   if (etat) etat.textContent = "";
+  majSousTitre("");
+}
+
+function majSousTitre(texte) {
+  const bloc = document.getElementById("sous-titre");
+  if (!bloc) return;
+  bloc.textContent = texte;
+  bloc.hidden = !texte;
+}
+
+/* Un <audio> seul, contrairement à <video>, n'affiche jamais sa piste de
+   sous-titres : on lit nous-mêmes le sous-titre actif (track en mode « hidden »)
+   et on l'affiche dans la barre .sous-titre, en phase avec la lecture. */
+function brancherSousTitres(audio, chemin) {
+  audio.querySelectorAll("track").forEach((t) => t.remove());
+  const piste = document.createElement("track");
+  piste.kind = "subtitles";
+  piste.srclang = langue;
+  piste.src = chemin;
+  piste.default = true;
+  audio.appendChild(piste);
+  piste.addEventListener("load", () => {
+    const suivi = piste.track;
+    suivi.mode = "hidden";
+    suivi.addEventListener("cuechange", () => {
+      const actif = suivi.activeCues && suivi.activeCues[0];
+      majSousTitre(actif ? actif.text : "");
+    });
+  });
 }
 
 function brancherEcoute(source) {
@@ -121,8 +152,11 @@ function brancherEcoute(source) {
   if (!audio || !bouton) return;
   bouton.addEventListener("click", () => {
     if (!audio.paused) return arreterEcoute();
-    const chemin = source();
-    if (audio.getAttribute("src") !== chemin) audio.src = chemin;
+    const { audio: chemin, soustitres } = source();
+    if (audio.getAttribute("src") !== chemin) {
+      audio.src = chemin;
+      brancherSousTitres(audio, soustitres);
+    }
     document.getElementById("ecoute-etat").textContent = "";
     audio.play().catch(() => {}); // un fichier absent est signalé par l'événement « error »
   });
@@ -191,6 +225,19 @@ function sourceAvecLiens(texte) {
     (adresse) => `<a href="${adresse}" target="_blank" rel="noopener">${adresse}</a>`);
 }
 
+const LIENS_LICENCE = {
+  "CC BY-NC-SA 4.0": "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr",
+};
+
+function htmlLicence(conte) {
+  if (!conte.licence) return "";
+  const lien = LIENS_LICENCE[conte.licence];
+  const etiquette = lien
+    ? `<a href="${lien}" target="_blank" rel="noopener">${echapper(conte.licence)}</a>`
+    : echapper(conte.licence);
+  return `<p class="source">Licence : ${etiquette}</p>`;
+}
+
 /* ---------- Mode immersif : scène par scène ---------- */
 function htmlImmersif(conte, suivant) {
   const points = scenes.map((s, i) =>
@@ -235,6 +282,7 @@ function htmlImmersif(conte, suivant) {
         <div class="quiz-retour" id="quiz-retour" aria-live="polite"></div>
       </section>` : ""}
       <p class="source">Source : ${sourceAvecLiens(conte.source)}</p>
+      ${htmlLicence(conte)}
     </section>`;
 }
 
@@ -516,6 +564,7 @@ function htmlFiche(conte, suivant) {
         <div class="boutons"><a class="bouton" href="conte.html?id=${suivant.id}">Récit suivant : ${echapper(suivant.titre)}</a></div>
       </div>
       <p class="source">Source : ${sourceAvecLiens(conte.source)}</p>
+      ${htmlLicence(conte)}
     </section>`;
 }
 

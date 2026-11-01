@@ -9,7 +9,7 @@ Projet du groupe 6, module Web Multimédia 2026. En ligne : https://lysias01.git
 - **Carte interactive 2D/3D** (MapLibre GL JS) : un point par récit, coloré selon le type ; aperçu avec résumé et lien ; filtres par type et par langue ; vue 3D avec relief. Au doigt : glisser pour déplacer, pincer pour zoomer.
 - **Bibliothèque** : les 10 récits, recherche sans tenir compte des accents, filtres par type.
 - **Lecture scène par scène** pour trois récits immersifs : illustrations SVG animées avec parallaxe, navigation par boutons, clavier (flèches) ou balayage sur téléphone, un choix interactif au milieu du récit et un quiz de trois questions à la fin.
-- **Langues** : chaque récit se lit et s'écoute en français et, quand la traduction automatique le permet, en mooré, dioula ou fulfulde. La langue nationale s'affiche en grand, la traduction française en petit dessous. Le texte lu par la voix de synthèse est exactement le texte affiché.
+- **Langues** : chaque récit se lit et s'écoute en français et, quand la traduction automatique le permet, en mooré, dioula ou fulfulde. La langue nationale s'affiche en grand, la traduction française en petit dessous. Le texte lu par la voix de synthèse est exactement le texte affiché, et un sous-titre de la phrase en cours s'affiche sous le bouton d'écoute (piste WebVTT).
 - **Musique d'ambiance** activée par défaut : elle démarre dès que le navigateur l'autorise (au chargement, ou au premier toucher, clic ou touche du clavier). Le bouton de l'en-tête la coupe, et ce choix est mémorisé. Elle se fait plus discrète pendant les narrations.
 - **Pensé pour le téléphone** : zones tactiles de 44 px minimum, encoches respectées, aucune narration lancée sans geste, `prefers-reduced-motion` respecté, utilisable entièrement au clavier.
 - **Partage** : favicon, icône d'écran d'accueil, aperçu Open Graph (WhatsApp, réseaux sociaux), page 404.
@@ -43,9 +43,9 @@ data/contes.json      les récits, leurs textes dans chaque langue, la liste des
 data/burkina.geojson  contour du pays (geoBoundaries, CC BY 4.0)
 assets/images/        illustrations SVG des récits, image de partage (partage.jpg)
 assets/icones/        favicon.svg, apple-touch-icon.png
-assets/audio/         narrations MP3 générées + empreintes.json
+assets/audio/         narrations MP3 générées, sous-titres .vtt associés, empreintes.json
 assets/musique/       musique d'ambiance composée par tools/composer_ambiance.py
-tools/                generer_audio.py (traductions et narrations), composer_ambiance.py (musique)
+tools/                generer_audio.py (traductions et narrations), generer_sous_titres.py (sous-titres .vtt), composer_ambiance.py (musique)
 verifications.md      faits à vérifier pour chaque récit
 ```
 
@@ -96,6 +96,24 @@ python tools/generer_audio.py --nettoyer      # supprime les MP3 qui ne servent 
 ```
 
 Si vous modifiez un texte français, mettez aussi à jour (ou supprimez) ses traductions : `--traduire` ne complète que les traductions **absentes**, pour ne jamais écraser une traduction relue. `assets/audio/empreintes.json` garde l'empreinte du texte de chaque MP3 ; `--verifier` signale tout audio périmé.
+
+## Régénérer les sous-titres
+
+Chaque MP3 est accompagné d'un `.vtt` du même nom (piste WebVTT, affichée en direct dans
+la barre sous le bouton d'écoute). Contrairement aux narrations, cette étape ne rappelle
+aucun modèle : elle lit juste la durée du MP3 (ffprobe) et répartit le texte affiché entre
+les phrases, au prorata de leur longueur en caractères — donc aucune installation Python
+supplémentaire, seulement ffmpeg.
+
+```powershell
+python tools/generer_sous_titres.py                 # génère les .vtt manquants ou périmés
+python tools/generer_sous_titres.py --recit dafra   # un seul récit
+python tools/generer_sous_titres.py --tout           # tout régénérer
+```
+
+**Après toute régénération audio** (`tools/generer_audio.py`), relancez aussi ce script :
+les `.vtt` se basent sur la date de modification du MP3 et se régénèrent automatiquement
+s'il est plus récent qu'eux.
 
 ## Régénérer la musique d'ambiance
 

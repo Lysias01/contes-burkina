@@ -248,6 +248,17 @@
 .ecoute-icone { font-size: 0.8em; }
 .ecoute-etat { font-size: var(--t-s); color: var(--ecru-doux); }
 
+/* Sous-titre actif, lu depuis la piste WebVTT associée à l'audio en cours */
+.sous-titre {
+  margin: -8px 0 18px;
+  padding: 10px 14px;
+  background: var(--nuit-2);
+  border-left: 3px solid var(--mil);
+  border-radius: 4px;
+  font-size: var(--t-s);
+  color: var(--ecru);
+}
+
 @media (max-width: 860px) {
   .scene, .fiche { grid-template-columns: 1fr; min-height: 0; }
   .scene-texte p, .fiche-texte p, .texte-complet p { font-size: var(--t-m); }
