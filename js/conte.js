@@ -134,15 +134,15 @@ function brancherSousTitres(audio, chemin) {
   piste.kind = "subtitles";
   piste.srclang = langue;
   piste.src = chemin;
-  piste.default = true;
   audio.appendChild(piste);
-  piste.addEventListener("load", () => {
-    const suivi = piste.track;
-    suivi.mode = "hidden";
-    suivi.addEventListener("cuechange", () => {
-      const actif = suivi.activeCues && suivi.activeCues[0];
-      majSousTitre(actif ? actif.text : "");
-    });
+  // On fixe le mode tout de suite : c'est ce qui déclenche le chargement du
+  // .vtt (attendre l'événement « load » du <track> suppose une promotion
+  // automatique via l'attribut default, pas fiable sur un track ajouté après coup).
+  const suivi = piste.track;
+  suivi.mode = "hidden";
+  suivi.addEventListener("cuechange", () => {
+    const actif = suivi.activeCues && suivi.activeCues[0];
+    majSousTitre(actif ? actif.text : "");
   });
 }
 
